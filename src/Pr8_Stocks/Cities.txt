@@ -1,0 +1,351 @@
+# https://en.wikipedia.org/wiki/Latitude_and_longitude_of_cities,_A-H
+Afghanistan, Herat, 34, 20, N, 62, 12, E
+Afghanistan, Kabul, 34, 31, N, 69, 12, E
+Algeria, Algiers, 36, 50, N, 3, 00, E
+American Samoa, Pago Pago, 14, 16, S, 170, 43, W
+Andorra, Andorra la Vella, 42, 30, N, 1, 30, E
+Angola, Namibe, 15, 10, S, 12, 09, E
+Anguilla, The Valley, 18, 13, N, 63, 03, W
+Argentina, Buenos Aires, 34, 40, S, 58, 30, W
+Argentina, Córdoba, 31, 32, S, 64, 21, W
+Armenia, Yerevan, 40, 10, N, 44, 31, E
+Aruba, Oranjestad, 12, 31, N, 70, 02, W
+Australia, Adelaide, 34, 55, S, 138, 35, E
+Australia, Alice Springs, 23, 42, S, 133, 53, E
+Australia, Brisbane, 27, 28, S, 153, 02, E
+Australia, Canberra, 35, 17, S, 149, 08, E
+Australia, Coober Pedy, 28, 56, S, 134, 45, E
+Australia, Darwin, 12, 28, S, 130, 50, E
+Australia, Derby, 17, 19, S, 123, 38, E
+Australia, Newman, 23, 20, S, 119, 34, E
+Australia, Perth, 31, 56, S, 115, 50, E
+Australia, Townsville, 19, 13, S, 146, 48, E
+Austria, Vienna, 48, 12, N, 16, 22, E
+Azerbaijan, Baku, 40, 22, N, 49, 53, E
+Bahamas, Nassau, 25, 03, N, 77, 29, W
+Bahrain, Al-Manamah, 26, 13, N, 50, 34, E
+Bangladesh, Dhaka, 23, 43, N, 90, 25, E
+Barbados, Bridgetown, 13, 06, N, 59, 37, W
+Belarus, Minsk, 53, 51, N, 27, 30, E
+Belgium, Brussels, 50, 50, N, 4, 20, E
+Belize, Belmopan, 17, 13, N, 88, 48, W
+Benin, Porto-Novo, 6, 29, N, 2, 37, E
+Bermuda, Hamilton, 32, 18, N, 64, 48, W
+Bhutan, Thimphu, 27, 32, N, 89, 43, E
+Bolivia, La Paz, 16, 30, S, 68, 10, W
+Bosnia and Herzegovina, Sarajevo, 43, 51, N, 18, 23, E
+Botswana, Gaborone, 24, 45, S, 25, 55, E
+Brazil, Belém, 1, 27, S, 48, 29, W
+Brazil, Brasília, 15, 47, S, 47, 55, W
+Brazil, Campinas, 22, 54, S, 47, 03, W
+Brazil, Cuiaba, 7, 15, S, 58, 25, W
+Brazil, Manaus, 3, 06, S, 60, 00, W
+Brazil, Porto Velho, 8, 45, S, 63, 54, W
+Brazil, Recife, 8, 06, S, 34, 53, W
+Brazil, Rio de Janeiro, 22, 54, S, 43, 14, W
+Brazil, Santarém, 2, 26, S, 54, 41, W
+Brazil, São Paulo, 23, 32, S, 46, 37, W
+British Virgin Islands, Road Town, 18, 28, N, 64, 39, W
+Brunei, Bandar Seri Begawan, 4, 53, N, 114, 56, E
+Bulgaria, Sofia, 42, 40, N, 23, 18, E
+Burkina, Ouagadougou, 12, 22, N, 1, 31, W
+Burundi, Bujumbura, 3, 22, S, 29, 19, E
+Cambodia, Phnom Penh, 11, 33, N, 104, 55, E
+Cameroun, Yaoundé, 3, 51, N, 11, 35, E
+Canada, Churchill, 58, 45, N, 94, 00, W
+Canada, Kugluktuk, 67, 49, N, 115, 21, W
+Canada, Ottawa, 45, 25, N, 75, 43, W
+Canada, Peace River, 56, 15, N, 117, 18, W
+Canada, Quebec, 46, 50, N, 71, 15, W
+Canada, Saskatoon, 52, 10, N, 101, 32, W
+Canada, Toronto, 43, 39, N, 79, 23, W
+Canada, Vancouver, 49, 16, N, 123, 07, W
+Canada, Whitehorse, 60, 43, N, 135, 03, W
+Canada, Winnipeg, 49, 53, N, 97, 09, W
+Cape Verde, Praia, 14, 55, N, 23, 31, W
+Cayman Islands, George Town, 19, 20, N, 81, 23, W
+Central African Republic, Bangui, 4, 23, N, 18, 37, E
+Chad, NDjamena, 12, 10, N, 14, 59, E
+Chile, Antofagasta, 23, 40, S, 70, 23, W
+Chile, Hanga Roa, 27, 05, S, 109, 20, W
+Chile, Santiago, 33, 27, S, 70, 40, W
+Chile, Puerto Williams, 54, 55, S, 67, 37, W
+Chile, Punta Arenas, 53, 10, S, 70, 56, W
+Chile, Valdivia, 39, 40, S, 73, 13, W
+PRC, Beijing, 39, 55, N, 116, 26, E
+PRC, Harbin, 45, 45, N, 126, 41, E
+PRC, Kunming, 25, 04, N, 102, 41, E
+PRC, Shanghai, 31, 06, N, 121, 22, E
+PRC, Urumqi, 43, 43, N, 87, 38, E
+PRC, Wuhan, 30, 35, N, 108, 54, E
+Republic of China, Taipei, 25, 05, N, 121, 32, E
+Cocos Islands, West Island, 12, 10, S, 96, 49, E
+Colombia, Bogotá, 4, 36, N, 74, 05, W
+Comoros, Moroni, 11, 40, S, 43, 16, E
+Congo-Brazzaville, Pointe Noire, 4, 46, S, 11, 53, E
+Democratic Republic of Congo, Kinshasa, 4, 18, S, 15, 18, E
+Democratic Republic of Congo, Kisangani, 0, 33, N, 25, 14, E
+Democratic Republic of Congo, Lubumbashi, 11, 41, S, 27, 29, E
+Cook Islands, Avarua, 21, 12, S, 159, 46, E
+Costa Rica, San José, 9, 56, N, 84, 05, W
+Côte d'Ivoire, Abidjan, 5, 19, N, 0, 05, W
+Côte d'Ivoire, Yamoussoukro, 6, 49, N, 5, 17, W
+Croatia, Zagreb, 45, 48, N, 15, 58, E
+Cuba, Guantánamo, 20, 09, N, 75, 14, W
+Cuba, Havana, 23, 08, N, 82, 22, W
+Curaçao, Willemstad, 12, 12, N, 68, 56, W
+Cyprus, Nicosia, 35, 10, N, 33, 22, E
+Czech Republic, Brno, 49, 13, N, 16, 40, E
+Czech Republic, Prague, 50, 06, N, 14, 26, E
+Denmark, Copenhagen, 55, 45, N, 12, 25, E
+Djibouti, Djibouti, 11, 33, N, 43, 10, E
+Dominica, Roseau, 15, 18, N, 61, 23, W
+Dominican Republic, Santo Domingo, 18, 28, N, 69, 54, W
+Ecuador, Guayaquil, 2, 10, S, 79, 50, W
+Ecuador, Quito, 0, 14, S, 78, 30, W
+Egypt, Aswan, 24, 05, N, 32, 56, E
+Egypt, Cairo, 30, 03, N, 31, 15, E
+El Salvador, San Salvador, 13, 40, N, 89, 10, W
+England, Birmingham, 52, 28, N, 01, 54, W
+England, Greenwich, 51, 28, N, 00, 00, W
+England, London, 51, 30, N, 0, 10, W
+Equatorial Guinea, Malabo, 3, 45, N, 8, 48, E
+Eritrea, Asmara, 15, 20, N, 38, 58, E
+Estonia, Tallinn, 59, 26, N, 24, 43, E
+Ethiopia, Addis Ababa, 9, 03, N, 38, 42, E
+Falkland Islands, Stanley, 51, 45, S, 57, 56, W
+Faroe Islands, Tórshavn, 62, 01, N, 6, 46, W
+Fiji Islands, Nadi, 17, 47, S, 177, 29, E
+Fiji Islands, Suva, 18, 08, S, 178, 25, E
+Finland, Helsinki, 60, 08, N, 25, 00, E
+France, Bordeaux, 44, 50, N, 0, 34, W
+France, Nice, 43, 42, N, 7, 15, E
+France, Paris, 48, 52, N, 2, 20, E
+French Guiana, Cayenne, 4, 00, N, 52, 30, W
+French Guiana, Gambier Island, 23, 10, S, 135, 00, W
+French Polynesia, Papeete, 17, 32, S, 149, 34, W
+Gabon, Libreville, 0, 30, N, 9, 25, E
+Gambia, Banjul, 13, 28, N, 16, 39, W
+Georgia, T'bilisi, 41, 43, N, 44, 49, E
+Germany, Berlin, 52, 32, N, 13, 25, E
+Germany, Hamburg, 53, 33, N, 9, 59, E
+Ghana, Accra, 5, 33, N, 0, 15, W
+Gibraltar, Gibraltar, 36, 09, N, 5, 21, W
+Greece, Athens, 37, 58, N, 23, 43, E
+Greenland, Godthåb, 64, 10, N, 51, 35, W
+Greenland, Qaanaaq, 77, 42, N, 68, 30, W
+Grenada, Saint George's, 12, 04, N, 61, 44, E
+Guadeloupe, Basse-Terre, 16, 10, N, 61, 40, W
+Guam, Hagåtña, 13, 28, N, 144, 45, E
+Guatemala, Guatemala City, 14, 38, N, 90, 31, W
+Guernsey, Saint Peter Port, 49, 27, N, 2, 32, W
+Guinea, Conakry, 9, 29, N, 13, 43, W
+Guiné-Bissau, Bissau, 11, 52, N, 15, 39, W
+Guyana, Georgetown, 6, 48, N, 58, 10, W
+Haiti, Port Au Prince, 18, 32, N, 72, 20, W
+Honduras, Tegucigalpa, 14, 05, N, 87, 14, W
+Hong Kong, Hong Kong, 22, 15, N, 114, 10, E
+Hungary, Budapest, 47, 30, N, 19, 05, E
+Iceland, Reykjavík, 64, 09, N, 21, 51, W
+India, Bangalore, 12, 58, N, 77, 35, E
+India, Kolkata, 22, 30, N, 88, 20, E
+India, Delhi, 28, 40, N, 77, 14, E
+India, Kandla, 23, 03, N, 70, 11, E
+India, Mumbai, 18, 56, N, 74, 35, E
+India, Nagpur, 21, 10, N, 79, 12, E
+Indonesia, Jakarta, 6, 08, S, 106, 45, E
+Iran, Mashad, 36, 16, N, 59, 34, E
+Iran, Shiraz, 29, 38, N, 52, 34, E
+Iran, Tabriz, 38, 05, N, 46, 18, E
+Iran, Tehran, 35, 40, N, 51, 26, E
+Iraq, Baghdad, 33, 20, N, 44, 26, E
+Ireland, Cork, 51, 54, N, 8, 28, W
+Ireland, Dublin, 53, 20, N, 6, 15, W
+Isle of Man, Douglas, 54, 09, N, 4, 29, W
+Israel, Jerusalem, 31, 47, N, 35, 13, E
+Israel, Tel Aviv, 32, 5, N, 34, 48, E
+Italy, Florence, 43, 46, N, 11, 15, E
+Italy, Naples, 40, 51, N, 14, 17, E
+Italy, Rome, 41, 48, N, 12, 36, E
+Jamaica, Kingston, 17, 58, N, 76, 48, W
+Japan, Hiroshima, 34, 23, N, 132, 27, E
+Japan, Kagoshima, 31, 37, N, 130, 32, E
+Japan, Kobe, 34, 41, N, 135, 12, E
+Japan, Kyoto, 35, 1, N, 135, 46, E
+Japan, Nagasaki, 32, 47, N, 129, 52, E
+Japan, Naha, 26, 12, N, 127, 41, E
+Japan, Osaka, 34, 42, N, 135, 30, E
+Japan, Sapporo, 43, 05, N, 141, 21, E
+Japan, Tokyo, 35, 40, N, 139, 45, E
+Jersey, Saint Helier, 49, 11, N, 2, 07, W
+Jordan, Amman, 31, 57, N, 35, 56, E
+Kazakhstan, Astana, 51, 10, N, 71, 30, E
+Kazakhstan, Petropavl, 54, 53, N, 69, 13, E
+Kenya, Nairobi, 1, 17, S, 36, 49, E
+Kiribati, Tarawa, 1, 30, N, 173, 00, E
+Korea, Seoul, 37, 30, N, 127, 00, E
+Kuwait, Kuwait, 29, 20, N, 48, 00, E
+Kyrgyzstan, Bishkek, 42, 53, N, 74, 46, E
+Laos, Vientiane, 17, 58, N, 102, 36, E
+Lebanon, Beirut, 33, 52, N, 35, 30, E
+Lesotho, Maseru, 29, 19, S, 27, 29, E
+Liberia, Monrovia, 6, 18, N, 10, 47, W
+Liechtenstein, Vaduz, 47, 08, N, 9, 32, E
+Lithuania, Vilnius, 54, 41, N, 25, 19, E
+Luxembourg, Luxembourg, 49, 37, N, 6, 08, E
+Latvia, Riga, 56, 40, N, 106, 10, E
+Libya, Benghazi, 32, 07, N, 20, 04, E
+Libya, Tripoli, 32, 54, N, 13, 11, E
+Madagascar, Antananarivo, 18, 52, S, 47, 30, E
+Malawi, Lilongwe, 13, 58, S, 33, 49, E
+Malaysia, George Town, 05, 25, N, 100, 19, E
+Malaysia, Johor Bahru, 1, 29, N, 103, 44, E
+Malaysia, Kota Bharu, 6, 8, N, 102, 15, E
+Malaysia, Kota Kinabalu, 2, 33, N, 102, 10, E
+Malaysia, Kuching, 1, 33, N, 110, 25, E
+Malaysia, Kuala Lumpur, 3, 08, N, 101, 42, E
+Maldives, Malé, 4, 00, N, 73, 28, E
+Mali, Bamako, 12, 39, N, 8, 00, W
+Mali, Timbuktu, 16, 49, N, 2, 59, W
+Malta, Valletta, 35, 54, N, 14, 32, E
+Morocco, Rabat, 34, 02, N, 6, 51, W
+Marshall Islands, Majuro, 7, 05, N, 171, 08, E
+Martinique, Fort-de-France, 14, 36, N, 61, 05, W
+Mauritania, Nouakchott, 18, 09, N, 15, 58, W
+Mauritius, Port Louis, 20, 10, S, 57, 30, E
+Mayotte, Mamoudzou, 12, 47, S, 45, 14, E
+Mexico, Chihuahua, 28, 40, N, 106, 06, W
+Mexico, Guadalajara, 20, 40, N, 103, 20, W
+Mexico, Mexico City, 19, 24, N, 99, 09, W
+Mexico, Tijuana, 32, 32, N, 117, 01, W
+Mexico, Veracruz, 19, 12, N, 96, 08, W
+Micronesia, Federated States of Palikir, 6, 58, N, 158, 13, E
+Moldova, Chişinău, 47, 00, N, 28, 50, E
+Monaco, Monaco, 43, 45, N, 7, 23, E
+Mongolia, Ulaanbaatar, 47, 54, N, 106, 52, E
+Montenegro, Podgorica, 42, 28, N, 19, 17, E
+Montserrat, Plymouth, 16, 44, N, 62, 14, W
+Morocco, Sidi Ifni, 29, 24, N, 10, 12, W
+Mozambique, Beira, 19, 49, S, 34, 52, E
+Mozambique, Maputo, 25, 58, S, 32, 35, E
+Myanmar (Burma), Mandalay, 21, 57, N, 96, 04, E
+Myanmar (Burma), Yangon, 16, 47, N, 96, 10, E
+Namibia, Lüderitz, 26, 38, S, 15, 10, E
+Namibia, Windhoek, 22, 34, S, 17, 06, E
+Nepal, Kathmandu, 27, 42, N, 85, 19, E
+Netherlands, Amsterdam, 52, 21, N, 4, 54, E
+New Caledonia, Noumea, 22, 16, S, 166, 26, E
+New Zealand, Auckland, 36, 55, S, 174, 47, E
+New Zealand, Timaru, 44, 23, S, 171, 14, E
+New Zealand, Wellington, 41, 17, S, 174, 47, E
+Nicaragua, Managua, 12, 06, N, 86, 18, W
+Niger, Niamey, 13, 32, N, 2, 05, E
+Nigeria, Abuja, 9, 10, N, 7, 11, E
+Nigeria, Kano, 12, 00, N, 8, 31, E
+Nigeria, Lagos, 6, 27, N, 3, 24, E
+Niue, Alofi, 19, 01, S, 169, 55, E
+Norfolk Island, Kingston, 29, 04, S, 167, 57, E
+North Korea, Pyongyang, 39, 00, N, 125, 47, E
+Norway, Longyearbyen, 78, 12, N, 15, 40, E
+Norway, Oslo, 59, 55, N, 10, 45, E
+Oman, Muscat, 23, 37, N, 58, 38, E
+Oman, Salalah, 17, 00, N, 54, 04, E
+Pakistan, Islamabad, 33, 40, N, 73, 08, E
+Pakistan, Karachi, 24, 51, N, 67, 02, E
+Palau Islands, Koror, 7, 21, N, 134, 31, E
+Panama, Panama City, 8, 58, N, 79, 32, W
+Papua New Guinea, Port Moresby, 9, 30, S, 147, 07, E
+Paraguay, Asunción, 25, 16, S, 57, 40, W
+Peru, Arequipa, 16, 25, S, 71, 32, W
+Peru, Iquitos, 3, 51, S, 73, 13, W
+Peru, Lima, 12, 03, S, 77, 03, W
+Philippines, Manila, 14, 35, N, 120, 59, E
+Pitcairn Islands, Adamstown, 25, 04, S, 130, 05, W
+Poland, Warsaw, 52, 15, N, 21, 00, E
+Poland, G'dansk, 54, 23, N, 18, 40, E
+Portugal, Lisbon, 38, 44, N, 9, 08, W
+Puerto Rico, San Juan, 18, 28, N, 66, 07, W
+Qatar, Doha, 25, 15, N, 51, 36, E
+Republic of Congo, Brazzaville, 4, 14, N, 15, 14, E
+Republic of Macedonia, Skopje, 42, 00, N, 21, 28, E
+Réunion, Saint-Denis, 20, 52, S, 55, 27, E
+Romania, Bucharest, 44, 26, N, 26, 06, E
+Russia, Chita, 52, 03, N, 113, 35, E
+Russia, Krasnodar, 45, 02, N, 39, 00, E
+Russia, Moscow, 55, 45, N, 37, 42, E
+Russia, Omsk, 54, 59, N, 73, 22, E
+Russia, Saint Petersburg, 59, 56, N, 30, 20, E
+Russia, Vladivostok, 43, 09, N, 131, 53, E
+Rwanda, Kigali, 1, 56, S, 30, 04, E
+Saint-Pierre and Miquelon, Saint-Pierre, 46, 46, N, 56, 11, W
+Saint Helena, Jamestown, 15, 56, S, 5, 44, W
+Saint Kitts and Nevis, Basseterre, 17, 18, N, 62, 43, W
+Saint Lucia, Castries, 14, 01, N, 60, 59, W
+Saint Vincent and the Grenadines, Kingstown, 13, 12, N, 61, 14, W
+Samoa (Western Samoa), Apia, 13, 48, S, 171, 45, W
+San Marino, San Marino, 43, 56, N, 12, 26, E
+São Tomé and Príncipe, Sao Tome, 0, 19, N, 6, 43, E
+Saudi Arabia, Riyadh, 24, 39, N, 46, 46, E
+Scotland, Glasgow, 55, 53, N, 4, 15, W
+Senegal, Dakar, 14, 40, N, 17, 26, W
+Serbia, Belgrad, 44, 50, N, 20, 30, E
+Seychelles, Victoria, 4, 38, S, 55, 28, E
+Sierra Leone, Freetown, 8, 30, N, 13, 15, W
+Singapore, Singapore, 1, 18, N, 103, 50, E
+Slovakia, Bratislava, 48, 10, N, 17, 10, E
+Slovenia, Ljubljana, 46, 04, N, 14, 30, E
+Solomon Islands, Honiara, 9, 28, S, 159, 57, E
+Somalia, Mogadishu, 2, 02, N, 45, 21, E
+South Africa, Cape Town, 35, 55, S, 18, 22, E
+South Africa, Johannesburg, 26, 08, S, 27, 54, E
+South Africa, Port Elizabeth, 33, 58, S, 25, 36, E
+South Africa, Pretoria, 25, 45, S, 28, 12, E
+South Korea, Seoul, 37, 32, N, 127, 00, E
+Spain, Barcelona, 41, 23, N, 2, 11, E
+Spain, Madrid, 40, 24, N, 3, 41, W
+Sri Lanka, Colombo, 6, 55, N, 79, 52, E
+Sudan, Khartoum, 15, 36, N, 32, 32, E
+Suriname, Paramaribo, 5, 50, N, 55, 10, W
+Swaziland, Mbabane, 26, 20, S, 31, 08, E
+Sweden, Stockholm, 59, 20, N, 18, 03, E
+Switzerland, Berne, 46, 57, N, 7, 27, E
+Switzerland, Zürich, 47, 22, N, 8, 33, E
+Syria, Damascus, 33, 30, N, 36, 18, E
+Tajikistan, Dushanbe, 38, 38, N, 68, 51, E
+Tanzania, Dar es Salaam, 6, 51, S, 39, 18, E
+Tanzania, Lindi, 10, 00, S, 39, 41, E
+Tanzania, Zanzibar, 6, 10, S, 39, 20, E
+Thailand, Bangkok, 13, 44, N, 100, 30, E
+Togo, Lomé, 6, 08, N, 1, 13, E
+Tonga, Nukuʻalofa, 21, 09, S, 175, 14, W
+Trinidad and Tobago, Port of Spain, 10, 38, N, 61, 31, W
+Tunisia, Tunis, 36, 48, N, 10, 11, E
+Tunisia, Sfax, 34, 44, N, 10, 46, E
+Turkey, Ankara, 39, 55, N, 32, 50, E
+Turkey, Istanbul, 41, 01, N, 28, 58, E
+Turkey, Trabzon, 41, 00, N, 39, 43, E
+Turkmenistan, Ashkhabad, 37, 58, N, 58, 24, E
+Turkmenistan, Bereket, 39, 14, N, 55, 31, E
+Tuvalu, Funafuti, 8, 31, S, 179, 13, E
+U.S. Virgin Islands, Charlotte Amalie, 18, 22, N, 64, 56, W
+Uganda, Kampala, 0, 19, N, 35, 25, E
+Ukraine, Kiev, 50, 25, N, 30, 43, E
+United Arab Emirates, Abu Dhabi, 24, 28, N, 54, 22, E
+United Arab Emirates, Dubai, 25, 16, N, 55, 20, E
+United States, Chicago, 41, 53, N, 87, 39, W
+United States, Honolulu, 21, 18, N, 157, 49, W
+United States, Houston, 29, 45, N, 95, 22, W
+United States, Los Angeles, 34, 03, N, 118, 15, W
+United States, New York City, 40, 43, N, 74, 00, W
+Uruguay, Montevideo, 34, 53, S, 56, 11, W
+Uzbekistan, Tashkent, 41, 16, N, 69, 13, E
+Vanuatu, Port Vila, 17, 45, S, 168, 18, E
+Venezuela, Caracas, 10, 30, N, 66, 56, W
+Venezuela, Mérida, 8, 24, N, 71, 08, W
+Vietnam, Hanoi, 21, 01, N, 105, 52, E
+Vietnam, Ho Chi Minh, 10, 46, N, 106, 43, E
+Wallis and Futuna, Mata-Utu, 13, 22, S, 176, 12, W
+Yemen, Sanaa, 15, 24, N, 44, 14, E
+Zambia, Lusaka, 15, 26, S, 28, 20, E
+Zambia, Mbala, 1, 04, N, 34, 12, E
+Zimbabwe, Harare, 17, 50, S, 31, 30, E

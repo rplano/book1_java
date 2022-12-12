@@ -1,0 +1,3 @@
+dog,Hund
+cat,Katze
+fish,Fisch

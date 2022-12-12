@@ -1,0 +1,7 @@
+hallway > kitchen
+hallway > living room
+hallway > bath room
+kitchen > hallway
+living room > hallway
+bath room > hallway
+bath room > kitchen

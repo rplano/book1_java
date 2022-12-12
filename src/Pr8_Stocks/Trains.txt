@@ -1,0 +1,14 @@
+
+Nuremberg > Berlin
+Nuremberg > Frankfurt
+Nuremberg > Munich
+
+Munich > Nuremberg
+
+Hamburg > Berlin
+
+Berlin > Hamburg
+Berlin > Nuremberg
+
+Frankfurt > Hamburg
+Frankfurt > Nuremberg

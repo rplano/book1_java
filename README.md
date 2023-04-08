@@ -1,3 +1,3 @@
 # Variationen zum Thema: Java
 
-Here you find the source code to the book, the book as [pdf](https://github.com/rplano/book6_JavaScript/raw/main/Variations_on_a_Theme_JavaScript.pdf "pdf") and the book in [HTML](https://rplano.github.io/book6_JavaScript/ "HTML") format.
+Hier finden Sie den Quellcode zum Buch, das Buch als [pdf](https://github.com/rplano/book6_JavaScript/raw/main/Variations_on_a_Theme_JavaScript.pdf "pdf") und das Buch im [HTML](https://rplano.github.io/book6_JavaScript/ "HTML") Format.

@@ -1,0 +1,559 @@
+<!DOCTYPE html><html lang="de"><head>
+  <title>Variationen zum Thema: Java</title>
+  <meta name="title" content="Variationen zum Thema: Java">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta charset="UTF-8">
+  <meta name="description" content="Introduction to Java Programming">
+  <meta name="keywords" content="java,introduction">
+  <meta name="author" content="Ralph P. Lano">
+  <meta name="robots" content="index,follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="book.css">
+</head>
+<body><center>
+<div id="wrap">
+	<ul class="sidenav">
+	  <p><a href="index.html">Variationen zum Thema</a><a href="index.html">Java</a></p>
+	  <li><a href="Karel.html">Karel</a></li>
+	  <li><a href="Graphics.html">Graphics</a></li>
+	  <li><a href="Console.html">Console</a></li>
+	  <li><a href="Agrar.html">Agrar</a></li>
+	  <li><a href="MindReader.html">MindReader</a></li>
+	  <li><a href="Swing.html">Swing</a></li>
+	  <li><a href="Asteroids.html">Asteroids</a></li>
+	  <li><a href="Stocks.html">Stocks</a></li>
+	</ul>
+<div class="content"><p>
+	<img alt="" src="images/370d2c62-31d7-47b3-8bd0-31d0e60fafb0.png" style="display: block; margin-left: auto; margin-right: auto; width: 310px; height: 212px;" /></p>
+<h1>
+	Karel</h1>
+<p>
+	Karel ist ein kleiner Roboter, der etwas wie ein alter Macintosh aussieht.&nbsp; Auf den folgenden Seiten werden wir viel von Karel lernen.&nbsp; Obwohl es etwas einfach anmutet, lernen wir in diesem Kapitel wahrscheinlich die wichtigste Lektion des ganzen Buches, nämlich komplexe Probleme mit dem Top-Down Ansatz in einfachere zu zerlegen.</p>
+<p>
+	Ein kleine Anmerkung für Leute die schon ein bischen programmieren können: man sollte dieses Kapitel auf keinen Fall überspringen!&nbsp; Prinzipiell geht es in diesem Kapitel darum den Top-Down Ansatz an einfachen Beispielen zu erlernen und zu üben, sich einen guten Stil anzugewöhnen, und vor allem zu lernen ohne Variablen zu programmieren.</p>
+<p>
+	.</p>
+<h2>
+	Karel&#39;s Welt</h2>
+<p>
+	Karel&#39;s Welt besteht aus Straßen und Alleen.&nbsp; Straßen verlaufen von West nach Ost und Alleen von Süden nach Norden.&nbsp; Außerdem gibt es Wände durch die Karel nicht hindurchgehen kann, und es gibt Bonbons.&nbsp; Karel hat immer eine Tüte mit unendlich vielen Bonbons bei sich, aber es können auch Bonbons an beliebigen Stellen herumliegen.</p>
+<p>
+	Karel kennt von haus aus vier Kommandos:</p>
+<ul>
+	<li>
+		<strong>move():</strong>&nbsp; er kann sich einen Schritt nach vorne bewegen</li>
+	<li>
+		<strong>turnLeft():</strong>&nbsp; er kann sich nach links drehen</li>
+	<li>
+		<strong>pickBeeper():</strong>&nbsp; er kann einen Bonbon aufheben</li>
+	<li>
+		<strong>putBeeper():</strong>&nbsp; er kann einen Bonbon hinlegen</li>
+</ul>
+<p>
+	Obwohl das jetzt nicht nach viel aussieht, stellt sich heraus, dass Karel alles ausrechnen kann was es so auszurechnen gibt, man sagt, Karel ist eine &#39;Universal-Rechenmaschine&#39;.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="images/FirstKarel.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 123px; float: right;" />Karel lernt Laufen</h2>
+<p>
+	Wenn wir nun möchten, dass Karel den Bonbon aufheben soll und an die Stelle (5,2) tragen soll, so würden wir ihm sagen:</p>
+<p>
+	&quot;Karel geh doch zwei Schritte nach vorne, dann hebe den Bonbon auf, drehe dich nach links, laufe einen Schritt, drehe dich dreimal nach links, laufe noch zwei Schritte und lege den Bonbon hin.&quot;</p>
+<p>
+	Warum soll sich Karel dreimal nach links drehen?&nbsp; Weil er nicht weiß wie &#39;nach rechts drehen&#39; geht, das hat ihm noch keiner gezeigt.</p>
+<p>
+	Da Karel kein Deutsch versteht, müssen wir ihm das in seiner Sprache sagen und da hört sich das wie folgt an:</p>
+<pre>
+    move();
+&nbsp;&nbsp;&nbsp; move();
+&nbsp;&nbsp;&nbsp; pickBeeper();
+&nbsp;&nbsp;&nbsp; turnLeft();
+&nbsp;&nbsp;&nbsp; move();
+&nbsp;&nbsp;&nbsp; turnLeft();
+&nbsp;&nbsp;&nbsp; turnLeft();
+&nbsp;&nbsp;&nbsp; turnLeft();
+&nbsp;&nbsp;&nbsp; move();
+&nbsp;&nbsp;&nbsp; move();
+&nbsp;&nbsp;&nbsp; putBeeper();</pre>
+<p>
+	Ähnlich wie niemand wirklich versteht warum man im Deutschen diese komischen Satzzeichen, wie Kommas, Punkte usw. benötigt, weiß auch niemand warum Karel diese runden Klammern und Strichpunkte benötigt.&nbsp; Aber ohne geht&#39;s halt nicht.&nbsp; Auch achtet Karel akribisch auf Groß- und Kleinschreibung, wenn man sich vertippt macht er gar nichts.</p>
+<p>
+	.</p>
+<h2>
+	Karel Programm</h2>
+<p>
+	Damit wir nun Karel bei seiner Arbeit zusehen können, benötigen wir etwas das &#39;Programm&#39; heißt.&nbsp; Dabei handelt es sich eigentlich um Java, aber das brauchen wir noch nicht zu wissen.&nbsp; Ein Karel Programm sieht wie folgt aus:</p>
+<pre>
+import stanford.karel.*;
+
+public class FirstKarel extends Karel {
+
+&nbsp;&nbsp; &nbsp;public void run() {
+<span style="color:#0000ff;">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;move();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;pickBeeper();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;move();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;turnLeft();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;move();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;turnLeft();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;turnLeft();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;turnLeft();&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;move();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;move();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;putBeeper();</span>
+&nbsp;&nbsp; &nbsp;}
+}</pre>
+<p>
+	Dabei ist der Teil der für uns wichtig ist blau markiert.&nbsp; In allem was folgt werden wir einfach unsere Karel Kommandos (auch Code genannt) anstelle der blauen Zeilen einfügen.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="images/GoodMorningKarel.png" style="width: 200px; height: 200px; float: right;" />Übung: GoodMorningKarel</h2>
+<p>
+	Wir wollen jetzt unser nächstes Karel Problem lösen:&nbsp; Karel ist gerade aufgewacht, und will seine MorgenMilch trinken.&nbsp; Allerdings, steht die noch vor der Haustür.&nbsp; Er muss also aufstehen, hinausgehen, die Milch holen, und sich dann an seinen Frühstückstisch setzen, um in Ruhe seine Milch zu trinken.&nbsp; Wie würde das denn in Karel&#39;s Sprache aussehen?</p>
+<p>
+	.</p>
+<h2>
+	Karel lernt neue Tricks</h2>
+<p>
+	Karel ist ein bischen wie ein Haustier, und wir können ihm neue Sachen beibringen.&nbsp; Als erstes wollen wir ihm beibringen, dass er sich auch nach rechts drehen kann.&nbsp; Wir sagen ihm also, jedes mal wenn du das Kommando <em>turnRight()</em> siehst, dann drehe dich doch dreimal nach links.&nbsp; Damit uns Karel versteht müssen wir natürlich das ganze in seiner Sprache formulieren:</p>
+<pre>
+&nbsp;&nbsp;&nbsp; public void turnRight() {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; turnLeft();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; turnLeft();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; turnLeft();
+&nbsp;&nbsp;&nbsp; }</pre>
+<p>
+	Jetzt können wir einfach dieses neue Kommando verwenden und Karel versteht was er machen soll.&nbsp; Kommandos nennen wir manchmal auch Methoden, z.B. turnRight() ist eine Methode, aber auch move().&nbsp; Im Allgemeinen werden Methoden immer durch runden Klammern gekennzeichnet.</p>
+<p>
+	Frage: Wie müsste denn der Syntax für eine Kommando <em>turnAround()</em> lauten, das Karel dazu veranlasst in die entgegengesetzte Richtung zu schauen?</p>
+<p>
+	.</p>
+<h2>
+	Übung: GoodMorningKarel</h2>
+<p>
+	Um zu sehen, dass das auch wirklich funktioniert, wollen wir unseren GoodMorningKarel so modifizieren, dass er anstelle dreier turnLeft()&#39;s ein turnRight() verwendet.</p>
+<p>
+	.</p>
+<h2>
+	Karel wiederholt sich</h2>
+<p>
+	Es ist sehr häufig, dass Karel etwas immer wieder machen soll.&nbsp; Z.B. soll er sich dreimal nach links drehen oder er soll zwei Schritte laufen.&nbsp; Für so etwas gibt es etwas das heißt <em>Schleife</em>, genauer eine &#39;for&#39;-Schleife.&nbsp; In Karel&#39;s Sprache sieht das dann so aus:</p>
+<pre>
+&nbsp;&nbsp;&nbsp; public void turnRight() {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for (int i=0; i&lt;<span style="color:#0000ff;">3</span>; i++) {
+&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; turnLeft();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp; }</pre>
+<p>
+	Wichtig ist hier die &#39;3&#39;, die sagt Karel, dass er das was in den geschweiften Klammern steht dreimal machen soll.&nbsp; Den Rest brauchen wir vorerst gar nicht zu verstehen. (Die wenigsten Leute tun das, sie kopieren die Zeilen einfach und ändern einfach die &#39;3&#39;.)</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="images/FillRowKarel.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 127px; float: right;" />Übung: FillRowKarel</h2>
+<p>
+	Eine andere Anwendung für unsere Schleife ist FillRowKarel.&nbsp; Wir möchten, dass Karel fünf Bonbons in einer Reihe hinlegt.&nbsp; Das scheint eigentlich ein ganz einfaches Problem zu sein, und man würde denken, dass die folgenden Zeilen</p>
+<pre>
+&nbsp;&nbsp; &nbsp;for (int i = 0; i &lt; 5; i++) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;putBeeper();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;move();&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+&nbsp;&nbsp; &nbsp;}</pre>
+<p>
+	das Problem lösen sollten.&nbsp;</p>
+<p>
+	.</p>
+<p>
+	<img alt="" src="images/KarelIsBlocked.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 92px; float: right;" />Allerdings stellen wir fest, dass Karel am Ende gegen die Wand rennt und sich weh tut.&nbsp; Im Program sehen wir das wenn das rote Fenster hochpoppt in dem Karel von einer Wespe gestochen wird.&nbsp; Um dies zu vermeiden, könnten wir die Schleife nur viermal durchlaufen.&nbsp; Aber dann würde Karel nur vier Bonbons hinlegen und nicht fünf.&nbsp; Dieses Problem tritt so häufig auf, dass es einen eigenen Namen hat: man nennt es das <em>O-Bob</em> Problem.</p>
+<p>
+	.</p>
+<h2>
+	OBOB</h2>
+<p>
+	O-Bob war ein Meister der Jedi dem dieses Problem als erstes aufgefallen ist, als er versuchte seinen Droiden zu programmieren.&nbsp; Im Ernst, eigentlich steht OBOB für &#39;off by one bug&#39;, also in etwa &#39;um eins daneben&#39;, meistens eins zu wenig.&nbsp; In unserem FillRowKarel Problem bedeutet dies, dass Karel am Ende einfach noch einen Extra-Bonbon hinlegen muss.</p>
+<pre>
+&nbsp;&nbsp; &nbsp;for (int i = 0; i &lt; 4; i++) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;putBeeper();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;move();&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+&nbsp;&nbsp; &nbsp;}
+   &nbsp;putBeeper();</pre>
+<p>
+	Momentan müssen wir damit leben.&nbsp; Im nächsten Kapitel werden wir sehen wie man mit Hilfe des &#39;Loop-and-a-half&#39; das O-Bob Problem elegant umgehen kann.</p>
+<p>
+	.</p>
+<h2>
+	Karel hat Sensoren</h2>
+<p>
+	Eine Kleinigkeit haben wir bisher noch verschwiegen, denn Karel hat nämlich Sensoren.&nbsp; Z.B. kann er feststellen, ob an der Stelle an der er sich gerade befindet ein Bonbon liegt.&nbsp; Falls da einer liegen sollte, könnte er diesen aufheben.&nbsp; Dieses &#39;falls&#39; heißt in Karel&#39;s Sprache <em>if</em>, und der Syntax der in dazu veranlassen würde einen Bonbon aufzuheben, wenn an der Stelle an der er gerade steht einer liegt, sieht wie folgt aus:</p>
+<pre>
+&nbsp;&nbsp;&nbsp; if ( beepersPresent() ) {
+        pickBeeper();
+    }
+</pre>
+<p>
+	Es gibt ne ganze Menge Sensoren, und wir listen hier mal die wichtigsten auf:</p>
+<ul>
+	<li>
+		<strong>beepersPresent():</strong>&nbsp; es befindet sich ein Bonbon an der Stelle an der sich Karel gerade befindet</li>
+	<li>
+		<strong>noBeepersPresent():</strong>&nbsp; es ist kein Bonbon an der Stelle</li>
+	<li>
+		<strong>frontIsClear():</strong>&nbsp; es ist keine Wand vor Karel, Karel kann also unbesorgt vorwärts laufen</li>
+	<li>
+		<strong>frontIsBlocked():</strong>&nbsp; es ist eine Wand vor Karel, also sollte Karel nicht versuchen vorwärts zu laufen, sonst haut er sich den Kopf an</li>
+</ul>
+<p>
+	Zusätzlich gibt es noch die Sensoren <em>rightIsClear()</em> und <em>leftIsClear()</em>, sowie die jeweiligen geblockten Varianten.&nbsp; Rechts bedeutet eigentlich unten, und links bedeutet eigentlich oben, immer relativ zur Richtung in der Karel gerade schaut.</p>
+<p>
+	.</p>
+<h2>
+	Karel, mach mal</h2>
+<p>
+	Sehr häufig möchten wir, dass Karel <em>solange</em> etwas tun soll <em>bis</em> ein Ereignis eintritt.&nbsp; Z.B. solange keine Wand vor ihm ist, soll Karel gerade aus gehen.&nbsp; Dafür gibt es das <em>while</em> Kommando in Karel&#39;s Sprache:</p>
+<pre>
+&nbsp;&nbsp;&nbsp; while ( frontIsClear() ) {
+        move();
+    }
+</pre>
+<p>
+	d.h., solange keine Wand vor dir ist, gehe einen Schritt weiter.&nbsp; Man nennt dieses Konstrukt auch die <em>while</em> Schleife.&nbsp; Wir sehen an diesem Beispiel auch schön eines unserer ersten Software Engineering Prinzipien (SEP):</p>
+<p>
+	<strong>SEP: Programme sollen für Menschen lesbar sein und sich wie relativ normales Englisch lesen.</strong></p>
+<p>
+	Frage: Wie müsste denn ein neues Kommando <em>moveToWall()</em> aussehen, das Karel veranlasst bis zur nächsten Wand zu laufen?</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="images/WallKarel.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 123px; float: right;" />Übung: WallKarel</h2>
+<p>
+	In WallKarel möchten wir Karel dazu bringen, dass er solange gerade aus weiterläuft, bis eine Wand kommt.&nbsp; Dann soll er aber stehen bleiben,&nbsp; Wir sollten darauf achten unser neues Kommando <em>moveToWall()</em> zu verwenden, dann wird der Code nämlich sehr einfach.</p>
+<p>
+	.</p>
+<p>
+	.</p>
+<h2>
+	Übung: InfiniteLoopKarel</h2>
+<p>
+	Die <em>while</em> Schleife ist nicht ganz unproblematisch: denn Karel macht etwas solange, bis etwas bestimmtes passiert.&nbsp; Z.B. in InfiniteLoopKarel soll Karel sich solange nach links drehen, bis keine Wand mehr vor ihm ist:</p>
+<pre>
+&nbsp;&nbsp; &nbsp;while ( frontIsClear() ) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;turnLeft();
+&nbsp;&nbsp; &nbsp;}</pre>
+<p>
+	Das funktioniert gut solange Karel irgendwo in der Nähe einer Wand ist.&nbsp; Befindet sich Karel aber in der Mitte seiner Welt, so hört er nicht auf sich zu drehen.&nbsp; Man nennt das dann eine Endlos-Schleife oder Dreh-Wurm-Karel.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="images/RobinHoodKarel.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 123px; float: right;" />Übung: RobinHoodKarel</h2>
+<p>
+	Karel liebt Kino.&nbsp; Neulich hat er den Film &#39;Robin Hood&#39; gesehen.&nbsp; Nach dessen Motto &#39;nimm von den Reichen und gib es den Armen&#39;, läuft Karel so durch seine Welt, und jedes Mal wenn er auf der Straße einen Bonbon findet nimmt er ihn, und wenn kein Bonbon da liegt, legt er einen hin.</p>
+<p>
+	Am besten verwenden wir Karel&#39;s Sensoren um die Aufgabe zu lösen.&nbsp; Wir können Karel also sagen</p>
+<pre>
+&nbsp;&nbsp;&nbsp; if ( beepersPresent() ) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pickBeeper();
+&nbsp;&nbsp;&nbsp; }&nbsp; &nbsp;
+&nbsp;&nbsp;&nbsp; if ( noBeepersPresent() ) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; putBeeper();
+&nbsp;&nbsp;&nbsp; }</pre>
+<p>
+	und das Ganze soll er solange machen, bis eine Wand vor ihm ist.&nbsp; Das funktioniert auch ganz gut.&nbsp; Aber wir können den Code etwas verkürzen, wenn wir das <em>else</em> Kommando verwenden.&nbsp; Es bedeutet in etwa <em>anderfalls</em>.&nbsp; In Code sieht das so aus:</p>
+<pre>
+&nbsp;&nbsp;&nbsp; if ( beepersPresent() ) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pickBeeper();
+&nbsp;&nbsp;&nbsp; } else {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; putBeeper();
+&nbsp;&nbsp;&nbsp; }</pre>
+<p>
+	und bedeutet in etwa: wenn ein Bonbon da ist, dann nimm ihn auf, anderfalls lege einen hin.</p>
+<p>
+	.</p>
+<h2>
+	Top-Down Ansatz</h2>
+<p>
+	Im Prinzip gibt es zwei Möglichkeiten ein beliebiges Problem zu lösen.&nbsp; Der eine ist der Bottom-Up Ansatz: ausgehend von den Dingen die man kennt versucht man ein Problem zu lösen.&nbsp; Bisher haben wir diesen Ansatz für die Lösung unserer Karel Probleme verwendet: mit den Paar Kommandos die Karel kennt und seinen Sensoren, haben wir einfache Problem einfach Schritt für Schritt gelöst.&nbsp; Für einfache Probleme funktioniert das auch ganz gut.</p>
+<p>
+	Für komplexere Problem funktioniert das nicht mehr so gut.&nbsp; Hier hat sich die Top-Down Methode bewährt.&nbsp; In der Top-Down Methode hat man meist ein Problem vor sich, bei dem man zunächst denkt, dass es unmöglich zu lösen ist.&nbsp; Allerdings, gelingt es einem sehr häufig das komplexe Problem in kleinere Teilprobleme zu zerlegen.&nbsp; Manchmal sind diese dann schon lösbar, manchmal muss man aber auch diese noch mal in noch kleinere Teilprojekte zerlegen.&nbsp; Man nennt diesen Prozess &#39;stepwise refinement&#39;.&nbsp; Am besten betrachten wir das Beispiel des WindowCleaningKarel um zu sehen wie das funktioniert.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="images/WindowCleaningKarel.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 198px; float: right;" />Übung: WindowCleaningKarel</h2>
+<p>
+	Karel lebt in Chicago.&nbsp; Und seinen Lebensunterhalt verdient er sich mit Fensterputzen.&nbsp; Der Job ist nicht ganz ungefährlich, aber mit irgendwas muss er ja sein Geld verdienen.&nbsp; Karel muss pro Woche immer fünf Wolkenkratzer putzen.&nbsp; Er sind aber nicht immer dieselben.&nbsp; Manchmal sind sie höher manchmal niedriger.&nbsp; Eigentlich mag Karel die hohen lieber, sind aber mehr Arbeit.</p>
+<p>
+	Wir wollen das Problem mit dem Top-Down Ansatz lösen.&nbsp; Es geht also darum das Gesamtproblem in kleinere zu zerlegen.&nbsp; Nehmen wir an wir wüssten wie Karel <em>einen</em> Wolkenkratzer putzt, also angenommen wir hätten eine Methode namens <em>cleanOneSkyScraper()</em>.&nbsp; Dann wäre die Lösung unseres Problems ganz einfach, wir würden einfach fünfmal <em>cleanOneSkyScraper()</em> ausführen:</p>
+<pre>
+&nbsp;&nbsp; &nbsp;for (int i = 0; i &lt; 5; i++) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;cleanOneSkyScraper();
+&nbsp;&nbsp; &nbsp;}</pre>
+<p>
+	Wir haben also unser grosses Problem gelöst.</p>
+<p>
+	Jetzt müssen wir das etwas kleinere Problem <em>cleanOneSkyScraper()</em> lösen.&nbsp; Wie putzt denn Karel einen Wolkenkratzer?&nbsp; Noch ist das Problem zu kompliziert um es mit move&#39;s und turnLeft&#39;s zu lösen, also sollten wir es noch einmal zerlegen.&nbsp; Wenn wir wüssten wie Karel am Wolkenkratzer hochläuft, <em>moveUpAndClean()</em>, über den Wolkenkratzer läuft, <em>moveOver()</em>, und an der anderen Seite den Wolkenkratzer wieder hinunterläuft, <em>moveDownAndClean()</em>, dann hätten wir das Problem <em>cleanOneSkyScraper()</em> gelöst:</p>
+<pre>
+&nbsp;&nbsp;&nbsp; public void cleanOneSkyScraper() {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;moveUpAndClean();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;moveOver();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;moveDownAndClean();
+&nbsp;&nbsp; &nbsp;}</pre>
+<p>
+	Obwohl wir noch nicht ganz fertig sind, sehen wir, dass wir jetzt schon fast am Ziel sind.&nbsp; Die letzten drei Kommandos können wir ganz einfach lösen.&nbsp; Für <em>moveUpAndClean()</em> lassen wir Karel sich nach links drehen, dann lassen wir ihn solange laufen, solange die rechte Seite von Karel blockiert ist.&nbsp; Für <em>moveOver()</em> lassen wir Karel sich nach rechts drehen, zwei Schritte nach vorne machen und sich dann noch einmal nach rechts drehen.&nbsp; <em>moveDownAndClean()</em> ist eigentlich wie <em>moveToWall()</em> nur am Ende muss er sich noch einmal nach links drehen.</p>
+<p>
+	.</p>
+<h2>
+	Empfehlungen für den Top-Down Ansatz</h2>
+<p>
+	Manchmal ist es z.B. nicht ganz klar wann man mit dem Top-Down Ansatz fertig ist.&nbsp; Hier gibt es ein paar Empfehlungen, die einem da weiterhelfen:</p>
+<ul>
+	<li>
+		eine Methode sollte genau ein Problem lösen</li>
+	<li>
+		eine Methode sollte nicht mehr als 15 Zeilen lang sein, um die fünf Zeilen sind ideal</li>
+	<li>
+		Methoden Namen sollten beschreiben was die Methode macht</li>
+</ul>
+<p>
+	.</p>
+<h2>
+	Kommentare</h2>
+<p>
+	Jedes gute Programm hat Kommentare.&nbsp; Je wichtiger es ist, desto mehr Kommentare hat es.&nbsp; Was sind Kommentare?&nbsp; Kommentare sind Beschreibungen was das Programm, was der Code macht.&nbsp; Sie sind für Menschen gedacht, die versuchen das Programm zu verstehen.&nbsp; Der Computer ignoriert die Kommentare.&nbsp;</p>
+<p>
+	Der Syntax ist eigentlich ganz einfach: ein Kommentar beginnt mit den Zeichen &#39;/**&#39; und endet mit den Zeichen &#39;*/&#39;.&nbsp; Normalerweise befindet sich ein Kommentar ganz am Anfang eines Programms und erklärt was das Program als ganzes macht.&nbsp; Zusätzlich sollte man noch bei jeder Methode kurz beschreiben was diese macht.&nbsp; Will man es ganz gut machen, dann beschreibt man auch noch kurz von welchen Annahmen man ausgeht wenn die Methode aufgerufen wird (pre-conditions) und welchem Zustand man die Welt hinterlässt nachdem die Methode fertig ist (post-conditions).</p>
+<pre>
+/**
+&nbsp;* Karel&#39;s day job is to clean windows of skyscrapers in Chicago. 
+&nbsp;*
+&nbsp;* @author Ralph P. Lano
+&nbsp;*/
+public class WindowCleaningKarel extends Karel {
+&nbsp;&nbsp; &nbsp;
+&nbsp;&nbsp;&nbsp; /**
+&nbsp;&nbsp; &nbsp; * Karel has to clean five skyscrapers, one at a time.
+&nbsp;&nbsp; &nbsp; *
+&nbsp;&nbsp; &nbsp; * PreCondition: Karel is standing in front of the first skyscraper, facing
+&nbsp;&nbsp; &nbsp; * east 
+&nbsp;&nbsp; &nbsp; * PostCondition: Karel is standing behind the last skyscraper, facing east
+&nbsp;&nbsp; &nbsp; */
+&nbsp;&nbsp; &nbsp;public void run() {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;for (int i = 0; i &lt; 5; i++) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;cleanOneSkyScraper();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}
+&nbsp;&nbsp; &nbsp;}
+
+    ...
+}
+</pre>
+<p>
+	Hält man die Methoden kurz, so erübrigen sich Kommentare innerhalb von Methoden.&nbsp; Auch hier geht es wieder darum, dass sich Programme wie gutes Englisch lesen sollen.</p>
+<p>
+	.</p>
+<h2>
+	Übung: Kommentare</h2>
+<p>
+	Als kleine Übung wollen wir das WindowCleaningKarel Programm ausführlich mit Kommentaren versehen.&nbsp; Für alle zukünftigen Programme die wir schreiben sollten wir uns angewöhnen jedes Programm und jede Methode mit einem kleinen Kommentar zu versehen.&nbsp; Das macht die Programme besser verständlich (für Menschen).</p>
+<p>
+	.</p>
+<h2>
+	SuperKarel</h2>
+<p>
+	Bevor wir uns den Projekten widmen, sollten wir noch erwähnen, dass Karel einen großen Bruder namens <em>SuperKarel</em> hat.&nbsp; SuperKarel kann alles was Karel kann, aber als großer Bruder kann er natürlich auch turnRight() und turnAround().&nbsp; Ansonsten sehen die beiden wie Zwillingsbrüder aus.&nbsp; Wenn wir mit Karel&#39;s Bruder arbeiten wollen, dann sagen wir einfach &#39;extends SuperKarel&#39; anstelle von &#39;extends Karel&#39; am Anfang unserer Programme.</p>
+<p>
+	.</p>
+<hr />
+<h1>
+	Review</h1>
+<p>
+	In diesem Kapitel haben wir unsere ersten Programmierschritte unternommen, indem wir Karel bei der Lösung seiner kleinen Problemchen geholfen haben.&nbsp; Ausserdem haben wir</p>
+<ul>
+	<li>
+		Karel neue Kommandos, auch Methoden genannt, beigebracht, z.B.&nbsp; <span style="font-family:courier new,courier,monospace;">moveToWall()</span></li>
+	<li>
+		Karel mittels der <em>for</em> Schleife Sachen wiederholen lassen, z.B. mache drei Schritte vorwärts</li>
+	<li>
+		gesehen dass Karel Sensoren hat und dabei die <em>if</em> Anweisung kennengelernt, z.B.&nbsp; <span style="font-family:courier new,courier,monospace;">if ( beepersPresent() ) </span></li>
+	<li>
+		die <em>while</em> Schleife ausprobiert, z.B.&nbsp; <span style="font-family:courier new,courier,monospace;">while ( frontIsClear() )</span></li>
+	<li>
+		Bekanntschaft mit unseren ersten Software Engineering Prinzipien gemacht, z.B. Code sollte sich wie normales Englisch lesen lassen</li>
+	<li>
+		unsere ersten Fehler beim Programmieren gemacht, z.B. den OBOB und die Endlosschleife (infinite loop)</li>
+	<li>
+		angefangen unseren Code mit&nbsp; <span style="font-family:courier new,courier,monospace;">/** ... */</span>&nbsp; zu kommentieren</li>
+</ul>
+<p>
+	Das wichtigste aber was wir in diesem Kaptiel gelernt haben war der Top-Down Ansatz.&nbsp; Dabei geht es darum ein großes Problem in kleinere zu zerlegen, und dies unter Umständen so lange zu wiederholen, bis jedes Teilproblem einfach zu lösen ist.&nbsp; Dieser Ansatz läst sich nicht nur bei Programmierproblemen anwenden, sondern auch bei der Lösung von Problemen in allen möglichen anderen Feldern.</p>
+<p>
+	.</p>
+<hr />
+<h1>
+	Projekte</h1>
+<p>
+	Wir wissen jetzt eigentlich genug über Karel um ihm beim Lösen aller möglicher Probleme zu helfen.&nbsp; In dem Buch von Pavel Solin [4] gibt es noch viel mehr Karel Beispiele.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="images/WritingKarel.png" style="height: 166px; width: 200px; float: right;" />WritingKarel</h2>
+<p>
+	Karel hat in der Schule schreiben gelernt.&nbsp; Sein Lieblingbuchstabe ist das &#39;K&#39;.&nbsp; Wir wollen also mit Hilfe des Top-Down Ansatzes Karel helfen seinen Lieblingbuchstaben zu schreiben.</p>
+<p>
+	.</p>
+<p>
+	.</p>
+<p>
+	.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="images/AdventureKarel.png" style="height: 166px; width: 200px; float: right;" />AdventureKarel</h2>
+<p>
+	Karel ist kein Angsthase, ganz im Gegenteil, er liebt Abenteuer.&nbsp; Aber das kann manchmal ganz gefährlich werden.&nbsp; Neulich war er an den Kreidefelsen von Dover (White Cliffs of Dover).&nbsp; Natürlich will er so nah ran wie möglich.&nbsp; Aber runterfallen will er natürlich auch nicht (Karel kann nämlich nicht schwimmen).&nbsp; Was das Problem schwer macht ist, dass wir nicht wissen wie weit die Klippen entfernt sind.</p>
+<p>
+	.</p>
+<p>
+	.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="images/PartyKarel.png" style="height: 166px; width: 200px; float: right;" />PartyKarel</h2>
+<p>
+	Karel lebt in einer WG mit seinem Bruder SuperKarel.&nbsp; Beide lieben Parties und nach der letzten sieht es in ihrer Wohnung aus wie Kraut und Rüben.&nbsp; Heute abend kommen Karel&#39;s Eltern zu Besuch, deswegen muss er aufräumen.&nbsp; Helfen wir Karel dabei seine Wohnung wieder in Ordnung zu bringen indem wir alle herumfliegenden Beepers aufräumen.</p>
+<p>
+	Der Teil der das Programm etwas kompliziert macht ist dafür zu sorgen, dass Karel auch aufhört wenn er fertig ist.</p>
+<p>
+	.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="images/EasterEggKarel.png" style="height: 166px; width: 200px; float: right;" />EasterEggKarel</h2>
+<p>
+	Karel liebt Ostern, da darf er immer Ostereier suchen.&nbsp; Die haben seine Eltern im ganzen Garten versteckt, helfen wir Karel alle Ostereier einzusammeln.&nbsp; Da er später dann auch bei seinen Großeltern vorbeischaut, und deren Garten viel größer ist, muss das Programm auch für Gärten unterschiedlicher Größe funktionieren.</p>
+<p>
+	Der Teil der das Programm etwas kompliziert macht ist dafür zu sorgen, dass Karel auch aufhört wenn er fertig ist.</p>
+<p>
+	.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="images/TulipKarel.png" style="height: 166px; width: 200px; float: right;" />TulipKarel</h2>
+<p>
+	Karel hat holländische Vorfahren, deswegen liebt er Tulpen.&nbsp; Und jeden Winter pflanzt er wieder Tulpenzwiebeln, damit sein Garten im Frühling wieder voller Tulpen ist.&nbsp; Helfen wir Karel beim Tulpenpflanzen, aber mit dem Top-Down Ansatz.&nbsp; Da Karel auch bei seinen Eltern und Großeltern Tulpen pflanzt, muss unser Programm wieder für alle möglichen Gärten funktionieren.</p>
+<p>
+	.</p>
+<p>
+	.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="images/BuilderKarel.png" style="height: 166px; width: 200px; float: right;" />BuilderKarel</h2>
+<p>
+	In Chicago gibt&#39;s ab und zu Tornados.&nbsp; Der letzte hat Karel&#39;s Haus erwischt.&nbsp; Es steht zwar noch aber die Stützpfeiler haben ordentlich was abbekommen und müssen repariert werden.&nbsp; In Karel&#39;s Haus gibt es drei Stützpfeiler, die natürlich aus Beepern gemacht sind.&nbsp; Die drei Stützpfeiler sind drei Schritte auseinander, könnten aber unterschiedlich hoch sein.&nbsp; Helfen wir Karel dabei sein Haus wieder zu reparieren, natürlich mit dem Top-Down Ansatz.</p>
+<p>
+	.</p>
+<p>
+	.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="images/PyramidKarel.png" style="height: 198px; width: 200px; float: right;" />PyramidKarel</h2>
+<p>
+	Wir haben ja schon gehört, dass Karel ein kleiner Abenteurer ist.&nbsp; Neulich hat er im Fernsehen einen Bericht über die Pyramiden gesehen, und da muss er natürlich sofort eine in seinem Garten nachbauen.&nbsp; Da er mehrere bauen will, von unterschiedlicher Größe, sollte unser Programm sollte unser Programm auch in Welten mit anderen Größen funktionieren, deswegen macht es wieder Sinn den Top-Down Ansatz zu verwenden.</p>
+<p>
+	.</p>
+<p>
+	.</p>
+<p>
+	.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="images/YardstickKarel.png" style="height: 166px; width: 200px; float: right;" />YardstickKarel</h2>
+<p>
+	Karel ist nicht ganz so dumm wie er ausschaut.&nbsp; Er kann nämlich zählen, obwohl er keine Finger (und Variablen) hat.&nbsp; Karel zählt mit Beepers.&nbsp; In dem Beispiel soll er messen wie lange die Wegstrecke ist vor der er steht.&nbsp; Er soll je nach Länge der Strecke genausoviele Beepers am Ende hinlegen.&nbsp;</p>
+<p>
+	Wir können davon ausgehen, dass Karel am Anfang genau vor der Wegstrecke steht.</p>
+<p>
+	.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="images/DoubleBeeperKarel.png" style="height: 124px; width: 200px; float: right;" />DoubleBeeperKarel</h2>
+<p>
+	Karel kann auch rechnen.&nbsp; In dem Beispiel DoubleBeeperKarel soll er die Anzahl der Beepers die auf dem Haufen vor ihm liegen verdoppeln.&nbsp; Danach soll Karel wieder vor dem Haufen stehen.&nbsp; Ganz wichtig: Karel kennt keine Variablen, und obwohl er zählen kann (siehe letztes Beispiel) hilft das nicht wirklich.&nbsp; Ausserdem soll das Program für eine beliebige Anzahl von Beepers funktionieren.</p>
+<p>
+	Dieses Problem lässt sich am einfachsten mit dem Top-Down Ansatz lösen.&nbsp; Wie wäre es denn wenn man aus einem Beeper zwei machen könnte?&nbsp; Und das macht man solange bis keine Beepers mehr da sind.&nbsp;</p>
+<p>
+	Frage: Wie müsste der Code aussehen, wenn Karel die Zahl der Beepers verdreifachen oder halbieren soll?</p>
+<p>
+	Karel kann also jede der Grundrechenarten, und damit kann er eigentlich alles ausrechnen was man so ausrechnen kann, man sagt auch Karel ist eine <em>Universal Computing Machine</em>.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="images/DonkeyKongKarel.png" style="height: 166px; width: 200px; float: right;" />DonkeyKongKarel</h2>
+<p>
+	In seiner Freizeit zockt Karel gern.&nbsp; Am liebsten die klassischen Arcadenspiele der 80er.&nbsp; Bei diesen Spielen geht es immer darum soviele Schätze (Beepers) wie möglich einzusammeln und von einem Level zum nächsten zu gelangen.&nbsp; Der Ausgang in diesem Level befindet sich oben rechts und wir dürfen davon ausgehen, dass ein Level aus zehn Stockwerken besteht.&nbsp;</p>
+<p>
+	Natürlich verwenden wir wieder den Top-Down Ansatz.</p>
+<p>
+	.</p>
+<p>
+	.</p>
+<hr />
+<h1>
+	Fragen</h1>
+<ol>
+	<li>
+		Nennen Sie die vier wichtigsten Kommandos von Karel.<br />
+		&nbsp;</li>
+	<li>
+		Geben Sie ein Beispiel für ein Off By One Bug (OBOB).<br />
+		&nbsp;</li>
+	<li>
+		In der Übung &ldquo;PartyKarel&rdquo; haben Sie Karel das Aufräumen beigebracht. Erklären Sie kurz, wie Karel das Beeper-Chaos wieder bereinigt. (Kein Code nötig, skizzieren Sie lediglich in Worten Ihre Vorgehensweise)<br />
+		&nbsp;</li>
+	<li>
+		Wie 3) nur mit PyramidKarel, DoubleBeepersKarel, WindowCleaningKarel,...<br />
+		&nbsp;</li>
+	<li>
+		In der Vorlesung haben wir Empfehlungen für den Top-Down Ansatz kennengelernt. Diese geben Regeln bzgl. der Namen von Methoden, wie viele Zeilen Code eine Methoden haben sollte, etc. Nennen Sie zwei dieser Richtlinien.<br />
+		&nbsp;</li>
+	<li>
+		Wofür sind Kommentare gut?<br />
+		&nbsp;</li>
+	<li>
+		SuperKarel unterscheidet sich von Karel durch zwei zusätzliche Kommandos.&nbsp; Welche sind das?<br />
+		&nbsp;</li>
+	<li>
+		Was ist der Unterschied zwischen Bottom-Up Design und&nbsp; Top-Down Design.&nbsp; Welcher ist zu bevorzugen?<br />
+		&nbsp;</li>
+	<li>
+		Karel hat den Film &#39;Robin Hood&#39; angesehen und war total von dem Helden beeindruckt. Deswegen will er seinem Beispiel &ldquo;nimm von den Reichen und gib es den Armen&rdquo; folgen. Sie sollen also ein Karel Program schreiben in dem Karel einen Beeper aufnimmt, wenn er einen findet, und einen hinlegt, wenn keiner da ist.&nbsp; Um das Problem zu lösen, dürfen Sie folgende Annahmen über die Welt machen:<br />
+		&bull; Die Welt ist mindestens 3x3 groß.<br />
+		&bull; Beim Start, steht Karel an der Ecke 1st Street und 1st Avenue, schaut nach Osten (East) und hat unendlich viele Beeper in seiner Bonbontüte.<br />
+		Achten Sie darauf, dass Sie nur Karel Kommandos verwenden.</li>
+</ol>
+<p>
+	.</p>
+<hr />
+<h1>
+	Referenzen</h1>
+<p>
+	Die Idee hinter Karel stammt von Rich Pattis einem ehemaligen Studenten der Stanford Universität [1].&nbsp; Der Name &#39;Karel&#39; ist inspiriert vom Vornamen des tschechischen Schriftstellers Karel Capek in dessen Schauspiel R.U.R. (Rossums Universal-Robots) erstmals das Wort &#39;Roboter&#39; auftaucht [2].&nbsp; Mehr Details zu Karel mit vielen Beispielen findet man im Karel Reader [3].&nbsp; Viele der Beispiele die hier verwendet wurden, stammen zum einen von Karel Reader [3] und zum anderen der Stanford Vorlesung &#39;Programming Methodologies&#39; [4].&nbsp; Viele weitere schöne Karel Beispiele gibt es in dem Buch von Pavel Solin [5].</p>
+<p>
+	[1] Karel the Robot: A Gentle Introduction to the Art of Programming by R.E. Pattis</p>
+<p>
+	[2] Seite &bdquo;Karel Čapek&ldquo;. In: Wikipedia, Die freie Enzyklopädie. URL: https://de.wikipedia.org/w/index.php?title=Karel_%C4%8Capek&amp;oldid=148374315</p>
+<p>
+	[3] KAREL THE ROBOT LEARNS JAVA, von Eric Roberts</p>
+<p>
+	[4] CS106A - Programming Methodology - Stanford University, https://see.stanford.edu/Course/CS106A</p>
+<p>
+	[5] Learn How to Think with Karel the Robot, von Pavel Solin, http://femhub.com/pavel/work/textbook-1.pdf</p>
+<p>
+	.</p>
+<p class="footer">
+Copyright &copy; 2016-2021 <a href="http://www.lano.de">Ralph P. Lano</a>.  All rights reserved.
+</p>
+</div>
+</center>
+</div>
+</body>
+</html>

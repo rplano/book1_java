@@ -1,0 +1,904 @@
+<!DOCTYPE html><html lang="de"><head>
+  <title>Variationen zum Thema: Java</title>
+  <meta name="title" content="Variationen zum Thema: Java">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta charset="UTF-8">
+  <meta name="description" content="Introduction to Java Programming">
+  <meta name="keywords" content="java,introduction">
+  <meta name="author" content="Ralph P. Lano">
+  <meta name="robots" content="index,follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../book.css">
+</head>
+<body><center>
+<div id="wrap">
+	<ul class="sidenav">
+	  <p><a href="index.html">Variationen zum Thema</a><a href="index.html">Java</a></p>
+	  <li><a href="Karel.html">Karel</a></li>
+	  <li><a href="Graphics.html">Graphics</a></li>
+	  <li><a href="Console.html">Console</a></li>
+	  <li><a href="Agrar.html">Agrar</a></li>
+	  <li><a href="MindReader.html">MindReader</a></li>
+	  <li><a href="Swing.html">Swing</a></li>
+	  <li><a href="Asteroids.html">Asteroids</a></li>
+	  <li><a href="Stocks.html">Stocks</a></li>
+	</ul>
+<div class="content"><p>
+	<img alt="" src="../images/c08baf41-0039-4102-9b2c-ef97f4d8ce6a.png" style="display: block; margin-left: auto;  margin-right: auto; width: 267px; height: 158px;" /></p>
+<h1>
+	Console</h1>
+<p>
+	Konsolenprogramme sind eigentlich noch einfacher zu schreiben als Grafikprogramme.&nbsp; Aber sie sind etwas abstrakter, deswegen beschäftigen wir uns erst jetzt mit ihnen.&nbsp; Es geht häufig darum mit dem Benutzer unseres Programmes zu interagieren.&nbsp; Ausserdem werden viele Konzepte die wir in den letzten beiden Kapiteln kennengelernt und verwendet haben, näher erklärt und vertieft.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/consoleProgram.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />ConsoleProgram</h2>
+<p>
+	Schauen wir uns ein einfaches &#39;HelloWorld&#39; Konsolenprogramm an:</p>
+<pre>
+import acm.program.ConsoleProgram;
+
+public class HelloWorld extends ConsoleProgram {
+
+&nbsp;&nbsp; &nbsp;public void run() {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<span style="color:#0000ff;">println(&quot;Hello World!&quot;);</span>
+&nbsp;&nbsp; &nbsp;}
+}</pre>
+<p>
+	Wie üblich interessieren uns nur die Zeilen in der run() Methode.&nbsp; Die besagen, dass der Computer doch den Text in Anführungszeichen, also &quot;Hello World&quot;, in einem Konsolenfenster ausgeben soll.&nbsp; Dabei ist &#39;println&#39; die Kurzform von &#39;print line&#39; und bedeutet genau das, also schreibe eine Zeile ins Konsolenfenster.</p>
+<p>
+	.</p>
+<h2>
+	readInt()</h2>
+<p>
+	Konsolenprogramme wären recht langweilig wenn es nur &#39;println()&#39; geben würde.&nbsp; Das Gegenstück dazu ist <em>readInt()</em>.&nbsp; Es erlaubt dem Benutzer unseres Programms eine Zahl einzugeben.</p>
+<pre>
+&nbsp;&nbsp;&nbsp; int n1 = readInt(&quot;Enter number one: &quot;);</pre>
+<p>
+	Dabei ist der Text in Anführungszeichen nicht unbedingt notwendig, aber er gibt dem Benutzer einen Hinweis darauf was er denn tun soll.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/addTwoIntegers.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />Übung: AddTwoIntegers</h2>
+<p>
+	Schauen wir uns gleich mal ein Beispiel an.&nbsp; Wir wollen zwei Zahlen addieren und das Resultat auf der Konsole ausgeben.&nbsp;</p>
+<pre>
+&nbsp;&nbsp; &nbsp;println(&quot;This program adds two numbers.&quot;);
+&nbsp;&nbsp; &nbsp;int n1 = readInt(&quot;Enter number one: &quot;);
+&nbsp;&nbsp; &nbsp;int n2 = readInt(&quot;Enter number two: &quot;);
+&nbsp;&nbsp; &nbsp;int sum = n1 + n2;
+&nbsp;&nbsp; &nbsp;println( &quot;The sum is: &quot; + sum );</pre>
+<p>
+	Die erste Zeile teilt dem Benutzer einfach mit was das Programm macht.&nbsp; Dann wird der Benutzer aufgefordert die erste Zahl einzugeben.&nbsp; Das Programm wartet jetzt solange bis der Benutzer eine Zahl eingibt.&nbsp; Danach fordert es den Benutzer auf die zweite Zahl einzugeben.&nbsp; Nachdem der Benutzer dies getan hat, addieren wir die beiden Zahlen <em>n1</em> und <em>n2</em>.&nbsp; Wir speichern das Resultat in der Variablen <em>sum</em>.&nbsp; In der letzten Zeile wird dann die Summe ausgegeben.</p>
+<p>
+	Frage: Wie würde wohl ein Programm aussehen, das zwei Zahlen subtrahiert?</p>
+<p>
+	.</p>
+<h2>
+	Variablen</h2>
+<p>
+	Die Frage die wir uns sofort stellen, was ist eine <em>Variable</em>?&nbsp; Variablen sind ein bischen wie Schachteln in die man Sachen reintun kann.&nbsp; Was für Sachen kann man da reintun? Z.B. Zahlen oder GRects.&nbsp; Das muss man aber immer explizit sagen was in die Schachtel rein kann.&nbsp; Also z.B. in eine Schachtel für Zahlen kann man nur Zahlen rein tun, und in eine Schachtel für GRects kann man nur GRects rein tun.&nbsp; Variablen haben auch immer einen Namen, z.B. &#39;n1&#39; oder &#39;fritz&#39;.</p>
+<p>
+	<img alt="" src="../images/326453ea-b08c-4c56-a18a-d0704d8ff997.png" style="margin-left: 10px; margin-right: 10px; width: 107px; height: 103px; float: right;" />Außen auf der Schachtel steht ein Name, z.B. &#39;n1&#39; oder &#39;fritz&#39;.&nbsp; Wenn wir also z.B. sagen</p>
+<pre>
+&nbsp;&nbsp; &nbsp;int n1;</pre>
+<p>
+	dann heißt das es gibt eine Schachtel die den Namen &#39;n1&#39; hat.&nbsp; Wenn wir dann sagen</p>
+<pre>
+&nbsp;&nbsp; &nbsp;n1 = 6;</pre>
+<p>
+	dann ist das so wie wenn wir die Zahl 6 in die Schachtel hineintun.&nbsp; Man nennt das auch Zuweisung, also der Schachtel &#39;n1&#39; wird die Zahl &#39;6&#39; zugewiesen.&nbsp; Wenn man will kann man die Zahl die in der Schachtel ist auch ändern.&nbsp; Man macht dann einfach eine neue Zuweisung und sagt</p>
+<pre>
+&nbsp;&nbsp; &nbsp;n1 = 5;</pre>
+<p>
+	d.h., wir ersetzen die alte Zahl durch die neue Zahl &#39;5&#39;.&nbsp; Außen auf der Schachtel steht aber nachwievor &#39;n1&#39;.</p>
+<p>
+	<img alt="" src="../images/a41fa673-8c0a-4c37-a383-096c11cb0060.png" style="margin-left: 10px; margin-right: 10px; width: 110px; height: 103px; float: right;" />Wir können aber nicht nur Zahlen in die Schachteln tun, sondern auch andere Sachen.&nbsp; Z.B. mit</p>
+<pre>
+&nbsp;&nbsp; &nbsp;GRect fritz;</pre>
+<p>
+	sagen wir, dass es eine Schachtel gibt, die &#39;fritz&#39; heißt.&nbsp; In diese Schachtel können wir GRects reintun, also mit</p>
+<pre>
+&nbsp;&nbsp; &nbsp;fritz = new GRect(50, 50);</pre>
+<p>
+	legen wir ein neues GRect das 50 Pixel breit und 50 Pixel hoch ist in die Schachtel.&nbsp; Ganz wichtig, in eine Schachtel für GRects können wir keine Zahlen tun, und in eine Schachtel für Zahlen können wir keine GRects tun.</p>
+<p>
+	.</p>
+<h2>
+	Deklaration und Zuweisung</h2>
+<p>
+	Wenn wir sagen</p>
+<pre>
+&nbsp;&nbsp; &nbsp;int n1;</pre>
+<p>
+	dann <em>deklarieren</em> wir eine Variable.&nbsp; Die Variable heißt &#39;n1&#39; und ist vom Typ Zahl (int ist eine Abkürzung für Englisch &#39;integer&#39;, was soviel wie Ganzzahl bedeutet).&nbsp; Wenn wir dann sagen</p>
+<pre>
+&nbsp;&nbsp; &nbsp;n1 <span style="color:#0000ff;">=</span> 6;</pre>
+<p>
+	machen wir eine <em>Zuweisung</em>, wir weisen also der Variablen &#39;n1&#39; den Wert &#39;6&#39; zu.&nbsp; Das &#39;=&#39; bedeutet also nicht Gleichheit, sondern Zuweisung.&nbsp; Das ist ganz wichtig.</p>
+<p>
+	<img alt="" src="../images/9e4eacca-64b8-4b55-8c81-4a58fa273f9d.png" style="margin-left: 10px; margin-right: 10px; width: 306px; height: 115px; float: right;" />Was die Namen von Variablen angeht, so können diese fast beliebig sein, sie dürfen aus Buchstaben, Zahlen und dem Unterstrich bestehen.&nbsp; Einige Wörter sind allerdings nicht erlaubt, wie z.B. &#39;if&#39; und &#39;for&#39;, weil diese bereits von Java verwendet werden.&nbsp; Auch dürfen Namen nicht mit Zahlen beginnen und Umlauten sollte man generell vermeiden.&nbsp; Und man muss immer auf Groß- / Kleinschreibung achten!</p>
+<p>
+	Eine Variable hat also immer einen Namen, einen Typ und einen Wert.&nbsp;</p>
+<p>
+	<b>SEP: Die Namen von Variablen sollten immer beschreibend sein, also z.B. &#39;blueRect&#39;.</b></p>
+<p>
+	.</p>
+<h2>
+	Typen</h2>
+<p>
+	Was für Typen gibt es denn?&nbsp; Im letzten Kapitel haben wir schon einige kennengelernt:&nbsp; GRect, GOval, GLine u.s.w. sind alles Typen, genauer gesagt <em>Datentypen</em>.&nbsp; Es gibt aber auch andere Typen.&nbsp; Die die uns in diesem Kapitel beschäftigen werden sind die sogenannten <em>primitiven</em> Datentypen.&nbsp; Von denen gibt es in Java acht, aber uns interessieren nur die folgenden vier:</p>
+<ul>
+	<li>
+		<strong>int:</strong>&nbsp; Ganzzahlen, also 1,2,3, usw. aber auch die 0 und die -5, also positive und negative ganze Zahlen.</li>
+	<li>
+		<strong>double:</strong>&nbsp; Gleitkommazahlen, also Zahlen wie 3.14 oder 0.333 usw, (Beim Programmieren verwenden wir wie im Englischen den &#39;.&#39; anstelle des &#39;,&#39;).</li>
+	<li>
+		<strong>boolean:</strong>&nbsp; wird für logische Werte verwendet, kann nur die zwei Werte <em>true</em> oder <em>false</em> haben.</li>
+	<li>
+		<strong>char:</strong>&nbsp; Buchstaben, wie z.B. &#39;a&#39;, &#39;b&#39;, aber auch Sonderzeichen wie &#39;.&#39; und &#39;$&#39; usw.</li>
+</ul>
+<p>
+	Manchmal stellt sich die Frage, soll ich jetzt einen &#39;int&#39; oder einen &#39;double&#39; verwenden?&nbsp; Die Antwort ist ganz einfach: kann man etwas zählen, dann verwendet man einen &#39;int&#39;.&nbsp; Für alles was man nicht zählen kann verwendet man den &#39;double&#39; Datentyp.&nbsp; Mit dem <em>boolean</em> Datentyp beschäftigen wir uns weiter unten, der <em>char</em> Datentyp muß noch ein Kapitel warten.</p>
+<p>
+	<b>SEP: Für alles was man zählen kann, verwenden wir den Datentyp <em>int</em>.</b></p>
+<p>
+	.</p>
+<h2>
+	Ausdruck</h2>
+<p>
+	Das Wort <em>Ausdruck</em> wie wir es verwenden, hat nichts mit &#39;ausdrucken&#39; zu tun.&nbsp; Sondern wird eher im Sinne von &#39;mathematischer Ausdruck&#39; verwendet.&nbsp; Wir haben schon ein Beispiel gesehen, nämlich</p>
+<pre>
+&nbsp;&nbsp; &nbsp;int sum = <span style="color:#0000ff;">n1 + n2</span>;</pre>
+<p>
+	Hier steht auf der linken Seite der Zuweisung eine Variable, &#39;sum&#39;, und auf der rechten Seite steht ein mathematischer Ausdruck, und zwar die Summe der Zahlen &#39;n1&#39; und &#39;n2&#39;.&nbsp; Genauer, die Summe der Zahlen die in den Schachteln &#39;n1&#39; und &#39;n2&#39; drinnen sind.&nbsp;</p>
+<p>
+	Was dies Zeile also bedeutet ist folgendes: Hole die Zahlen die in der Schachtel &#39;n1&#39; und in der Schachtel &#39;n2&#39; stehen, addiere diese und speichere das Resultat in die Schachtel &#39;sum&#39;.&nbsp; Man kann das sehr schön mit dem Program &#39;Jeliot&#39; veranschaulichen [1].</p>
+<p>
+	.</p>
+<h2>
+	Übung: Jeliot</h2>
+<p>
+	Jeliot ist ein sehr schönes Programm, dass uns hilft zu visualisieren was passiert, wenn wir die drei Zeilen</p>
+<pre>
+&nbsp;&nbsp; &nbsp;int n1 = 6;
+    int n2 = 4;
+    int sum = n1 + n2;</pre>
+<p>
+	ausführen.&nbsp; Wir sehen links im Codefenster unsern Code.&nbsp; Wir können diesen Code Schritt für Schritt durchlaufen.&nbsp; Und auf der rechten Seite sehen wir einmal den Bereich für die Methoden (Method Area) in dem wir auch unsere Schachteln &#39;n1&#39;, &#39;n2&#39; und &#39;sum&#39; sehen.&nbsp; Sowie den Bereich für die Auswertung von Ausdrücken (Expression Evaluation Area).&nbsp; Wir sehen, wie gerade der Ausdruck &#39;6+4=&#39; ausgewertet wird.&nbsp; Im nächsten Schritt wird dann das Resultat (&#39;10&#39;) in die Schachtel &#39;sum&#39; gesteckt.</p>
+<p>
+	<img alt="" src="../images/jeliot.png" style="margin-left: 10px; margin-right: 10px; width: 586px; height: 255px;" /></p>
+<p>
+	.</p>
+<h2>
+	Operatoren</h2>
+<p>
+	Karel hat Angst vor Operatoren.&nbsp; Er denkt dann immer an Krankenhaus.&nbsp; Wir verwenden das Wort <em>Operator</em> wieder eher im mathematischen Sinne, also &#39;plus&#39;, &#39;minus&#39;, &#39;mal&#39; und &#39;geteilt durch&#39;.&nbsp; In Java verwenden wir dafür die Zeichen &#39;+&#39;, &#39;-&#39;, &#39;*&#39; und &#39;/&#39;.&nbsp;</p>
+<p>
+	.</p>
+<h2>
+	Division</h2>
+<p>
+	Bei &#39;plus&#39;, &#39;minus&#39; und &#39;mal&#39; kann nicht viel schief gehen, die funktionieren immer.&nbsp; Aber bei der Division kann einiges schief gehen.&nbsp; Das erste an das wir uns vielleicht noch erinnern ist Division durch Null: das gibt immer Ärger.&nbsp; Das zweite was Ärger macht ist Ganzzahldivision, also was ist 5 / 2?&nbsp; Damals in der zweiten Klasse war das einfach 2.&nbsp; Aber dann später hat irgendjemand gesagt es ist 2.5.&nbsp; Also was nun?</p>
+<p>
+	Das kommt drauf an.&nbsp; Wenn wir mit Ganzzahlen arbeiten, also mit <em>int</em>, dann ist es 2.&nbsp; Wenn wir mit Gleitkommazahlen arbeiten, also mit <em>double</em>, dann ist es 2.5.&nbsp; Das kann zu interessanten Problemen führen.&nbsp; Nehmen wir das folgende Beispiel:</p>
+<pre>
+&nbsp;&nbsp; &nbsp;int x = 1 + 3 * 5 / 2;</pre>
+<p>
+	<img alt="" src="../images/math1352.png" style="margin-left: 10px; margin-right: 10px; width: 140px; float: right; height: 56px;" />Was ist der Wert von &#39;x&#39;?&nbsp; Sieben oder acht?&nbsp; Mit Jeliot kann man Schritt für Schritt nachvollziehen, wie der Computer das ausrechnet.&nbsp; Zunächst einmal gilt &#39;Punkt vor Strich&#39;, d.h. die Addition wird als letztes ausgeführt.&nbsp; Dann stellt sich aber die Frage wird zu erst &#39;3*5&#39; oder &#39;5/2&#39; ausgerechnet?&nbsp; Hier gilt die Regel von links nach rechts, also wie beim Lesen, man liest (bei uns wenigstens) von links nach rechts.&nbsp; Also wird zuerst &#39;3*5&#39; berechnet, das Ergebnis durch 2 geteilt.&nbsp; Weil es sich um Ganzzahldivision handelt kommt dabei 7 und nicht 7.2 heraus.&nbsp; Wenn wir dann die 7 zu 1 addieren, erhalten wir 8 als Ergebnis.</p>
+<p>
+	Was passiert nun wenn wir anfangen Ganzzahlen (int) und Gleitkommazahlen (double) zu mischen?&nbsp; Also, so was wie 5 / 2.0?&nbsp; Dann tut der Computer so wie wenn alle Zahlen Gleitkommazahlen wären.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/average.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />Übung: AverageTwoIntegers</h2>
+<p>
+	Man könnte denken, dass Probleme mit der Ganzzahldivision eher selten vorkommen, dem ist aber überhaupt nicht so, und das Beispiel <em>AverageTwoIntegers</em> soll das verdeutlichen.</p>
+<p>
+	Ähnlich wie bei AddTwoIntegers lesen wir zunächst zwei Ganzzahlen ein.&nbsp; Und wenn jemand etwas nachlässig ist, schreibt er evtl folgende Anweisung um den Durchschnitt zweier Zahlen zu berechnen:</p>
+<pre>
+&nbsp;&nbsp; &nbsp;int average = n1 + n2 / 2;</pre>
+<p>
+	Interessanterweise funktioniert das sogar, z.B. wenn n1=1 und n2=3 ist.&nbsp; Allerdings für andere Zahlenwerte merkt man sehr schnell, dass da etwas nicht stimmt.</p>
+<p>
+	Natürlich war der Fehler die fehlenden Klammern!&nbsp; Also, versuchen wir es doch mit folgendem Ausdruck:</p>
+<pre>
+&nbsp;&nbsp; &nbsp;int average = ( n1 + n2 ) / 2;</pre>
+<p>
+	Der funktioniert schon viel besser, aber immer nur wenn n1+n2 eine gerade Zahl ist.&nbsp; Naja klar, der Fehler liegt im Datentyp: &quot;average&quot; muss ein <em>double</em> sein:</p>
+<pre>
+&nbsp;&nbsp; &nbsp;double average = ( n1 + n2 ) / 2;</pre>
+<p>
+	&nbsp;</p>
+<p>
+	Aber auch das hilft nicht wirklich.&nbsp; Der Teufel liegt im Detail: da n1 und n2 vom Datentyp <em>int</em> sind UND auch 2 vom Datentyp <em>int</em> ist, führt der Computer Ganzzahldivision aus.&nbsp; Die Lösung für das Problem lautet:</p>
+<pre>
+&nbsp;&nbsp; &nbsp;double average = ( n1 + n2 ) / <span style="color:#0000ff;">2.0</span>;</pre>
+<p>
+	Obwohl dieser Fehler im nachhinein offensichtlich ist und die Lösung trivial, tritt er überraschenderweise sehr, sehr häufig auf.</p>
+<p>
+	<b>SEP: Man sollte seinen Code immer ausführlich testen.</b></p>
+<p>
+	.</p>
+<h2>
+	Punkt vor Strich</h2>
+<p>
+	Vorrangsregeln wie &#39;Punkt vor Strich&#39; gibt es ganz viele in Java.&nbsp; Grob gilt folgende Hierarchie:</p>
+<ol>
+	<li>
+		Klammern: ()</li>
+	<li>
+		*, /, %</li>
+	<li>
+		+, -</li>
+</ol>
+<p>
+	also zuerst Klammern, dann Multiplikation, Division und Restwert, und schließlich Addition und Subtraktion.&nbsp; Aber es kann noch viel komplizierter werden mit so Operatoren wie &#39;^&#39;, &#39;&amp;&#39;, &#39;|&#39;, usw.&nbsp; Deswegen empfiehlt es sich immer soviele Klammern wie möglich zu setzen.</p>
+<p>
+	<strong>SEP: Um Ärger zu vermeiden, verwende viele Klammern!</strong></p>
+<p>
+	.</p>
+<h2>
+	Restwert</h2>
+<p>
+	Allerdings gibt es in Java noch einen weiteren Operator, den <em>Restwert</em> (English: modulo oder genauer remainder).&nbsp; Das letzte mal haben wir wahrscheinlich in der zweiten Klasse davon gehört, und zwar als wir noch nicht richtig dividieren konnten.&nbsp; Wenn wir damals 5 / 2 ausgerechnet haben, dann hieß das Ergebnis: zwei Restwert eins.&nbsp; Oder bei 4 / 2 hieß das Ergebnis zwei Restwert null.&nbsp; Können wir uns noch dunkel erninnern?&nbsp;</p>
+<p>
+	Es stellt sich heraus, dass der Restwert Operator äussert nützlich ist, deswegen gibt es in Java dafür ein extra Zeichen, das Prozentzeichen: &#39;%&#39;.&nbsp; Eigentlich verwenden wir den Restwert Operator jeden Tag: wenn wir sagen es ist 2 Uhr nachmittags, dann haben wir implizit 14 % 12 im Kopf ausgerechnet.</p>
+<p>
+	.</p>
+<h2>
+	Übung: Gerade Zahlen, ungerade Zahlen</h2>
+<p>
+	<img alt="" src="../images/95e52edc-59c9-477a-a561-ddc5df1d9cb5.png" style="margin-left: 10px; margin-right: 10px; width: 96px; height: 236px; float: right;" />Eine sinnvolle Übung ist es die Zahlen von 0 bis 6 aufzulisten und für jede dieser Zahlen den Restwert auszurechnen, also %2.&nbsp; Wir sehen, dass für gerade Zahlen der Restwert immer null ist und für ungerade Zahlen der Restwert immer eins.&nbsp; Das ist sehr nützlich, denn manchmal wollen wir wissen ob eine Zahl gerade oder ungerade ist.</p>
+<p>
+	.</p>
+<h2>
+	Konstanten</h2>
+<p>
+	Manche Variablen ändern sich nicht, sind also eigentlich Konstanten.&nbsp; Z.B die Kreiszahl &#39;Pi&#39; hat immer den Wert &#39;3.1415...&#39;.&nbsp; Wir können das markieren mit dem Schlüsselwort <em>final</em>:</p>
+<pre>
+<span style="color:#0000ff;">    final</span> double PI = 3.1415;</pre>
+<p>
+	Konstanten können nachdem sie einmal initialisiert wurden nicht mehr verändert werden.&nbsp; Das mag am anfang etwas umständlich erscheinen, später werden wir aber sehen, dass die Verwendung von Konstanten zu viel besserem Code führt.</p>
+<p>
+	<strong>SEP: Konstanten sollten immer ganz in Großbuchstaben geschrieben werden, also z.B. &#39;MAX_NUM&#39;, damit man sie sofort von normalen Variablen unterscheiden kann.</strong></p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/area.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />Übung: Area</h2>
+<p>
+	Schreiben Sie ein ConsoleProgram, das den Benutzer nach der Radius eines Kreises fragt, und dann dessen Fläche berechnet (Fläche = PI * Radius * Radius) und diese im Konsolenfenster ausgibt (println()).&nbsp; Dabei sollte PI als Konstante im Programm verwendet werden.</p>
+<p>
+	.</p>
+<h2>
+	Boolesche Werte</h2>
+<p>
+	Bisher haben wir uns mit den Zahlen, <em>int</em> und <em>double</em>, auseinandergesetzt.&nbsp; Jetzt wollen wir uns kurz den logischen Werten, auch <em>boolean</em> genannt, widmen.&nbsp; Um zu verstehen worum es geht betrachten wir die Ungleichung</p>
+<pre>
+&nbsp;   3 &gt; 5</pre>
+<p>
+	also die Frage, ist drei größer als fünf.&nbsp; Die Antwort ist Nein.&nbsp; Man sagt auch die Aussage &#39;3 &gt; 5&#39; ist falsch, <em>false</em> auf Englisch.&nbsp; Um damit umgehen zu können hat man den Datentyp <em>boolean</em> erfunden:</p>
+<pre>
+&nbsp;   boolean b = 3 &gt; 5;</pre>
+<p>
+	d.h., also die Variable <em>b</em> ist vom Datentyp <em>boolean</em> und kann die Werte <em>true</em> oder <em>false</em> einnehmen.&nbsp; Das Ganze sollte uns etwas an Karel&#39;s Sensoren erinnern: z.B. der <em>beepersPresent()</em> Sensor hat immer <em>true</em> zurückgegeben, wenn ein Beeper da war und <em>false</em>, wenn keiner da war.</p>
+<p>
+	.</p>
+<h2>
+	Bedingungen</h2>
+<p>
+	Richtig Sinn machen boolesche Ausdrücke nur wenn sie in einer Bedingung verwendet werden.&nbsp; Bei Karel haben wir ja schon die <em>if</em> Anweisung kennen gelernt:</p>
+<pre>
+    if ( beepersPresent() ) {
+&nbsp;&nbsp;&nbsp;     pickBeeper();
+&nbsp;   } else {
+&nbsp;&nbsp;&nbsp;     putBeeper();
+  &nbsp; }</pre>
+<p>
+	<img alt="" src="../images/condition.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />Das Gleiche können wir jetzt auch mit einem Konsolenprogramm machen:</p>
+<pre>
+    int x = readInt(&quot;Enter a number: &quot;);
+    if ( <span style="color:#0000ff;">x &gt; 5</span> ) {
+&nbsp;&nbsp;&nbsp;     println(&quot;Number is larger than 5.&quot;);
+&nbsp;   } else {
+&nbsp;&nbsp;&nbsp;     println(&quot;Number is less than or equal to 5.&quot;);
+  &nbsp; }</pre>
+<p>
+	Dass es sich bei &#39;x &gt; 5&#39; eigentlich um einen booleschen Ausdruck handelt, ist eigentlich eher nebensächlich.</p>
+<p>
+	<strong>SEP:&nbsp; Wir sollten bei einer if Anweisung immer die geschweiften Klammern benutzen!</strong></p>
+<p>
+	.</p>
+<h2>
+	Vergleiche</h2>
+<p>
+	Welche anderen Vergleiche außer &#39;&gt;&#39; gibt es noch?&nbsp; Insgesamt sechs:</p>
+<pre>
+  &nbsp; ==&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; gleich
+&nbsp;   !=&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nicht gleich
+  &nbsp; &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; größer
+&nbsp;   &lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; kleiner
+&nbsp;   &gt;=&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; größer oder gleich
+&nbsp;   &lt;=&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; kleiner oder gleich
+</pre>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/dayOfWeek.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />Übung: DayOfTheWeek</h2>
+<p>
+	Schreiben wir ein Programm, das ausgibt, ob ein Tag ein Werktag, ein Samstag oder ein Sonntag ist:</p>
+<pre>
+&nbsp;&nbsp;&nbsp; int day = readInt(&quot;Enter day of week as int (0-6): &quot;);
+&nbsp;&nbsp; &nbsp;if (day == 0) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;println(&quot;Sunday&quot;);
+&nbsp;&nbsp; &nbsp;} else if (day &lt;= 5) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;println(&quot;Weekday&quot;);
+&nbsp;&nbsp; &nbsp;} else {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;println(&quot;Saturday&quot;);
+&nbsp;&nbsp; &nbsp;}</pre>
+<p>
+	Falls also der Tag gleich null ist, dann ist es Sonntag; andernfalls, falls der Tag kleiner oder gleich 5 ist, dann ist es ein Werktag; andernfalls muss es der Samstag sein.&nbsp; Man bezeichnet diese Form der verketteten if Anweisung auch als &#39;cascading if&#39;.</p>
+<p>
+	.</p>
+<h2>
+	switch Anweisung</h2>
+<p>
+	Die <em>switch</em> Anweisung gab es bei Karel noch nicht, aber sie stellt sich als sehr praktisch heraus.&nbsp; Im Prinzip macht sie das gleiche wie das &#39;cascading if&#39;, nur etwas eleganter:</p>
+<pre>
+&nbsp;   int day = readInt(&quot;Enter day of week as int (0-6): &quot;);
+&nbsp;   switch (day) {
+&nbsp;&nbsp;&nbsp; case 0:
+&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp; println(&quot;Sunday&quot;);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   break;
+&nbsp;&nbsp;&nbsp; case 6:
+&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp; println(&quot;Saturday&quot;);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   break;
+&nbsp;&nbsp;&nbsp; default:
+&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp; println(&quot;Weekday&quot;);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   break;
+&nbsp;   }</pre>
+<p>
+	Warum das eleganter sein soll wird sich etwas später zeigen.</p>
+<p>
+	<strong>SEP: Man sollte immer ein <em>default</em> bei der switch Anweisung haben, bzw. den letzten <em>else</em> Zweig beim cascading if.</strong></p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/dayOfWeek2.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />Übung: DayOfTheWeek</h2>
+<p>
+	Wir wollen unser DayOfTheWeek Problem jetzt mit der <em>switch</em> Anweisung lösen.&nbsp; Zunächst verwenden wir den Code wie oben, uns testen ob er auch funktioniert.&nbsp; Testen heißt, dass wir jede möglich Eingabe testen.&nbsp; (Was passiert wenn wir -1 oder 42 eingeben?)</p>
+<p>
+	Frage: Was passiert wenn wir eine der <em>break</em> Anweisungen weglassen?</p>
+<p>
+	.</p>
+<h2>
+	Boolesche Operatoren</h2>
+<p>
+	Erinnern wir uns an LumberjackKarel: im letzten Schritt, wenn Karel alle Bonbons einsammeln soll um sie auf einen großen Haufen zu legen, wäre es toll gewesen wenn wir zwei Bedingungen gleichzeitig hätten testen können, also ist links frei <em>und</em> ist ein Bonbon da:</p>
+<pre>
+&nbsp;   while ( leftIsBlocked() <strong><span style="color:#0000ff;">&amp;&amp;</span></strong> beepersPresent() ) {...}
+</pre>
+<p>
+	Hier bedeutet das &#39;&amp;&amp;&#39; soviel wie &#39;und&#39;, also nur wenn beide Bedingungen erfüllt sind, soll Karel etwas machen. Ähnlich praktisch wäre es gewesen wenn wir Karel nur dann etwas hätten machen lassen wenn etwas <em>nicht</em> erfüllt ist,</p>
+<pre>
+&nbsp;   if ( <strong><span style="color:#0000ff;">!</span></strong>beepersPresent() ) {...}
+</pre>
+<p>
+	Hier bedeutet das &#39;!&#39; soviel wie &#39;nicht&#39;.&nbsp; Schließlich, hatten wir das Beispiel von AriadneKarel wo Karel etwas tun sollte, wenn entweder vor ihm eine Wand war <em>oder</em> keine Bonbons da war:</p>
+<pre>
+&nbsp;   if ( frontIsBlocked() <span style="color:#0000ff;"><strong>||</strong></span> noBeepersPresent() ) {...}
+</pre>
+<p>
+	Das &#39;||&#39; bedeutet &#39;oder&#39; im Sinne von entweder-oder.</p>
+<p>
+	Diese drei Operatoren sind die sogenannten booleschen Operatoren:</p>
+<pre>
+&nbsp;   !&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; not
+&nbsp;   &amp;&amp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; and
+&nbsp;   ||&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; or
+</pre>
+<p>
+	Die Reihenfolge spiegelt auch die Vorrangsregeln wider, also &#39;!&#39; hat eine höhere Priorität als &#39;and&#39;.</p>
+<p>
+	.</p>
+<h2>
+	Wahrheitstabellen</h2>
+<p>
+	Es ist üblich die booleschen Operationen in sogenannten Wahrheitstabellen (truth tables) darzustellen.&nbsp; Dabei sind <em>in1</em> und <em>in2</em> die zwei Operanden, und <em>out</em> ist das Resultat, z.B.</p>
+<pre>
+    boolean out = in1 &amp;&amp; in2;</pre>
+<p>
+	für die &#39;<em>and</em>&#39; Operation.&nbsp; Die Wahrheitstabellen für die drei logischen Operationen sehen wie folgt aus:</p>
+<p>
+	<img alt="" src="../images/98bce237-bbb2-4d00-adad-cfeb82d7d284.png" style="margin-left: 10px; margin-right: 10px; width: 464px; height: 167px;" /></p>
+<p>
+	.</p>
+<h2>
+	Übung: LeapYear</h2>
+<p>
+	Es gibt einen coolen booleschen Ausdruck der uns angibt, ob ein Jahr ein Schaltjahr ist oder nicht:</p>
+<pre>
+    boolean p = ((y % 4 == 0) &amp;&amp; (y % 100 != 0)) || (y % 400 == 0);</pre>
+<p>
+	Um den Ausdruck zu verstehen, schreibt man sich am besten die Wahrheitstabellen (truth table) dafür auf.</p>
+<p>
+	<img alt="" src="../images/29d01bac-4234-46ed-9a3f-4c12bcf33588.png" style="margin-left: 10px; margin-right: 10px; width: 405px; height: 319px;" /></p>
+<p>
+	.</p>
+<h2>
+	while Schleife</h2>
+<p>
+	Wir haben die <em>while</em> Schleife schon bei Karel kennengelernt:</p>
+<pre>
+&nbsp;&nbsp;&nbsp; while ( frontIsClear() ) {
+        move();
+    }
+</pre>
+<p>
+	<img alt="" src="../images/CounterWithWhile.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />Die <em>while</em> Schleife wird solange ausgeführt, solange eine bestimmte Bedingung erfüllt ist.&nbsp; Als einfach Beispiel wollen wir die Zahlen von 0 bis 9 ausgeben.</p>
+<pre>
+&nbsp;&nbsp;&nbsp; int i = 0;
+    while ( <span style="color:#0000ff;">i &lt; 10</span> ) {
+        println( i );
+        i = i + 1;
+    }
+</pre>
+<p>
+	In der ersten Zeile deklarieren wir eine Variable namens <em>i</em> von Datentyp <em>int</em> auf den Wert 0.&nbsp; Dann testen wir ob <em>i</em> kleiner als 10 ist.&nbsp; Solange dies der Fall ist, drucken wir den momentanen Wert von <em>i</em> im Konsolenfenster, und dann erhöhen wir den Wert von <em>i</em> um eins.&nbsp;</p>
+<p>
+	Diese letzte Zeile mag etwas ungewöhnlich sein (speziell Mathematiker haben ein Problem damit).&nbsp; Aber es ist wichtig sich daran zu erinnern, dass &#39;=&#39; nicht für Gleichheit steht, sondern für <em>Zuweisung</em>.&nbsp; Also</p>
+<pre>
+    i = i + 1;</pre>
+<p>
+	bedeutet soviel wie: nimm den momentanen Wert von <em>i</em>, addiere dazu eins, und weise das Resultat dann der Variablen <em>i</em> zu.</p>
+<p>
+	.</p>
+<h2>
+	Übung: CounterWithWhile</h2>
+<p>
+	Als kleine Übung probieren wir den Zählercode aus: einfach die Zeilen oben in die run() Methode eines ConsolePrograms einfügen.&nbsp; Was passiert, wenn wir anstelle von <em>println()</em> nur <em>print()</em> verwenden?</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/CounterWithWhile.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />for Schleife</h2>
+<p>
+	Wir haben die <em>for</em> Schleife ja schon ganz am Anfang bei Karel kennengelernt.&nbsp; Damals hat uns nur die Zahl, wie oft die Schleife durchlaufen wird, interessiert.&nbsp; Jetzt sind wir aber soweit den Rest auch zu verstehen.&nbsp; Die folgende <em>for</em> Schleife gibt auch die Zahlen von 0 bis 9 aus:</p>
+<pre>
+  &nbsp; for ( int i = 0; i &lt; 10; i++ ) {
+&nbsp;&nbsp;&nbsp;     println(i);
+&nbsp;   }</pre>
+<p>
+	Im Allgemeinen sieht eine <em>for</em> Schleife immer wie folgt aus:</p>
+<pre>
+  &nbsp; for ( init; condition; step ) {
+&nbsp;&nbsp;   &nbsp;  statements;
+&nbsp;   }</pre>
+<p>
+	Als erstes wird der <em>init</em> Schritt ausgeführt, meist so etwas wie &#39;int i = 0&#39;.&nbsp; Dann wird die <em>condition</em> gecheckt, also ist &#39;i &lt; 10&#39;?&nbsp; Falls ja werden die <em>statements</em> innerhalb der Schleife ausgeführt.&nbsp; Zum Schluß wird dann <em>step</em> ausgeführrt, also &#39;i++&#39;.&nbsp; Das wird solange getan bis die <em>condition</em> nicht mehr erfüllt ist.</p>
+<p>
+	Was bedeutet dieses &#39;i++&#39;?&nbsp; Man nennt es den Inkrement Operator, und er bedeutet soviel wie die Zeile</p>
+<pre>
+  &nbsp; i = i + 1;</pre>
+<p>
+	also der Wert der Variablen <em>i</em> wird um eins erhöht.&nbsp; Es gibt auch einen Dekrement Operator der genau das Gegenteil macht: &#39;i--&#39;.</p>
+<p>
+	.</p>
+<h2>
+	Übung: for Schleife in Jeliot</h2>
+<p>
+	Um die <em>for</em> Schleife noch besser zu verstehen, sehen wir uns die Schleife mal in Jeliot an, und beobachten Schritt für Schritt was passiert.</p>
+<p>
+	<img alt="" src="../images/JeliotForLoop.png" style="margin-left: 10px; margin-right: 10px; width: 586px; height: 255px;" />.</p>
+<p>
+	.</p>
+<h2>
+	for versus while</h2>
+<p>
+	Wie wir gesehen haben, machen <em>while</em> Schleife und <em>for</em> Schleife eigentlich das Gleiche.&nbsp; Daher stellt sich die Frage wann verwendet man welche? &nbsp;</p>
+<ul>
+	<li>
+		<strong>for:</strong>&nbsp; verwenden wir, wenn wir von vornherein wissen wie oft etwas ausgeführt wird, z.B.,<br />
+		<span style="font-family:courier new,courier,monospace;">for ( int i=0; i&lt;10; i++ ) {...} </span></li>
+	<li>
+		<strong>while:</strong>&nbsp; verwenden wir wenn wir noch nicht genau wissen wie oft eine Schleife ausgeführt wird, z.B.,<br />
+		<span style="font-family:courier new,courier,monospace;">while ( frontIsClear() ) {...}&nbsp; </span></li>
+</ul>
+<p>
+	.</p>
+<h2>
+	OBOB: FillRowKarel</h2>
+<p>
+	Es gibt noch eine Schleife über die wir noch nicht gesprochen haben, den &#39;Loop and a Half&#39;:&nbsp; Er ist die Lösung unseres OBOB Problems.&nbsp; Erinnern wir uns an FillRowKarel:</p>
+<pre>
+&nbsp;   while ( frontIsClear() ) {
+        putBeeper();
+        move();
+    }
+    putBeeper();
+</pre>
+<p>
+	Das Problem liegt darin, dass wir das &#39;putBeeper()&#39; Kommando zweimal benötigen.&nbsp; Diese Duplizierung von Code tritt bei jedem OBOB auf und doppelter Code ist immer etwas Schlechtes.</p>
+<p>
+	<strong>SEP:&nbsp; Vermeide doppelten Code.</strong></p>
+<p>
+	.</p>
+<h2>
+	Loop and a Half</h2>
+<p>
+	Die Lösung ist eigentlich ganz einfach und heißt &#39;Loop and a Half&#39;:</p>
+<pre>
+&nbsp;   while ( true ) {
+        putBeeper();
+        if ( frontIsBlocked() ) <span style="color:#0000ff;">break</span>;
+        move();
+    }
+</pre>
+<p>
+	Analysieren wir den Code:&nbsp; Zunächst einmal haben wir eine Endlosschleife, &#39;while (true)&#39;.&nbsp; Allerdings können wir mit der Anweisung <em>break</em> diese Endlosschleife beenden, also aus ihr herausspringen.&nbsp; Das machen wir dann wenn vor Karel eine Wand ist, &#39;if ( frontIsBlocked() )&#39;.&nbsp; Jetzt sehen wir auch warum es &#39;Loop and a Half&#39; heißt: die Schleife wird im letzten Schritt nur zur Hälte ausgeführt.&nbsp; Um den Code zu verstehen, sollten wir ihn Schritt für Schritt auf einem Stück Papier durchgehen.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/cashRegister.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />Übung: CashRegister</h2>
+<p>
+	Eine schöne und typische Anwendung für den &#39;Loop and a Half&#39; ist die Kasse in einem Laden: wir haben z.B. fünf Sachen in unserem Einkaufswagen und wollen jetzt bezahlen.&nbsp; Der Kassierer tippt also die Preise der einzelnen Waren, eine nach der anderen in die Kasse, die diese addiert und am Ende gibt sie aus wieviel wir bezahlen sollen:</p>
+<pre>
+&nbsp;&nbsp;&nbsp; int total = 0;
+
+&nbsp;&nbsp;&nbsp; while (true) {
+&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp; int price = readInt(&quot;Enter price: &quot;);
+&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp; if ( price == 0 ) <span style="color:#0000ff;">break</span>;
+&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp; total += price;
+&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp; println(&quot;Your total is: &quot; + total);
+</pre>
+<p>
+	Da aber nicht alle Leute immer genau fünf Sachen kaufen, brauchen wir irgendein Abbruchkriterium: in unserem Fall ist es wenn der Kassierer die 0 für den Preis eingibt.&nbsp; Man nennt dieses Abbruchkriterium im Englischen manchmal auch den Sentinel.</p>
+<p>
+	Frage: Könnten wir auch eine negative Zahl als Abbruchkriterium verwenden?</p>
+<p>
+	<strong>SEP:&nbsp; Man sollte möglichst nicht mehrere &#39;breaks&#39; verwenden.</strong></p>
+<p>
+	.</p>
+<h2>
+	Post-Increment vs Pre-Increment</h2>
+<p>
+	Wir haben bisher nur den Inkrement Operator als Post-Inkement Operator gesehen, es gibt ihn aber auch als Pre-Inkement.&nbsp; Der Unterschied ist, dass einmal das &rsquo;++&rsquo; vor der Variablen steht (pre) oder danach (post).&nbsp; Also:</p>
+<pre>
+&nbsp;   int x = 5;
+&nbsp;   int y = x++;&nbsp;&nbsp;&nbsp; // Post: y=5
+</pre>
+<p>
+	oder</p>
+<pre>
+&nbsp;   int x = 5;
+&nbsp;   int y = ++x;&nbsp;&nbsp;&nbsp; // Pre: y=6
+</pre>
+<p>
+	Der Unterschied ist subtil, und man bemerkt ihn nur wenn dieser Operator in Zusammenhang mit Assignments oder anderen Operationen steht:</p>
+<pre>
+    int a = 6;
+    <span style="color:#0000ff;">int x = ++&shy;&shy;a;</span>
+    int y = x++;
+</pre>
+<p>
+	In der zweiten Zeile wird zuerst (pre) die Variable <em>a</em> um eins erhöht, und danach die Zuweisung gemacht.&nbsp; In der letzten Zeile, wird zuerst die Zuweisung gemacht, und danach (post) die Variable <em>x</em> um eins erhöht.</p>
+<p>
+	.</p>
+<hr />
+<h1>
+	Review</h1>
+<p>
+	Was haben es geschafft!&nbsp; Dieses Kapitel war etwas schwieriger als die beiden vorhergehenden.&nbsp; Dafür geht es von nun an aber bergab.&nbsp; Was haben wir in diesem Kapitel gelernt?&nbsp; Wir haben</p>
+<ul>
+	<li>
+		Variablen kennengelernt,</li>
+	<li>
+		uns an den Restwert Operator erinnert,</li>
+	<li>
+		unseren ersten Kontakt mit Konstanten gehabt,</li>
+	<li>
+		Boolesche Operatoren und Wahrheitstabellen zum ersten Mal gesehen,</li>
+	<li>
+		festgestellt, dass die <em>if</em> und die <em>switch</em> Anweisung sehr ähnlich sind,</li>
+	<li>
+		gelernt wann wir eine <em>for</em> und wann eine <em>while</em> Schleife verwenden sollen und</li>
+	<li>
+		im &#39;Loop and a Half&#39; die Lösung für unser OBOB Problem gefunden.</li>
+</ul>
+<p>
+	Das wichtigste in diesem Kapitel war, dass wir unsere ersten Schritte auf eine solide Basis gestellt haben.</p>
+<p>
+	.</p>
+<hr />
+<h1>
+	Projekte</h1>
+<p>
+	Die folgenden Projekte sind vielleicht nicht ganz so interessant wie die des letzten Kapitels.&nbsp; Aber sie stellen die Grundlage für die folgenden Kapitel dar.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/countdown.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />Countdown</h2>
+<p>
+	Karel liebt Raketen und besonders den Countdown kurz vorher.&nbsp; Deswegen wollen wir ein Programm schreiben, dass auf der Konsole die Zahlen von 10 bis 0 ausgibt.</p>
+<p>
+	.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/calculator.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />Calculator</h2>
+<p>
+	Das mit dem DoubleBeeper war für Karel ziemlich viel Arbeit.&nbsp; Mit Konsolenprogrammen und Variablen geht das viel einfacher.&nbsp; Deswegen wollen wir ein Konsolenprogrammen schreiben, das zwei Zahlen addiert.&nbsp;</p>
+<p>
+	Was etwas störend an dem Programm ist, das man es jedes mal neu starten muss, wenn man eine neue Addition machen will.&nbsp; Was könnte man tun, damit das Programm mehrere Additionen (immer von zwei Zahlen) erlaubt?</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/temperature.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />Temperature</h2>
+<p>
+	Karel liebt Amerika, aber er kann nichts mit diesen Fahrenheit anfangen.&nbsp; Deswegen schreiben wir ihm ein Programm, das Fahrenheit in Celsius umrechnet.&nbsp; Wir bitten den Benutzer uns eine Temperatur in Fahrenheit zu geben.&nbsp; Mittels readInt() speichern wir diese in der Variablen <em>f</em>.&nbsp; Und mit der Formel</p>
+<pre>
+    int c = (int) ( (5.0 / 9.0) * (<span style="color:#0000ff;">f</span> - 32) );</pre>
+<p>
+	können wir das in Celsius umrechnen.&nbsp;</p>
+<p>
+	Neu an dieser Formel ist was das <span style="font-family:courier new,courier,monospace;">(int)</span> macht:&nbsp; Es handelt sich hier um einen <em>Cast</em> oder Typumwandlung auf Deutsch.&nbsp; Dazu müssen wir kurz überlegen um welchen Datentype es sich denn bei <span style="font-family:courier new,courier,monospace;">(5.0 / 9.0) * (f - 32)</span> handelt?&nbsp; Sobald einer der Operanden ein <em>double</em> ist, wird das ganze Ergebnis in einen <em>double</em> umgewandelt.&nbsp; Dann haben wir aber auf der einen Seite der Zuweisung einen <em>double</em> stehen und auf der anderen aber eine <em>int</em>.&nbsp; Das ist nicht gut.&nbsp; Deswegen konvertieren wir den <em>double</em> in einen <em>int</em>, und genau das macht <span style="font-family:courier new,courier,monospace;">(int)</span>.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/squares.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />Squares</h2>
+<p>
+	Als Beispiel für die Verwendung von Konstanten wollen wir ein ConsoleProgram schreiben, das die Quadratzahlen der Zahlen von 0 bis MAX_NUM ausgibt, wo MAX_NUM eine Konstante sein soll die auf den Wert 10 gesetzt wird.</p>
+<p>
+	<strong>SEP: Zauberzahlen (magic numbers): Zauberzahlen sind Zahlen die irgendwo in unserem Code auftauchen, und man hat meist keine Ahnung wo sie herkommen und was sie bedeuten.&nbsp; Deswegen sollten alle Zahlen ausser die 0, 1 und 2 als Konstanten deklariert werden.</strong></p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/evenodd.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />EvenOdd</h2>
+<p>
+	Wir wollen ein kleines ConsoleProgram schreiben, dass die Zahlen von 0 bis 10 listet, daneben den Wert der Zahl % 2, und schließlich ob die Zahl gerade oder ungerade ist.</p>
+<p>
+	.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/money.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />Money</h2>
+<p>
+	Wenn wir in unseren Programmen mit Geld zu tun haben stellt sich zunächst die Frage sollen wir dafür einen <em>int</em> Datentyp oder einen <em>double</em> Datentyp verwenden?&nbsp; Die Antwort ist ganz einfach, wenn man sich die Frage stellt: kann man Geld zählen?&nbsp; Für alles was man zählen kann verwendet man den int Datentyp.</p>
+<p>
+	Das heißt wenn wir mit Geld arbeiten sollten wir immer mit Cents rechnen.&nbsp; Allerdings wenn wir diese dann ausgeben, wäre es besser wenn wir nicht 120 Cents ausgeben würden sondern 1,20 Euro.&nbsp; Auch hier ist der Restwert Operator &#39;%&#39; von großem Nutzen:</p>
+<pre>
+    int money = 120;
+    int euros = money / 100;
+    int cents = money % 100;
+    println(&quot;The amount is &quot; + euros + &quot;,&quot; + cents + &quot; Euro.&quot;);
+</pre>
+<p>
+	Um sicher zu stellen, dass unser Code wirklich funktioniert, sollten wir verschiedene Eingaben ausprobieren.&nbsp; Gute Testkandidaten sind die Eingaben: 120, 90, 100, 102 und 002.&nbsp; Hat unser Programm immer die richtige Ausgabe zurückgegeben?</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/bigmoney.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />BigMoney</h2>
+<p>
+	Bei Beträgen über tausend Euro wird noch bei den Tausendern und auch bei den Millionen noch ein Punkt eingefügt, also z.B.: 1.001.233,45 Euro.&nbsp; Wir wollen also eine Methode <em>formatNumericString(int cent)</em> schreiben, die einen Geldbetrag in Cent als Übergabeparameter erhält, und einen String zurückliefert, der richtig formatiert ist.&nbsp; Wenn wir das Programm testen, sollten wir den obigen Betrag verwenden.&nbsp; Wir werden feststellen, dass es Sinn macht eine Methode <em>padWithZeros()</em> zu schreiben.</p>
+<p>
+	Auch hier sollten wir verschiedene Eingaben testen, z.B. 100123345, 100123305, und 05.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/time.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />Time</h2>
+<p>
+	Menschen bevorzugen es die Uhrzeit in Stunden, Minuten und Sekunden anzugeben.&nbsp; Computer hingegen denken nur in Sekunden, also Sekunden die seit Mitternacht vergangen sind.&nbsp; Deswegen wollen wir ein Programm schreiben, das aus den Sekunden die seit Mitternacht vergangen sind, die momentane Uhrzeit berechnet.&nbsp; Dazu benötigen wir wieder den Restwert Operator. Unter Umständen macht es auch wieder Sinn eine Methode <em>padWithZeros()</em> zu schreiben, die sicher stellt, dass anstelle von &quot;6&quot; Minuten &quot;06&quot; Minuten angezeigt werden.&nbsp;</p>
+<p>
+	Zum Testen sollten wir mindestens die folgenden Eingaben ausprobieren: 5, 61, 85, 3600, 3601.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/leapYear.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />LeapYear</h2>
+<p>
+	Wir haben ja oben gesehen wie man feststellt ob ein Jahr ein Schaltjahr ist.&nbsp; Mit diesem Wissen wollen wir ein Konsolenprogramm schreiben, das ausgibt, ob das Jahr in dem jemand geboren wurde ein Schaltjahr war.&nbsp; Z.B., sollte 1996, 2000, und 2004 ein Schaltjahr sein, 1900 und 2000 sollten aber keine sein.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/truuthTables.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />TruthTables*</h2>
+<p>
+	In diesem Projekt wollen wir uns mit dem boolschen Datentyp und den logischen Operatoren &amp;&amp; (und), || (oder) und ^ (exklusives oder) auseinandersetzen.&nbsp; Wir wollen dafür ein Programm schreiben, dass die Wahrheitstabellen für alle drei Operatoren berechnet und ausgibt.&nbsp; Evtl hilfreich ist der folgende Trick wie man aus einem <em>int</em> Datentyp einen <em>boolean</em> Datentyp erzeugt:</p>
+<pre>
+    int in1 = 0;
+    boolean b1 = (in1 != 0);</pre>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/menuProgram.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />InteractiveMenuProgram</h2>
+<p>
+	Sehr häufig benötigt man in einem Konsolenprogramm eine Art Menu.&nbsp; Der Benutzer kann über die Eingabe einer Zahl zwischen verschiedenen Menupunkten auswählen.&nbsp; Wir wollen daher ein Programm schreiben, in dem der Benutzer zwischen drei Möglichkeiten auswählen kann: wenn er &#39;0&#39; eingibt, soll das Programm beendet werden, wenn er &#39;1&#39; eingibt soll eine Nachricht ausgegeben werden, und wenn er &#39;2&#39; eingibt soll gar nichts passieren.&nbsp; Als erste soll ihm natürlich mitgeteilt werden was seine Optionen sind:</p>
+<pre>
+&nbsp;&nbsp;&nbsp; println(&quot;0: Exit / 1: Print message / 2: Do nothing&quot;);</pre>
+<p>
+	Dann beginnt ein &#39;Loop and a Half&#39;, also <span style="font-family:courier new,courier,monospace;">while (true)</span>.&nbsp; Wir fragen den Benutzer nach seiner Wahl</p>
+<pre>
+&nbsp;&nbsp;&nbsp; int choice = readInt(&quot;Your choice: &quot;);</pre>
+<p>
+	Wenn der Benutzer die &#39;0&#39; eingibt beenden wir den &#39;Loop and a Half&#39;</p>
+<pre>
+    if (choice == 0) break;</pre>
+<p>
+	Danach folgt dann ein <em>switch</em> oder <em>cascading if</em> für die Wahlmöglichkeiten &#39;1&#39; und &#39;2&#39;.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/yearlyRate.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />YearlyRate</h2>
+<p>
+	Karel will sich ein Auto kaufen, deswegen hat er angefangen zu sparen.&nbsp; Er will sich einen Mini kaufen (Mercedes ist zu teuer), und er hat einen gebrauchten für 5000 Euro gesehen.&nbsp; Er hat einen günstigen Kredit bei einer Bank von 5% pro Jahr gesehen.&nbsp; Wie hoch ist seine jährliche Rate, wenn er den Kredit in 5 Jahren abbezahlt haben will?</p>
+<p>
+	Karel braucht also ein Programm bei dem er die Kreditsumme (k) eingeben kann, den Zinssatz (z) und die Laufzeit in Jahren (n).&nbsp; Das Programm soll ihm dann sagen wie hoch seine jährliche Rate (y) ist.&nbsp; Die Formel dafür kann man aus der Wikipedia unter Sparkassenformel nachsehen [2]:</p>
+<pre>
+&nbsp;&nbsp; &nbsp;double q = 1.0 + z;
+&nbsp;&nbsp; &nbsp;double qn = Math.pow(q, n);    // q^n
+&nbsp;&nbsp; &nbsp;double y = k * qn * (q-1) / (qn-1);</pre>
+<p>
+	Hilfreich zu wissen ist noch, dass man Gleitkommazahlen mit readDouble() einlesen kann.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/chess.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 229px; float: right;" />ChessBoard</h2>
+<p>
+	Wir wollen ein Schachbrettmuster mit Hilfe von GRects zeichnen.&nbsp; Natürlich muss das ein GraphicsProgram sein.&nbsp; Es ist eine schöne, aber nicht ganz leichte Anwendung von Schleifen und Restwertoperator &#39;%&#39;.</p>
+<p>
+	.</p>
+<hr />
+<h1>
+	Fragen</h1>
+<ol>
+	<li>
+		Nennen Sie vier der primitiven Datentypen von Java.<br />
+		&nbsp;</li>
+	<li>
+		Was ist eine Zauberzahl (magic number)?<br />
+		&nbsp;</li>
+	<li>
+		Was ist der Unterschied zwischen einem GraphicsProgram und einem ConsoleProgram?<br />
+		&nbsp;</li>
+	<li>
+		In der Vorlesung haben Sie von vielen Software Engineering Prinzipien gehört. Geben Sie drei Beispiele.<br />
+		&nbsp;</li>
+	<li>
+		Beim Programmieren gibt es einige typische Fehler die immer wieder passieren (Common Errors). Nennen Sie zwei dieser Fehler.<br />
+		&nbsp;</li>
+	<li>
+		Schreiben Sie ein ConsoleProgram, das den Benutzer nach der Radius eines Kreises fragt, und dann dessen Fläche berechnet (Fläche = PI * Radius * Radius) und diese auf der Console ausgibt.<br />
+		&nbsp;</li>
+	<li>
+		Was ist der Unterschied zwischen &#39;print(&quot;hi&quot;)&#39; und &#39;println(&quot;hi&quot;)&#39;?<br />
+		&nbsp;</li>
+	<li>
+		Was macht die &#39;readInt()&#39; Methode?<br />
+		&nbsp;</li>
+	<li>
+		Was sind die Werte der Variablen &#39;x&#39; und &#39;y&#39; nachdem die folgenden drei Zeilen ausgeführt wurden?<br />
+		<span style="font-family:courier new,courier,monospace;">a = 6;<br />
+		x = ++&shy;&shy;a;<br />
+		y = x++;</span><br />
+		&nbsp;</li>
+	<li>
+		Was ist das Ergebnis der folgenden Ausdrücke:<br />
+		<span style="font-family:courier new,courier,monospace;">- int m = (int) 3.7688;<br />
+		- int n = 14 % 12;<br />
+		- int o = 4 + 5 * 3 / 2;</span><br />
+		&nbsp;</li>
+	<li>
+		Was ist das Resultat des folgenden Ausdrucks?<br />
+		<span style="font-family:courier new,courier,monospace;">int x = 3 - 3 * 6 / 4;</span><br />
+		&nbsp;</li>
+	<li>
+		Was ist der Unterschied zwischen<br />
+		a) 13 / 5<br />
+		b) 13 / 5.0<br />
+		&nbsp;</li>
+	<li>
+		Viele Programmierfehler rühren von fehlenden Klammern und/oder Leerzeichen. Die folgenden Beispiele sollen verdeutlichen, dass es einfacher ist Klammern zu setzen als die Operatorvorrangsregeln (rules of precedence) auswendig zu lernen.<br />
+		<br />
+		i) Was ist der Wert von &#39;j&#39;?<br />
+		<span style="font-family:courier new,courier,monospace;">int i = 5;<br />
+		int j = i+++--i;</span><br />
+		<br />
+		ii) Was ist der Wert von &#39;y&#39;?<br />
+		<span style="font-family:courier new,courier,monospace;">int y = 3 * 4 % 5 * 6 &ndash; 3;</span><br />
+		<br />
+		iii) Was ist der Wert von &#39;b&#39;?<br />
+		<span style="font-family:courier new,courier,monospace;">int x = 5;<br />
+		int z = 3;<br />
+		boolean b = x != 5 || x &lt; z == z &lt; 3;</span><br />
+		&nbsp;</li>
+	<li>
+		Angenommen, Sie haben eine Varable x vom Typ int gegeben, also int x = 3;. Wie kann man diese in eine Variable namens y vom Typ double umwandeln (cast)?<br />
+		&nbsp;</li>
+	<li>
+		Beschreiben Sie mit Ihren eigenen Worten was der folgende Ausdruck bedeutet:<br />
+		&nbsp;&nbsp;<span style="font-family:courier new,courier,monospace;"> (x &lt; 0) || (x &gt; WIDTH)</span><br />
+		&nbsp;</li>
+	<li>
+		Was ist der Vorteil wenn man Konstanten verwendet?<br />
+		&nbsp;</li>
+	<li>
+		Vergleichen Sie die beiden &#39;switch&#39; Beispiele unten, und beschreiben Sie ausgegeben wird.<br />
+		<span style="font-family:courier new,courier,monospace;">a)&nbsp; int day = 0;<br />
+		&nbsp;&nbsp;&nbsp; switch (day) {<br />
+		&nbsp;&nbsp;&nbsp; case 0:<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; println(&quot;Sunday&quot;);<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;<br />
+		&nbsp;&nbsp;&nbsp; case 6:<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; println(&quot;Saturday&quot;);<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;<br />
+		&nbsp;&nbsp;&nbsp; }</span><br />
+		<br />
+		<span style="font-family:courier new,courier,monospace;">b)&nbsp; int day = 0;<br />
+		&nbsp;&nbsp;&nbsp; switch (day) {<br />
+		&nbsp;&nbsp;&nbsp; case 0:<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; println(&quot;Sunday&quot;);<br />
+		&nbsp;&nbsp;&nbsp; case 6:<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; println(&quot;Saturday&quot;);<br />
+		&nbsp;&nbsp;&nbsp; }</span><br />
+		<br />
+		&nbsp;</li>
+	<li>
+		Welche Werte kann eine boolesche (boolean) Variable annehmen?<br />
+		&nbsp;</li>
+	<li>
+		Welchen Datentyp muss die Variable &#39;b&#39; in dem Beispiel unten haben?<br />
+		<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; if ( b ) {<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; println(&quot;hi&quot;);<br />
+		&nbsp;&nbsp;&nbsp; }</span><br />
+		&nbsp;</li>
+	<li>
+		Schreiben Sie den Test der feststellt, ob eine Zahl y ist durch 400 teilbar ist.<br />
+		&nbsp;</li>
+	<li>
+		Erinnern Sie sich an den Remainder &rsquo;%&rsquo; Operator?&nbsp; Geben Sie zwei Beispiele wofür man diesen gebrauchen kann.<br />
+		&nbsp;</li>
+	<li>
+		Menschen bevorzugen es Zeiten in Stunden, Minuten und Sekunden anzugeben.&nbsp; Computer bevorzugen es nur in Sekunden zu rechnen. So ist z.B. 13 Uhr 35 Minuten und 12 Sekunden für den Computer einfach 48912 Sekunden. Benutzen Sie dieses Wissen um die Computerzeit &#39;t&#39; in eine menschenlesbare Form, also Stunden, Minuten und Sekunden umzuwandeln. Sie dürfen auch mehrere Zwischenschritte verwenden.<br />
+		&nbsp;</li>
+	<li>
+		Wann sollte man eine for&ndash;Schleife und wann eine while&ndash;Schleife benutzen?<br />
+		&nbsp;</li>
+	<li>
+		Alles was man mit einer &#39;for&#39; Schleife machen kann, kann man auch mit einer &#39;while&#39; Schleife machen und umgekehrt.&nbsp; Schreiben Sie die folgende &#39;for&#39; Schleife als &#39;while&#39; Schleife um.<br />
+		<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; for (int i=0; i&lt;5; i++) {<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; println(i);<br />
+		&nbsp;&nbsp;&nbsp; }</span><br />
+		&nbsp;</li>
+	<li>
+		Beschreiben Sie den Aufbau des &#39;loop-and-a-half&#39;.&nbsp; Welches Prolem löst dieser?<br />
+		&nbsp;</li>
+	<li>
+		Loop and a Half (Schleife und eine Halbe):&nbsp; Schreiben Sie das folgende Karel Beispiel mithilfe des Loop and a Half. Was ist der Vorteil des Loop and a Half?<br />
+		<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; public void run() {<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; while ( frontIsClear() ) {<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; putBeeper();<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; putBeeper();<br />
+		&nbsp;&nbsp;&nbsp; }</span></li>
+</ol>
+<p>
+	.</p>
+<hr />
+<h1>
+	Referenzen</h1>
+<p>
+	Referenzen zu den Themen in diesem Kapitel finden sich in praktisch jedem Buch zu Java, insbesondere natürlich auch in [3].</p>
+<p>
+	[1] Jeliot 3, Program Visualization application, University of Helsinki, <a href="http://cs.joensuu.fi/jeliot/description.php">cs.joensuu.fi/jeliot/description.php</a></p>
+<p>
+	[2] Seite &bdquo;Sparkassenformel&ldquo;. In: Wikipedia, Die freie Enzyklopädie. URL: <a href="https://de.wikipedia.org/w/index.php?title=Sparkassenformel&amp;oldid=143971427">https://de.wikipedia.org/w/index.php?title=Sparkassenformel&amp;oldid=143971427</a></p>
+<p>
+	[3] The Art and Science of Java, von Eric Roberts, Addison-Wesley, 2008</p>
+<p>
+	.</p>
+<p class="footer">
+Copyright &copy; 2016-2021 <a href="http://www.lano.de">Ralph P. Lano</a>.  All rights reserved.
+</p>
+</div>
+</center>
+</div>
+</body>
+</html>

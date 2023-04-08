@@ -1,0 +1,1508 @@
+<!DOCTYPE html><html lang="de"><head>
+  <title>Variationen zum Thema: Java</title>
+  <meta name="title" content="Variationen zum Thema: Java">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta charset="UTF-8">
+  <meta name="description" content="Introduction to Java Programming">
+  <meta name="keywords" content="java,introduction">
+  <meta name="author" content="Ralph P. Lano">
+  <meta name="robots" content="index,follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../book.css">
+</head>
+<body><center>
+<div id="wrap">
+    <ul class="sidenav">
+      <p><a href="index.html">Variationen zum Thema</a><a href="index.html">Java</a></p>
+      <li><a href="Karel.html">Karel</a></li>
+      <li><a href="Graphics.html">Graphics</a></li>
+      <li><a href="Console.html">Console</a></li>
+      <li><a href="Agrar.html">Agrar</a></li>
+      <li><a href="MindReader.html">MindReader</a></li>
+      <li><a href="Swing.html">Swing</a></li>
+      <li><a href="Asteroids.html">Asteroids</a></li>
+      <li><a href="Stocks.html">Stocks</a></li>
+    </ul>
+<div class="content"><p>
+	<img alt="" src="../images/e271affc-a756-4bfd-b50e-7429e71932e8.png" style="display: block; margin-left: auto;  margin-right: auto;width: 285px; height: 294px;" /></p>
+<h1>
+	Asteroids</h1>
+<p>
+	In diesem Kapitel gibt es wieder viele Spiele.&nbsp; Aber vorher müssen wir uns mit Objekt-Orientierung beschäftigen.&nbsp; Wir lernen die Grundpfeiler der Objekt-Orientierung kennen, nämlich Vererbung und Komposition.&nbsp; Wir werden auch Arrays kennenlernen, und wie man mit mehrdimensionalen Arrays Bilder manipuliert.&nbsp; Außerdem lernen wir wie man mit Tastaturereignissen (KeyEvents) arbeitet und die Klasse GCompound wird kurz vorgestellt.&nbsp; Wir beginnen mit den Arrays.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/eierKarton.jpg" style="width: 316px; height: 256px; float: right;" />Arrays</h2>
+<p>
+	Was sind Arrays?&nbsp; Ein Eierkarton ist ein Array.&nbsp; Und zwar ist es ein Array für zehn Eier.&nbsp; D.h. aber nicht dass da auch zehn Eier drin sind, manchmal sind nur drei Eier drin.&nbsp;</p>
+<p>
+	Offensichtlich sind also Arrays ganz praktisch und deswegen betrachten wir Arrays in Java.&nbsp; Nehmen wir einmal an wir wollten ein Array für zwölf Ganzzahlen anlegen, dann würden wir schreiben:</p>
+<pre>
+&nbsp;   int<span style="color:#0000ff;">[]</span> eggs;
+    eggs = new int[10];
+</pre>
+<p>
+	In der ersten Zeile deklarieren wir ein Array.&nbsp; Wir sagen dass es sich bei der Variablen <em>eggs</em> um ein Array vom Typ <em>int</em> handelt, indem wir hinter dem Datentyp einfach eckige Klammern schreiben.&nbsp; In der zweiten Zeile legen wir dann das Array an und sagen, dass es Platz für zehn <em>int</em>&#39;s geben soll.&nbsp;</p>
+<p>
+	Wir können Arrays von beliebigen Datentypen anlegen, z.B. könnten wir auch ein Array mit vier GOvals anlegen:</p>
+<pre>
+    GOval[] circles = new GOval[4];</pre>
+<p>
+	Alle Arrays haben zwei wichtige Eigenschaften:</p>
+<ol>
+	<li>
+		sie sind immer vom selben Datentyp, man sagt auch sie sind homogen, und</li>
+	<li>
+		sie sind geordnet, d.h., sie sind durchnummeriert beginnend mit 0.</li>
+</ol>
+<p>
+	.</p>
+<h2>
+	Mit Arrays arbeiten</h2>
+<p>
+	Nachdem wir ein Array deklariert und angelegt haben, müssen wir es mit Werten füllen.&nbsp; Das können wir von Hand machen:</p>
+<pre>
+&nbsp;   eggs[0] = 0;
+&nbsp;   eggs[1] = 2;
+&nbsp;   eggs[2] = 4;
+    ...
+&nbsp;   eggs[9] = 18;</pre>
+<p>
+	Wir weisen also dem ersten Element im Array (dem Element Nummer 0) den Wert 0 zu, dem zweiten Element den Wert 2 usw.&nbsp; Wir können die Zuweisung aber auch mit einer Schleife machen:</p>
+<pre>
+&nbsp;   for (int i=0; i&lt;10; i++) {
+&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp; eggs[i] = readInt(&quot;?&quot;);
+&nbsp;   } 
+</pre>
+<p>
+	oder mit dem folgende Trick (der allerdings nur beim Anlegen funktioniert):</p>
+<pre>
+  &nbsp; int[] eggs = { 2, 4, 6, 8 };
+</pre>
+<p>
+	Wenn wir auf ein Element zugreifen wollen, müssen wir seine Hausnummer angeben. Also auf das dritte Element greifen wir mit :</p>
+<pre>
+&nbsp;   println( eggs[2] );</pre>
+<p>
+	zu.&nbsp; Wenn wir alle Elemente ausgeben wollen, geht das am besten mit einer Schleife:</p>
+<pre>
+&nbsp;   for (int i=0; i&lt;eggs.length; i++) {
+&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp; println( eggs[i] );
+&nbsp;   } 
+</pre>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/monthName.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />Übung: MonthName</h2>
+<p>
+	Ein nützliches Beispiel ist die Konvertierung vom Monat als Zahl, also z.B. 12, in den Monatsnamen, also z.B. Dezember.&nbsp; Man könnte das mit einer langen <em>if</em> oder <em>switch</em> Bedingung machen, aber man kann das auch sehr elegant mit Arrays lösen:</p>
+<pre>
+public class MonthName extends ConsoleProgram {
+
+&nbsp;&nbsp; &nbsp;private String[] monthName = { &quot;January&quot;, &quot;February&quot;, &quot;March&quot;, &quot;April&quot;,
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&quot;May&quot;, &quot;June&quot;, &quot;July&quot;, &quot;August&quot;, &quot;September&quot;, &quot;October&quot;,
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&quot;November&quot;, &quot;December&quot; };
+
+&nbsp;&nbsp; &nbsp;public void run() {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;int monthNr = readInt(&quot;Enter number of month (1=January): &quot;);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;println(monthName[monthNr - 1]);
+&nbsp;&nbsp; &nbsp;}
+}</pre>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/fourGOvals.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 200px; float: right;" />Array von Objekten</h2>
+<p>
+	Im Prinzip sind Arrays nicht weiter kompliziert.&nbsp; Allerdings gibt es manchmal eine kleine Verwirrung wenn man Arrays von Objekten hat.&nbsp; Schauen wir uns dazu zunächst die Deklaration eines Arrays von GOvals an:</p>
+<pre>
+&nbsp;   GOval[] circles = new GOval[4];
+</pre>
+<p>
+	und vergleichen es mit dem Anlegen eines neuen Kreises:</p>
+<pre>
+&nbsp;   GOval circle = new GOval(100,100,50,50);
+</pre>
+<p>
+	Was ist der Unterschied?&nbsp; Im ersten Fall legen wir Platz für vier GOvals an. Wir legen aber noch keine Kreise selbst an.&nbsp; Im zweiten Fall dagegen legen wir einen Kreis an.&nbsp; Wenn wir also ein Array mit vier Kreisen anlegen wollen (und nicht nur Platz für vier Kreise), dann müssen wir ein bischen mehr Code schreiben:</p>
+<pre>
+&nbsp;   GOval[] circles = new GOval[4];
+&nbsp;&nbsp; &nbsp;circles[0] = new GOval(100, 66, 50, 50);
+&nbsp;&nbsp; &nbsp;circles[1] = new GOval(100, 116, 50, 50);
+&nbsp;&nbsp; &nbsp;circles[2] = new GOval(150, 66, 50, 50);
+&nbsp;&nbsp; &nbsp;circles[3] = new GOval(150, 116, 50, 50);
+</pre>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/chess2.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 200px; float: right;" />Mehrdimensionale Arrays</h2>
+<p>
+	Eindimensionale Arrays sind ganz lustig und sparen uns viel Schreibarbeit.&nbsp; Aber wirklich cool sind zweidimensionale Arrays.&nbsp; Wir fangen ganz einfach mit einem Schachspiel an.</p>
+<pre>
+&nbsp;&nbsp;&nbsp; private char[][] chess = {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;{ &#39;r&#39;, &#39;n&#39;, &#39;b&#39;, &#39;q&#39;, &#39;k&#39;, &#39;b&#39;, &#39;n&#39;, &#39;r&#39; },
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;{ &#39;p&#39;, &#39;p&#39;, &#39;p&#39;, &#39;p&#39;, &#39;p&#39;, &#39;p&#39;, &#39;p&#39;, &#39;p&#39; },
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;{ &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39; },
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;{ &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39; },
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;{ &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39; },
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;{ &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39;, &#39; &#39; },
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;{ &#39;P&#39;, &#39;P&#39;, &#39;P&#39;, &#39;P&#39;, &#39;P&#39;, &#39;P&#39;, &#39;P&#39;, &#39;P&#39; },
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;{ &#39;R&#39;, &#39;N&#39;, &#39;B&#39;, &#39;Q&#39;, &#39;K&#39;, &#39;B&#39;, &#39;N&#39;, &#39;R&#39; } };
+</pre>
+<p>
+	Es handelt sich hier also um ein 8 mal 8 Array von chars.&nbsp; Kleinbuchstaben stehen für schwarz, und Großbuchstaben für weiß.&nbsp; Wenn wir das Spielfeld ausgeben wollen, dann könnten wir das mit zwei verschachtelten <em>for</em> Schleifen tun:</p>
+<pre>
+&nbsp;&nbsp;&nbsp; private void printChessBoard() {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;for (int i = 0; i &lt; 8; i++) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;for (int j = 0; j &lt; 8; j++) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;print(chess[i][j]);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;println();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}
+&nbsp;&nbsp; &nbsp;}</pre>
+<p>
+	.</p>
+<figure style="margin-left: 10px; margin-right: 10px; float:right;text-align: center;">
+	<img alt="" src="../images/grayImage.png" style="width: 400px; height: 222px;" /> <figcaption>
+	<p>
+		Taj Mahal, Bildquelle Wikipedia [1]</p>
+	</figcaption></figure>
+<h2>
+	Übung: GrayImage</h2>
+<p>
+	Bilder sind auch zweidimensionale Arrays.&nbsp; Als kleine Übung wollen wir ein Farbbild in ein Graubild umwandeln.&nbsp; Zunächst laden wir das Bild mittels der GImage Klasse:</p>
+<pre>
+    GImage image = new GImage(&quot;Taj_Mahal_(Edited).jpeg&quot;);</pre>
+<p>
+	Als nächstes müssen wir an die Pixel rankommen.&nbsp; Das geht mit der Methode <em>getPixelArray()</em> der Klasse GImage:</p>
+<pre>
+    int[][] array = image.getPixelArray();
+&nbsp;&nbsp; &nbsp;int height = array.length;
+&nbsp;&nbsp; &nbsp;int width = array[0].length;</pre>
+<p>
+	Diese liefert uns ein zweidimensionales Array von <em>int</em>s.&nbsp; Jeder dieser <em>int</em> entspricht einem Pixel.&nbsp; Wenn wir also den Pixel an Position x=5 und y=22 möchten, dann geht das mittels</p>
+<pre>
+    int pixel = array[5][22];</pre>
+<p>
+	Jeder dieser Pixel enthält dessen rot, grün und blau Werte, und mittels</p>
+<pre>
+&nbsp;&nbsp; &nbsp;int r = GImage.getRed(pixel);
+&nbsp;&nbsp; &nbsp;int g = GImage.getGreen(pixel);
+&nbsp;&nbsp; &nbsp;int b = GImage.getBlue(pixel);</pre>
+<p>
+	erhalten wir diese.&nbsp; Um daraus ein Graubild zu erstellen, verwenden wir die Formel die auch Gimp verwendet [2]:</p>
+<pre>
+    lum = 0.21 * r + 0.72 * g + 0.07 * b;</pre>
+<p>
+	das packen wir dann wieder in das zweidimensionales Array</p>
+<pre>
+    array[5][22] = GImage.createRGBPixel(lum, lum, lum);</pre>
+<p>
+	und am Ende machen wir daraus ein neues GImage</p>
+<pre>
+    GImage grayImage = new GImage(array);</pre>
+<p>
+	.</p>
+<h2>
+	Objekt-Orientierung</h2>
+<p>
+	Im zweiten Teil dieses Kapitels wollen wir unsere Kenntnisse bzgl der Objektorientierung vertiefen.&nbsp; Die zwei großen Themen die anstehen sind zum einen <em>Vererbung</em> (&quot;is a&quot; Beziehung) und zum anderen <em>Komposition</em> (&quot;has a&quot; Beziehung).&nbsp; Wir beginnen mit einem kleinen Spiel, dem <em>MarsLander</em>.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/marsLander.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 200px; float: right;" />Übung: MarsLander</h2>
+<p>
+	Elon Musk will ja im kommenden Jahrzehnt die ersten Menschen auf den Mars schicken.&nbsp; Karel hat sich freiwillig gemeldet, und muss jetzt erst mal die Landung üben.&nbsp; Dazu gibt es einen Simulator den <em>MarsLander</em>.&nbsp; Es geht darum ein Raumschiff sicher auf dem Mars zu landen.&nbsp; Dazu können wir mit den Pfeiltasten (nach oben und nach unten) das Raumschiff abbremsen oder beschleunigen.&nbsp; Wenn unser Geschwindigkeit beim Touchdown zu hoch ist, sterben wir.</p>
+<p>
+	Der Top-Down Ansatz bietet sich an:&nbsp; Betrachten wir die <em>run()</em> Methode:</p>
+<pre>
+&nbsp;&nbsp;&nbsp; public void run() {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;setup();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;waitForClick();
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;// game loop
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;while (<span style="color:#0000ff;">spaceShip != null</span>) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;moveSpaceShip();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;checkForCollision();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;pause(DELAY);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;displayGameOver();
+&nbsp;&nbsp; &nbsp;}</pre>
+<p>
+	Wie üblich fangen wir mit dem <em>setup()</em> an.&nbsp; Nach dem Setup warten wir bis der Nutzer mit der Maus einmal auf den Bildschirm klickt um das Spiel zu starten.&nbsp; Danach beginnt der&nbsp; GameLoop und der sieht genauso aus wie bei unserer letzten Animation, dem&nbsp;Billiard.&nbsp; Interessant ist jetzt, dass wir keine Endlosschleife mehr haben, sondern eine Schleife mit Abbruchkriterium: nämlich wenn es kein SpaceShip mehr gibt, also <em>spaceShip == null</em>, dann soll das Spiel aufhören.</p>
+<p>
+	Es gibt drei Instanzvariablen,</p>
+<pre>
+    private GPolygon spaceShip;
+    private int vy = 0;
+    private int vx = 0;</pre>
+<p>
+	also das spaceShip, sowie dessen Geschwindigkeiten vx und vy.</p>
+<p>
+	In der setup() Methode wird das spaceShip initialisiert, der Code ist identisch mit dem der Übung aus Kapitel zwei,</p>
+<pre>
+    private void setup() {
+        spaceShip = new GPolygon();
+        spaceShip.addVertex(0, -SPACE_SHIP_SIZE);
+        spaceShip.addVertex(-2 * SPACE_SHIP_SIZE / 3, SPACE_SHIP_SIZE);
+        spaceShip.addVertex(0, SPACE_SHIP_SIZE / 2);
+        spaceShip.addVertex(2 * SPACE_SHIP_SIZE / 3, SPACE_SHIP_SIZE);
+        add(spaceShip, (getWidth() - SPACE_SHIP_SIZE) / 2, SPACE_SHIP_SIZE);
+
+        <span style="color:#0000ff;">addKeyListeners()</span>;
+    }</pre>
+<p>
+	und wir fügen einen <em>KeyListener</em> hinzu.&nbsp; Wir wollen das spaceShip ja mittels der Tastatur (keyboard) steuern, und deswegen müssen wir auf Tastenereignisse (KeyEvents) hören.&nbsp; Das ist also vollkommen analog zu den MouseEvents und dem MouseListener.</p>
+<p>
+	Die <em>moveSpaceShip()</em> Methode ist absolut trivial:</p>
+<pre>
+    private void moveSpaceShip() {
+        vy += GRAVITY;
+        spaceShip.move(vx, vy);
+    }</pre>
+<p>
+	Da wir uns im Schwerefeld (GRAVITY) des Mars befinden, erhöht sich unsere Geschwindigkeit in jedem Schritt.&nbsp; Und in jedem Schritt bewegen wir das spaceShip um den Betrag der Geschwindigkeit.</p>
+<p>
+	In der <em>checkForCollision()</em> Methode checken wir, ob wir schon auf der Marsoberfläche (also unten) angekommen sind:</p>
+<pre>
+    private void checkForCollision() {
+        double y = spaceShip.getY();
+        if (y &gt; (getHeight() - SPACE_SHIP_SIZE)) {
+            spaceShip = null;
+        }
+    }</pre>
+<p>
+	Falls ja, dann setzen wir das spaceShip einfach auf <em>null</em>.&nbsp; &quot;null&quot; heißt soviel wie &quot;nicht initialisiert&quot; oder &quot;existiert nicht&quot; oder &quot;gibt es nicht&quot;.&nbsp; Das ist ein vordefinierter Wert, den alle Objekte haben bevor sie mittels <em>new</em> erzeugt werden.&nbsp; Wir können aber auch Objekte explizit auf <em>null</em> setzen, und das bedeutet das wir das Objekt löschen.&nbsp; In unserem Beispiel verwenden wir das um die Endlosschleife zu beenden.</p>
+<p>
+	Was noch bleibt sind die Tastenereignisse.&nbsp; Ähnlich wie es bei der Maus die <em>mousePressed()</em> Methode gibt, gibt es auch eine <em>keyPressed()</em> Methode:</p>
+<pre>
+    public void keyPressed(KeyEvent e) {
+        switch (e.<span style="color:#0000ff;">getKeyCode()</span>) {
+        case 38: // up
+            vy--;
+            break;
+        case 40: // down
+            vy++;
+            break;
+        }
+    }</pre>
+<p>
+	Wir wollen natürlich wissen welche Taste gedrückt wurde und das erfahren wir von der <em>getKeyCode()</em> Methode de KeyEvents.&nbsp; Jede Taste hat ihren eigenen KeyCode, und für die Pfeil-Oben Taste ist das die 38 und für die Pfeil-Unten Taste ist das die 40.</p>
+<p>
+	So, jetzt können wir spielen, bzw. trainieren.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/marsLander2.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 200px; float: right;" />Vererbung</h2>
+<p>
+	Was hat der <em>MarsLander</em> mit Vererbung zu tun?&nbsp; Noch nicht viel.&nbsp; Aber schauen wir uns den Code an.&nbsp; Was uns ein bischen stören sollte sind die drei Zeilen,</p>
+<pre>
+    private GPolygon spaceShip;
+    private int vy = 0;
+    private int vx = 0;</pre>
+<p>
+	denn bei <em>vx</em> und <em>vy</em> handelt es sich um die Geschwindigkeit des spaceShip, die gehören also eigentlich zum spaceShip.&nbsp; Nehmen wir an wir hätten mehrere spaceShips, oder wir hätten ganz viele Asteroiden die sich durch die Gegend bewegen, dann hätten wir ganz viele vx&#39;s und vy&#39;s.&nbsp; Und das wird total unübersichtlich und häßlich.</p>
+<p>
+	Um das zu verhindern machen wir folgendes: wir deklarieren eine neue Klasse namens GSpaceShip und alles was mit spaceShip zu tun hat packen wir in diese Klasse:</p>
+<pre>
+public class GSpaceShip <span style="color:#0000ff;">extends GPolygon</span> {
+&nbsp;&nbsp; &nbsp;// constants
+&nbsp;&nbsp; &nbsp;private final int GRAVITY = 1;
+
+&nbsp;&nbsp; &nbsp;// instance variables
+&nbsp;&nbsp; &nbsp;public int vy = 0;
+&nbsp;&nbsp; &nbsp;public int vx = 0;
+
+&nbsp;&nbsp; &nbsp;public GSpaceShip(int SPACE_SHIP_SIZE) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<span style="color:#0000ff;">super()</span>;
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;addVertex(0, -SPACE_SHIP_SIZE);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;addVertex(-2 * SPACE_SHIP_SIZE / 3, SPACE_SHIP_SIZE);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;addVertex(0, SPACE_SHIP_SIZE / 2);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;addVertex(2 * SPACE_SHIP_SIZE / 3, SPACE_SHIP_SIZE);
+&nbsp;&nbsp; &nbsp;}
+&nbsp;&nbsp; &nbsp;
+&nbsp;&nbsp; &nbsp;public void move() {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;vy += GRAVITY;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;move(vx, vy);&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+&nbsp;&nbsp; &nbsp;}
+}</pre>
+<p>
+	Als erstes sehen wir, dass es sich bei <em>GSpaceShip</em> um ein <em>GPolygon</em> handelt, denn es sagt &quot;GSpaceShip extends GPolygon&quot;, also GSpaceShip <em>ist ein</em> GPolygon.&nbsp; GSpaceShip erbt also alle Eigenschaften und Methoden von GPolygon.&nbsp; Deswegen sagt man auch <em>Vererbung</em> ist eine &quot;is a&quot; Beziehung.</p>
+<p>
+	Als zweites sehen wir, dass die Instanzvariablen <em>vx</em> und <em>vy</em> jetzt Instanzvariablen des spaceShips sind, sie sind also da wo sie hingehören.</p>
+<p>
+	Als drittes schauen wir uns den Konstruktor an:&nbsp; dort sehen wir in der ersten Zeile ein &quot;<em>super()</em>&quot;.&nbsp; Die Methode super() tut nichts anderes als den Konstrukter der Superklasse aufzurufen, also der Elternklasse.&nbsp; In unserem Fall ist das GPolygon().&nbsp; Danach sehen wir, wie wir uns selbst (wir sind ja jetzt ein GPolygon) Vertices hinzufügen.&nbsp; D.h. im Konstruktor bestiimmen wir unser Aussehen.</p>
+<p>
+	Als letztes sehen wir, dass wir eine neue Methode namens <em>move()</em> hinzugefügt haben.&nbsp; Da GSpaceShip jetzt ja seine eigene Geschwindigkeit kennt, kann es sich ja auch selbst bewegen.&nbsp;</p>
+<p>
+	Vererbung hat also viele Vorzüge: vor allem führt sie dazu, dass Klassen selbstständiger werden, und weniger Abhängigkeiten haben. Man sagt auch die Klasse übernimmt Verantwortung über ihre eigenen Attribute (Variablen) und Verhalten (Methoden).&nbsp; Diese geringeren Abhängigkeiten führen auch zu einer geringeren Kopplung, die dazu führt, dass unser Code weniger kompliziert wird.&nbsp;</p>
+<p>
+	Schauen wir uns die Vereinfachungen im <em>MarsLander2</em> an.&nbsp; Zunächst brauchen wir nur noch eine Instanzvariable:</p>
+<pre>
+&nbsp;&nbsp; &nbsp;private GSpaceShip spaceShip;</pre>
+<p>
+	und außerdem werden die <em>setup()</em> und <em>moveSpaceShip()</em> Methoden viel kürzer:</p>
+<pre>
+&nbsp;&nbsp;&nbsp; private void setup() {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;spaceShip = new GSpaceShip(SPACE_SHIP_SIZE);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;add(spaceShip, (getWidth() - SPACE_SHIP_SIZE) / 2, SPACE_SHIP_SIZE);
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;addKeyListeners();
+&nbsp;&nbsp; &nbsp;}
+
+&nbsp;&nbsp;&nbsp; private void moveSpaceShip() {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;spaceShip.move();
+&nbsp;&nbsp; &nbsp;}</pre>
+<p>
+	Das ist schon ziemlich cool.&nbsp; Den wahren Wert dieser Vereinfachungen werden wir aber erst schätzen lernen wenn es daran geht <em>Asteroids</em> zu programmieren.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/marsLander3.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 200px; float: right;" />Komposition</h2>
+<p>
+	Das zweite wichtige Konzept der Objektorientierung ist die Komposition.&nbsp; Wie wir gesehen haben, kann man neue Klassen (GSpaceShip) durch Vererbung von einer existierenden Klasse (GPolygon) erzeugen.&nbsp; Man kann aber auch neue Klassen erzeugen, indem man sie aus mehreren existierenden Klassen zusammensetzt, also komposiert.</p>
+<p>
+	Als Beispiel schreiben wir eine Klasse GSmiley.&nbsp;</p>
+<pre>
+public class GSmiley {
+&nbsp;&nbsp; &nbsp;
+&nbsp;&nbsp; &nbsp;public GSmiley(int SIZE) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;super();
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;GOval face = new GOval(SIZE, SIZE);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;face.setFilled(true);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;face.setFillColor(Color.YELLOW);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;add(face);
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;GOval leftEye = new GOval(SIZE/10, SIZE/10);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;leftEye.setColor(Color.GREEN);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;add(leftEye, SIZE/4, SIZE/4);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;GOval rightEye = new GOval(SIZE/10, SIZE/10);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;rightEye.setColor(Color.RED);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;add(rightEye, 3*SIZE/4, SIZE/4);
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;GArc mouth = new GArc(SIZE/2, SIZE/2, 225, 90);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;add(mouth, 0.3*SIZE, 0.3*SIZE);
+&nbsp;&nbsp; &nbsp;}
+}</pre>
+<p>
+	Unser GSmiley besteht aus verschiedenen Komponenten, es hat also ein <em>face</em>, ein <em>leftEye</em>, ein <em>rightEye</em> und ein <em>mouth</em>.&nbsp; Im Konstruktor basteln wir also ein neues Objekt aus mehreren alten.&nbsp; Das ist Komposition.&nbsp; Deswegen sagt man auch dass <em>Komposition</em> eine &quot;has a&quot; Beziehung ist, denn GSmiley hat ein <em>face</em>, ein <em>leftEye</em>, ein <em>rightEye</em> und ein <em>mouth</em>.</p>
+<p>
+	.</p>
+<h2>
+	GCompound</h2>
+<p>
+	Man kann Vererbung und Komposition auch mischen.&nbsp; Wenn wir beim GSmiley Beispiel noch &quot;extends GCompound&quot; zur Klassendeklaration hinzufügen, dann können wir GSmiley auch in unserem MarsLander verwenden.&nbsp; Wir müssen dann in der ersten Version des MarsLanders einfach &quot;GPolygon&quot; durch &quot;GSmiley&quot; ersetzen.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/8aff1c4e-4764-43d9-9651-6f407d47f9fe.png" style="width: 150px; height: 121px; float: right;" />Vererbung vs Komposition</h2>
+<p>
+	Wann verwendet man Vererbung und wann Komposition?&nbsp; Eine Daumenregel lautet, wenn möglich sollte man Komposition verwenden.&nbsp; Das hat damit zu tun, dass es in Java keine Mehrfachvererbung gibt.&nbsp; Also eine Klasse kann keine zwei Eltern haben.&nbsp; Diese Einschränkung gibt es bei Komposition nicht, im Prinzip kann eine Klasse aus beliebig vielen Komponenten bestehen.</p>
+<p>
+	.</p>
+<p>
+	<img alt="" src="../images/9a6ee258-1e5b-4941-a675-2be6f1216447.png" style="width: 136px; height: 155px; float: right;" />Eine kleine Anmerkung noch: mit Mehrfachvererbung meinen wir immer eine Klasse hat mehrere Elternklassen.&nbsp; Das ist nicht erlaubt.&nbsp; Es ist aber durchaus möglich dass eine Klasse eine Elternklasse hat, und diese Elternklasse hat wieder eine Elternklasse, also sozusagen die Großelternklasse der ursprünglichen.&nbsp; Also z.B. GObject ist die Großelternklasse der Klasse GSpaceShip.&nbsp; Das ist erlaubt.</p>
+<p>
+	.</p>
+<p>
+	.</p>
+<hr />
+<h1>
+	Review</h1>
+<p>
+	Mit den Prinzipien Vererbung und Komposition haben wir den Kern der Objektorientierung erreicht und geknackt.&nbsp; Wir haben gelernt wie man einer existierenden Klasse mittel Vererbung zusätzlich Eigenschaften geben kann.&nbsp; So kann sich ein GPolygon nicht selbstständig bewegen, da es keine Geschwindigkeit hat.&nbsp; Die Klasse GSpaceShip, die ja eigentlich auch ein GPolygon ist, kennt aber seine eigene Geschwindigkeit, und kann sich selbstständig bewegen.&nbsp; Weiter haben wir gesehen, dass man mittels Komposition aus mehreren Klassen eine neue Klasse zusammenbauen kann.&nbsp; Beides ist sehr nützlich, wie wir sehen werden.</p>
+<p>
+	Zusätzlich haben wir noch ein paar andere nützliche Dinge, wie z.B.</p>
+<ul>
+	<li>
+		Arrays</li>
+	<li>
+		mehrdimensionale Arrays</li>
+	<li>
+		Bildverarbeitung</li>
+	<li>
+		Tastaturereignisse</li>
+	<li>
+		und die Klasse GCompound</li>
+</ul>
+<p>
+	kennengelernt.</p>
+<p>
+	.</p>
+<hr />
+<h1>
+	Projekte</h1>
+<p>
+	Die Projekte in diesem Kapitel fangen an richtig Spass zu machen.&nbsp; Los geht&#39;s.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/pianoConsole.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />PianoConsole</h2>
+<p>
+	Als erste Anwendung für Arrays schreiben ein kleines Musikprogramm.&nbsp; In unserem Array speichern wir die Melodie:</p>
+<pre>
+    private String[] tune = { &quot;C&quot;, &quot;D&quot;, &quot;E&quot;, &quot;F&quot;, &quot;G&quot;, &quot;G&quot; };</pre>
+<p>
+	Zum einfachen Abspielen von Audio-Dateien können wir die <em>AudioClip</em> Klasse verwenden:</p>
+<pre>
+    AudioClip audioClip = getAudioClip(getCodeBase(), &quot;sound.wav&quot;);
+    audioClip.play();
+    pause(500);
+    audioClip.stop();</pre>
+<p>
+	Der <em>AudioClip</em> Klasse sagt man welche Datei sie abspielen soll, mit der Methode <em>play()</em> wird dann das Abspielen gestartet und mit <em>stop()</em> beendet.&nbsp; Wenn man jetzt für die verschiedenen Noten verschiedene wav-Dateien hat, also z.B. &quot;C.wav&quot;, &quot;D.wav&quot;, usw. dann kann man so Melodien abspielen, indem man mit einer Schleife die einzelnen Noten un dem <em>tune</em> Array durchiteriert.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/piano3.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 133px; float: right;" />Piano</h2>
+<p>
+	Konsolenanwendungen sind immer etwas langweiliger, und ehrlich wer würde dafür schon Geld ausgeben?&nbsp; Wir haben aber ja schon im zweiten Semester eine UI für unser Piano geschrieben.&nbsp; Natürlich würde wir unser Klavier über die Maus steuern, also MouseListener im <em>setup()</em> hinzufügen.&nbsp;</p>
+<p>
+	Die Frage die sich allerdings stellt, wie wissen wir welche Taste gedrückt wurde?&nbsp; Interessanterweise können wir dafür unsere <em>getElementAt()</em> Methode verwenden:</p>
+<pre>
+    public void mouseClicked(MouseEvent e) {
+        int x = e.getX();
+        int y = e.getY();
+        GObject obj = getElementAt(x, y);
+        if (obj != null) {
+            ...
+        }
+    }</pre>
+<p>
+	Darüber können wir also herausfinden, auf welches GRect gedrückt wurde.&nbsp; Jetzt gibt es drei Alternativen weiter zu machen:</p>
+<ol>
+	<li>
+		Wenn das GRect einen Namen hätte wäre die Welt ganz einfach.&nbsp; Wir können das mit Vererbung erreichen: wir definieren eine neue Klasse <em>GKey</em>, die ein GRect ist und noch zusätzlich ein Attribute für den Namen hat.</li>
+	<li>
+		Wir merken uns irgendwo die x-Koordinate der Tasten.&nbsp; Mit <em>obj.getX() </em>können wir diese ja erhalten, und viola wissen wir welche Taste gedrückt wurde.</li>
+	<li>
+		Oder wir halten uns Referenzen zu allen Tasten in einem Array.</li>
+</ol>
+<p>
+	Diese dritte Möglichkeit wollen wir kurz etwas näher betrachten.&nbsp; Dazu brauchen wir ein Array als Instanzvariable</p>
+<pre>
+    private GRect[] keys = new GRect[12];</pre>
+<p>
+	Wenn wir die Tasten erzeugen, dann speichern wir die einfach in unserem Instanzarray:</p>
+<pre>
+    int keyCounter = 0;
+    // draw 8 white keys
+    for (int i = 0; i &lt; 7; i++) {
+        <span style="color:#0000ff;">keys[keyCounter] = </span>new GRect(WIDTH / 7, HEIGHT - HEIGHT_OFFSET);
+        add(keys[keyCounter], i * WIDTH / 7, 0);
+        keyCounter++;
+    }</pre>
+<p>
+	Und jetzt können wir in unserer <em>mouseClicked()</em> Methode einfach auf Gleichheit testen:</p>
+<pre>
+    for (int i = 0; i &lt; keys.length; i++) {
+        if (obj == keys[i]) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;AudioClip audioClip = getAudioClip(getCodeBase(), &quot;music/&quot;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;    + tunes[i] + &quot;4.wav&quot;);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;println(tunes[i] + &quot;4.wav&quot;);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;audioClip.play();
+        }
+    }</pre>
+<p>
+	Wenn wir jetzt die App auch noch auf dem Handy zum Laufen kriegen würden, dann wären wir reich! (Nächstes Jahr...)</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/swap.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />Swap</h2>
+<p>
+	In diesem Projekt wollen wir zwei Elemente eines Arrays vertauschen.&nbsp; In dem Array</p>
+<pre>
+  int[] arr = { 0, 2, 4, 6 };</pre>
+<p>
+	möchten wir das Element an der zweiten Position (also die &quot;2&quot;) mit dem Element an der dritten Position (also der &quot;3&quot;) vertauschen.&nbsp; Das wollen wir mit einer Methode <em>swap(int[] arr)</em> machen, die ein Array als Übergabeparameter hat.</p>
+<p>
+	Zwei Dinge wollen wir in dieser Übung lernen:&nbsp; Erstens in Arrays beginnen wir immer mit 0 zu zählen, und Arrays werden als Referenz übergeben, d.h., wenn wir ein Array als Übergabeparameter an eine Methode übergeben, dann wir dieses im Original übergeben.&nbsp; Alle Änderungen die wir in der Methode daran vornehmen sind permanent, also ändern das Array.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/examStatistics.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 200px; float: right;" />ExamStatistics</h2>
+<p>
+	Als weiteres Beispiel für eine Anwendung von Arrays wollen wir ein paar statistische Daten zu den Punkten in einer Klausur ermitteln.&nbsp; Zusätzlich wollen wir die Punkte in einem Array speichern.&nbsp; Da wir noch nicht genau wissen wieviele Studierende an der Klausur teilnehmen, es aber sehr unwahrscheinlich ist, dass es mehr als 100 sind, legen wir eine Array für 100 Noten an:</p>
+<pre>
+    int[] scores = new int[MAX_SIZE];</pre>
+<p>
+	Wir bitten den Nutzer die Noten einzugeben.&nbsp; Dafür können wir wieder den Loop-and-a-Half verwenden.&nbsp; Damit wir wissen wann wir fertig sind, vereinbaren wir, dass die Eingabe der &quot;-1&quot; (dem Sentinel) bedeutet, dass alle Noten eingegeben wurden.&nbsp; Das ist also unser Abbruchkriterium.&nbsp;</p>
+<p>
+	Die statistischen Daten die wir ermittlen wollen sind: Anzahl der Klausuren, der Durchschnitt, die niedrigste Punktzahl und die höchste Punktzahl.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/flippedImage.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 111px; float: right;" />FlippedImage</h2>
+<p>
+	Arrays sind bestens geeignet um mit Bilder zu arbeiten.&nbsp; Wir haben ja oben schon gesehen wie wir auf die Pixel zugreifen können.&nbsp; In diesem Beispiel wollen wir ein gegebenes Bild spiegeln.&nbsp; Das kann horizontal oder vertikal sein.&nbsp; Dazu kreiiren wir ein neues Array</p>
+<pre>
+   int[][] arrayFlipped = new int[height][width];</pre>
+<p>
+	und verwenden zwei verschachtelte Schleifen</p>
+<pre>
+    for (int i = 0; i &lt; height; i++) {
+        for (int j = 0; j &lt; width; j++) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;int pixel = array[i][j];
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;arrayFlipped[height - i - 1][j] = pixel;
+        }
+    }</pre>
+<p>
+	und die Pixel zu tauschen.&nbsp; Aus dem neuen Array machen wir dann ein neues Bild via</p>
+<pre>
+    GImage flippedImage = new GImage(arrayFlipped);</pre>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/grayImageXOR.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 211px; float: right;" />GrayImageXOR</h2>
+<p>
+	Die Steganographie ist die Kunst der verborgenen Übermittlung von Informationen [3].&nbsp; Interessant ist, dass man das ganz einfach mit der XOR Funktion, also dem Exkulsiven Oder, machen kann.&nbsp; Wie machen wir das?&nbsp; Nehmen wir an wir haben zwei Bilder und deren Pixel Arrays:</p>
+<pre>
+    int pixel1 = array1[i][j];
+    int pixel2 = array2[i][j];</pre>
+<p>
+	dann holen wir uns jeweils z.B. den Rot-Wert:</p>
+<pre>
+    int r1 = GImage.getRed(pixel1);
+    int r2 = GImage.getRed(pixel2);</pre>
+<p>
+	und genauso wie wir diese beide Werte z.B. addieren könnten, können wir auch die XOR Funktion &#39;^&#39; anwenden:</p>
+<pre>
+    int xx = r1 ^ r2;</pre>
+<p>
+	also, wir machen ein bitweises XOR der Bits von r1 mit denen von r2.&nbsp; Wenn wir als Bild-Beispiele das <em>Taj</em> und die <em>Mona Lisa</em> nehmen, dann kommt da eine lustige Mischung heraus auf der man weder das eine noch das andere erkennen kann.&nbsp; Interessant wird es wenn wir die Pixel dieses Mischlingwerkes nehmen und nochmal die XOR Funktion darüber laufen lassen: dann kommt nämlich wieder das ursprüngliche Bild zum Vorschein.&nbsp; Interessanterweise genau das Gegenstück.&nbsp;</p>
+<p>
+	Auf dem gleich Prinzip basiert auch das RAID-5 System das für die Ausfallsicherheit von Festplatten sorgt [4].</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/colorImage.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 111px; float: right;" />ColorImage</h2>
+<p>
+	Eine häufige Anwendung der Bildmanipulation ist die Reduzierung der Farben in einem Bild.&nbsp; Das ist eine schöne Anwendung für die Ganzzahl Division (Integer Division).&nbsp;</p>
+<pre>
+    int r = GImage.getRed(pixel);
+    r = (r / FACTOR) * FACTOR;</pre>
+<p>
+	Ursprünglich kann <em>r</em> ja Werte zwischen 0 und 255 annehmen.&nbsp; Wenn wir diese Zahl durch z.B. 64 teilen, dann haben wir nur noch Werte zwischen 0 und 3.&nbsp; Multiplizieren wir das wieder mit 64, so haben wir nur noch die Werte 0, 64, 128 und 192.&nbsp; Also es gibt nur noch vier Rotwerte.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/imageFilterSimple.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 111px; float: right;" />ImageFilterSimple</h2>
+<p>
+	Man kann auch viele andere Bildmanipulationen vornehmen.&nbsp; Z.B. kann man benachbarte Pixel einfach subtrahieren:</p>
+<pre>
+    int r01 = GImage.getRed(array[i][j - 1]);
+    int r11 = GImage.getRed(array[i][j]);
+    // difference
+    int xx = r11 - r01;
+    xx *= 10;
+    edge[i][j] = GImage.createRGBPixel(xx, xx, xx);</pre>
+<p>
+	Das Resultat entspricht einer einfachen Kantenerkennung.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/imageFilterMatrix.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 111px; float: right;" />ImageFilterMatrix</h2>
+<p>
+	Viel interessantere Bildmanipulationen werden auf einmal möglich wenn man sich bewusst wird, dass Arrays eigentlich Matrizen sind.&nbsp; Das darf man nicht so laut sagen, sonst wird man verbrannt [6].&nbsp; Aber wenn man das weiß, dann kann man ganz coole Sachen mit Bildern machen.&nbsp; Bei den Filtern sharpen, blur, edgeEnhance, edgeDetect, oder emboss wie sie aus jedem Bildbearbeitungsprogramm bekannt sind, handelt es sich eigentlich nur um die Anwendung einer Faltungsmatrix [5].&nbsp; Z.B. sieht die Matrix um ein Bild schärfer zu machen folgendermaßen aus:</p>
+<pre>
+    private int[][] currentFilter = { 
+        {  0, -1,  0 }, 
+        { -1,  5, -1 }, 
+        {  0, -1,  0 } 
+    }; </pre>
+<p>
+	Das Ausführen der Matrixmultiplikation (also der Anwendung des Filters auf das Bild) erledigt dann folgende Methode:</p>
+<pre>
+    // int alpha = (color &gt;&gt; 32) &amp; 0xFF;
+    // int red   = (color &gt;&gt; 16) &amp; 0xFF;
+    // int green = (color &gt;&gt; 8) &amp; 0xFF;
+    // int blue  = color &amp; 0xFF;
+    private int applyFilterToPixel(int x, int y) {
+        int r = 0;
+        int g = 0;
+        int b = 0;
+        for (int i = 0; i &lt;= 2; i++) {
+            for (int j = 0; j &lt;= 2; j++) {
+                r += ((array[x + i][y + j] <span style="color:#0000ff;">&gt;&gt;</span> 16) <span style="color:#0000ff;">&amp;</span> 0xFF) * currentFilter[j][i];
+                g += ((array[x + i][y + j] &gt;&gt; 8) &amp; 0xFF) * currentFilter[j][i];
+                b += ((array[x + i][y + j]) &amp; 0xFF) * currentFilter[j][i];
+            }
+        }
+        return GImage.createRGBPixel(checkBounds(r / currentFactor), checkBounds(g
+                / currentFactor), checkBounds(b / currentFactor));
+    }</pre>
+<p>
+	die man für jeden Pixel des Ursprungsbildes aufrufen muss.&nbsp; Das Beispiel ist auch deswegen interessant weil man mal eine praktische Anwendung des Rechtsverschiebungs Operators &quot;&gt;&gt;&quot; (right shift) und des bitweisen Und Operators &quot;&amp;&quot; sieht.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/Calculator.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 200px; float: right;" />Calculator</h2>
+<p>
+	Die Anwendungen für Arrays sind wirklich vielfältig.&nbsp; Sehr häufig helfen sie einem ganz viel Code einzusparen.&nbsp; Ein schönes Beispiel ist der Calculator aus dem letzten Kapitel.&nbsp; Man kann natürlich die Knöpfe, also JButtons, alle einzeln erzeugen, man kann das aber auch effektiver machen:</p>
+<pre>
+    private final String[] btnNames = { &quot;7&quot;, &quot;8&quot;, &quot;9&quot;, &quot;/&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;*&quot;,
+            &quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;-&quot;, &quot;.&quot;, &quot;0&quot;, &quot;=&quot;, &quot;+&quot; };
+
+    public void init() {
+        ...
+        setLayout(new GridLayout(4, 4));
+        for (int i = 0; i &lt; btnNames.length; i++) {
+            JButton btn = new JButton(btnNames[i]);
+            add(btn);
+        }
+        ...
+    }</pre>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/tictactoe2.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 216px; float: right;" />TicTacToeLogic</h2>
+<p>
+	Arrays können auch für Spiele ganz nützlich sein.&nbsp; Im vierten Kapitel haben wir ja schon die UI für das TicTacToe Spiel geschrieben.&nbsp; Jetzt sind wir soweit auch den Logik Teil zu verstehen.&nbsp; Das Spielfeld kann man nämlich als zwei-dimensionales Array auffassen:</p>
+<pre>
+    private int[][] board = new int[3][3];</pre>
+<p>
+	Ursprünglich sind alle Werte des Spielfelds auf 0 gesetzt.&nbsp; Wenn wir jetzt die Felder die Spieler eins besetzt hat mit einer 1 markieren und die die Spieler zwei besetzt hat mit einer 2 markieren, dann ist das eine perfekte Beschreibung des jeweiligen Spielstandes.&nbsp;</p>
+<p>
+	Wenn wir jetzt testen wollen ob ein bestimmter Zug erlaubt ist, dann müssen wir lediglich testen ob der Werte des Spielfelds an der Stelle 0 ist:</p>
+<pre>
+    public boolean isMoveAllowed(int player, int i, int j) {
+        if (board[i][j] == 0) {
+            board[i][j] = player;
+            return true;
+        }
+        return false;
+    }</pre>
+<p>
+	Wenn wir testen wollen ob ein Spieler gewonnen hat, dann müssen wir nachsehen, ob einer der Spieler eine vertikale, horizontale oder diagonale Reihe besetzt hat.&nbsp; Für die vertikale Reihe könnte man das so testen:</p>
+<pre>
+    private boolean checkVerticals() {
+        // player 1
+        for (int i = 0; i &lt; <span style="color:#0000ff;">3</span>; i++) {
+            if ((board[i][0] == 1) &amp;&amp; (board[i][1] == 1) &amp;&amp; (board[i][2] == 1)) {
+                return true;
+            }
+        }
+        // player 2
+        for (int i = 0; i &lt; <span style="color:#0000ff;">3</span>; i++) {
+            if ((board[i][0] == 2) &amp;&amp; (board[i][1] == 2) &amp;&amp; (board[i][2] == 2)) {
+                return true;
+            }
+        }
+        return false;
+    }</pre>
+<p>
+	Wir gehen einfach eine Reihe nach der anderen durch (for Schleife) und schauen ob alle drei Werte auf 1 (für Spieler 1) oder 2 (für Spieler 2) gesetzt sind.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/battleShip.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 231px; float: right;" />BattleShip</h2>
+<p>
+	Schiffe versenken [7] ist auch ein Spieleklassiker für dessen Umsetzung Arrays sehr nützlich sind.&nbsp; Unser BattleShip Spiel soll ein Spiel Mensch gegen Computer werden, soll heißen der Computer verteilt seine Schiffchen und wir müssen sie finden.</p>
+<p>
+	Genauso wie bei TicTacToe verwenden wir für das Spielfeld ein Array von Ganzzahlen:</p>
+<pre>
+    private int[][] board = new int[BOARD_SIZE][BOARD_SIZE];</pre>
+<p>
+	Die Schiffe selbst werden durch Zahlen repräsentiert: 5 steht für einen AircraftCarrier, 4 für ein Battleship, 3 für ein Submarine oder einen Destroyer und 2 für ein PatrolBoat.&nbsp; Um festzulegen wieviele es von jeder Schiffsart gibt, können wir auch wieder ein Array verwenden:</p>
+<pre>
+    private final int[] SHIP_SIZES = { 5, 4, 3, 3, 2 };</pre>
+<p>
+	D.h., wenn wir noch ein paar PatrolBoat haben möchten, dann fügen einfach noch ein paar 2er ein.</p>
+<p>
+	In der <em>setup()</em> Methode</p>
+<pre>
+    private void setup() {
+        drawLines();
+        initBoard();
+        addMouseListeners();
+    }</pre>
+<p>
+	zeichnen wir das Spielfeld, intialisieren die Boote, und fügen einen MouseListener hinzu.&nbsp; In der <em>initBoard()</em> Methode gehen wir einfach durch die Liste von Schiffen (SHIP_SIZES) und fügen eines nach dem anderen mittels der Methode <em>placeShip(int shipNr, int shipSize)</em> dem Spielfeld hinzu.&nbsp; Diese Methode kann ganz einfach sein, wenn man die Schiffe einfach nebeneinander plaziert, dann wird das Spiel aber ganz einfach, oder sie kann auch sehr kompliziert werden, wenn die Schiffe zufällig verteilt sein sollen.&nbsp; Für uns genügt die einfache Version.</p>
+<p>
+	Bleibt nur noch die <em>mousePressed()</em> Methode zu implementieren.&nbsp; Wir verwenden wieder unseren Trick mit der Ganzzahl Division:</p>
+<pre>
+    public void mousePressed(MouseEvent e) {
+        int i = e.getX() / STEP;
+        int j = e.getY() / STEP;
+        showLabelAt(i, j);
+    }</pre>
+<p>
+	und es bleibt die <em>showLabelAt(int i, int j)</em> Methode zu implementieren.&nbsp; Diese schaut im <em>board</em> Array nach ob an der Stelle ein Schiff ist:</p>
+<pre>
+    GLabel lbl = new GLabel(&quot;&quot; + board[i][j]);
+    if (board[i][j] == 0) {
+        lbl = new GLabel(&quot;.&quot;);
+    }</pre>
+<p>
+	Das ist wieder ein fieser Trick mit dem man sich ein paar unnötige Zeilen Code sparen kann.&nbsp; Den Label zeichnen wir dann einfach an der Position wo die Maus geklickt wurde.&nbsp; Und das wars.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/cityAtNight.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 150px; float: right;" />CityAtNight</h2>
+<p>
+	Wiederverwendung ist ein ganz zentrales Konzept der Objektorientierung.&nbsp; Das kann man sowohl mit Vererbung als auch mit Komposition erreichen.&nbsp; Wir beginnen mit einem Beispiel zur <em>Komposition</em>.&nbsp; Erinnern wir uns an Kapitel 2, dort haben wir einen Skyscraper programmiert.&nbsp; Wenn wir jetzt eine ganze Stadt zeichnen möchten, dann wäre es ganz praktisch wenn wir unsere Skyscraper wiederverwenden könnten:</p>
+<pre>
+public class CityAtNight extends GraphicsProgram {
+    private RandomGenerator rgen = new RandomGenerator();
+
+    public void run() {
+        for (int i = 0; i &lt; 8; i++) {
+            int cols = rgen.nextInt(4, 6);
+            int rows = rgen.nextInt(4, 8);
+            GSkyscraper h = new <span style="color:#0000ff;">GSkyscraper(rows, cols)</span>;
+
+            int x = rgen.nextInt(0, getWidth() - 40);
+            int y = rgen.nextInt(getHeight() / 4, getHeight()/2);
+            add(h, x, y);
+        }
+    }
+}</pre>
+<p>
+	Also bräuchten wir eine Klasse GSkyscraper die einen Skyscraper zeichnet.&nbsp; Da ein Skyscraper aus mehreren GRects besteht macht es Sinn, ähnlich wie beim GSmiley, das Ganze als GCompound aufzuziehen:</p>
+<pre>
+public class GSkyscraper extends <span style="color:#0000ff;">GCompound</span> {
+    ...
+}</pre>
+<p>
+	Wie bei jeder Klasse benötigen wir einen Konstruktor</p>
+<pre>
+    public GSkyscraper(int rows, int cols) {
+        ...
+    }</pre>
+<p>
+	in dem wir die Anzahl der Fensterreihen und -spalten übergeben.&nbsp; Je nachdem ob alle Skyscrapers gleich aussehen sollen oder unterschiedlich muss man dann noch etwas Zufall in die <em>addWindow()</em> Methode einfließen lassen.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/sevenSegmentDisplayProgram.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 150px; float: right;" />SevenSegmentDisplay</h2>
+<p>
+	Ein weiteres schönes Beispiel für Wiederverwendung mittels <em>Komposition</em> ist die Siebensegmentanzeige. Erinnern wir uns an Kapitel 2, dort haben wir eine Siebensegmentanzeige programmiert.&nbsp; Wenn wir jetzt mehrere dieser Siebensegmentanzeigen benötigen, z.B. für einen Zähler, einen Taschenrechner oder ein Uhr, dann wäre es praktisch wenn es eine Klasse <em>SevenSegmentDisplay</em> geben würde, die wir einfach mehrmals verwenden könnten, ähnlich einem GRect.</p>
+<p>
+	Da eine Siebensegmentanzeige aus mehreren GRects besteht macht es Sinn, ähnlich wie beim GSmiley, das Ganze als GCompound aufzuziehen:</p>
+<pre>
+public class SevenSegmentDisplay extends <span style="color:#0000ff;">GCompound</span> {
+    ...
+}</pre>
+<p>
+	Wie bei jeder Klasse benötigen wir einen Konstruktor</p>
+<pre>
+    public SevenSegmentDisplay(int width, int height, int ledWidth) {
+        ...
+    }</pre>
+<p>
+	in dem wir idealerweise die Breite und Höhe der Anzeige, sowie die Breite der LEDs vorgeben.&nbsp; Der Konstruktor sollte dann das Display aus GRects konstuieren.</p>
+<p>
+	Wirklich praktisch wäre dann noch eine <em>displayNumber(char c)</em> Methode,</p>
+<pre>
+    public void displayNumber(char c) {
+        turnAllSegmentsOff();
+        switch (c) {
+        case &#39;0&#39;:
+            int[] code0 = { 1, 1, 1, 1, 1, 0, 1 };
+            turnSegmentsOn(code0);
+            break;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;case &#39;1&#39;:
+        ...
+        }
+    }</pre>
+<p>
+	der man einfach eine Ziffer übergibt, und die diese dann anzeigt.&nbsp; Die <em>turnSegmentsOn()</em> Methode könnte wie folgt aussehen:</p>
+<pre>
+    private void turnSegmentsOn(int[] code) {
+        if (code[0] == 1) {
+            upperFrontVertical.setColor(colorOn);
+        }
+        ...
+    }</pre>
+<p>
+	Das SevenSegmentDisplay kann man dann ganz einfach in einem GraphicsProgram verwenden:</p>
+<pre>
+public class SevenSegmentDisplayProgram extends GraphicsProgram {
+    public void run() {
+        SevenSegmentDisplay ssd1 = new SevenSegmentDisplay(40, 80, 6);
+        add(ssd1);
+        ssd1.displayNumber(&#39;5&#39;);
+    }
+}</pre>
+<p>
+	Erweiterung: Anstelle des JTextField könnte man auch das SevenSegmentDisplay für den Calculator verwenden.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/birdFlocking.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 229px; float: right;" />BirdFlocking</h2>
+<p>
+	Schwarmverhalten lässt sich bei Fischen, Vögeln und vielen anderen Tieren beobachten.&nbsp; Interessanterweise lässt sich Schwarmverhalten relativ einfach simulieren, die Individuen im Schwarm (auch Boids genannt) müssen lediglich drei einfache Regeln befolgen [11]:</p>
+<ul>
+	<li>
+		Separation: halte Abstand von Deinen Nachbarn wenn Du ihnen zu nahe kommst (short range repulsion)</li>
+	<li>
+		Alignment: bewege Dich grob in die Richtung Deiner Nachbarn</li>
+	<li>
+		Cohesion: bewege Dich grob auf den gemeinsamen Mittelpunkt Deiner Nachbarn zu (long range attraction)</li>
+</ul>
+<p>
+	Die Simulation ist ähnlich wie im Planets Projekt, mit dem feinen Unterschied, dass anstelle von Newton&#39;s Schwerkraft, die Boid-Regeln gelten.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/gameOfLife.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 200px; float: right;" />GameOfLife</h2>
+<p>
+	Das größte Genie des letzten Jahrhunderts, John von Neumann, versuchte eine hypothetische Maschine zu konstruieren, die Kopien von sich selbst anfertigen konnte.&nbsp; Dies gelang ihm auch, allerdings hatte das mathematische Modell seiner Maschine sehr komplizierte Regeln.&nbsp; Dem britischen Mathematiker John Horton Conway gelang es anfang der 70er von Neumanns Ideen drastisch zu vereinfachen, heute bekannt unter dem Namen Conway&#39;s <em>Game of Life</em> [8].</p>
+<p>
+	Das Universum des Spiel des Lebens ist ein zweidimensionales Gitter aus quadratischen Zellen (GRects), von denen jede in einer von zwei möglichen Zuständen sein kann: lebend (schwarz) oder tot (weiß).&nbsp; Jede Zelle hat acht Nachbarn, und abhängig vom Zustand der Nachbarn entscheidet sich der eigene Zustand in der nächsten Runde nach folgenden Regeln:</p>
+<ul>
+	<li>
+		jede lebende Zelle mit weniger als zwei lebenden Nachbarn stirbt (Unter-Bevölkerung)</li>
+	<li>
+		jede lebende Zelle mit zwei oder drei lebenden Nachbarn lebt</li>
+	<li>
+		jede lebende Zelle mit mehr als drei lebenden Nachbarn stirbt (Über-Bevölkerung)</li>
+	<li>
+		jede tote Zelle mit genau drei lebenden Nachbarn wird eine lebende Zelle (Fortpflanzung)</li>
+</ul>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/mandelBrot.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 222px; float: right;" />Mandelbrot</h2>
+<p>
+	Die Apfelmännchen sind nach dem französischen Mathematiker Benoît Mandelbrot benannt.&nbsp; Es handelt sich dabei um sogenannte Fraktale, aber die meisten Leute finden sie einfach nur hübsch [9].&nbsp;</p>
+<p>
+	Die mathematische Gleichung die hinter der Mandelbrot Menge liegt ist sehr einfach:</p>
+<pre>
+    z_n+1 = z_n * z_n + c</pre>
+<p>
+	dabei sind <em>z</em> und <em>c</em> komplexe Zahlen.&nbsp; Es handelt sich hier um eine Iteration, d.h. wenn wir <em>z_n</em> kennen, dann können wir <em>z_n+1</em> ausrechnen.&nbsp; Die Anfangsbedingungen lauten, dass <em>z_0</em> gleich null sein soll und <em>c</em> ist der Punkt in der komplexen Ebene für den die Farbe ausgerechnet werden soll.&nbsp; Also wenn wir in x- und y-Koordinaten denken, dann ist&nbsp;</p>
+<pre>
+    c = x + i y</pre>
+<p>
+	die Anfangsbedingung.&nbsp; Alles was noch nötig ist, ist das Abbruchkriterium, wann sollen wir mit der Iteration aufhören?&nbsp; Entweder wenn z*z &gt;= 4 ist oder wenn die Anzahl der Iterationen größer als ein maximal Wert ist:</p>
+<pre>
+&nbsp;&nbsp;&nbsp; while ( (x*x + y*y &lt; 4) &amp;&amp; (iteration &lt; max_iteration) ) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;...
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;iteration++;
+&nbsp;&nbsp; &nbsp;}</pre>
+<p>
+	Damit das Ganze dann hübsch aussieht, nehmen wir die Anzahl der Iterationen und kodieren sie in Farbe:</p>
+<pre>
+    int color = RAINBOW_COLORS[iteration % RAINBOW_NR_OF_COLORS];</pre>
+<p>
+	Dabei ist <em>RAINBOW_COLORS</em> ein Farbarray, das wir beliebig initialisieren können.&nbsp; Zu guter Letzt brauchen wir noch eine <em>setPixel()</em> Methode, die es in der ACM Graphics Bibliothek eigentlich gar nicht gibt.&nbsp; Wir behelfen uns damit, dass wir kleine GRects zeichnen:</p>
+<pre>
+    private void setPixel(double x, double y, Color color) {
+        int i = (int) (((x - xMin) * WIDTH) / (xMax - xMin));
+        int j = (int) (((y - yMin) * HEIGHT) / (yMax - yMin));
+        GRect r = new GRect(1, 1);
+        r.setColor(color);
+        add(r, i, j);
+    }
+</pre>
+<p>
+	Das ist nicht gerade die schnellst und effektivste Art, aber sie funktioniert.</p>
+<p>
+	.</p>
+<hr />
+<h1>
+	Challenges</h1>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/planets.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 200px; float: right;" />Planets</h2>
+<p>
+	Ein schönes Beispiel für Wiederverwendung mittels <em>Vererbung</em> ist eine kleine Simulation des Sonne-Erde-Mond Systems.&nbsp; Visuell gesehen, sind Planeten nichts anderes als GOvals.&nbsp; Aber Planeten bewegen sich, d.h. sie haben eine Geschwindigkeit.&nbsp; GOvals haben aber keine Geschwindigkeit.&nbsp; Wir brauchen also ein GOval mit Geschwindigkeit.&nbsp; Genau das ist was Vererbung für uns tun kann:</p>
+<pre>
+class GPlanet extends GOval {
+    public double vx;
+    public double vy;
+
+    public GPlanet(int size) {
+        <span style="color:#0000ff;">super</span>(size, size);
+    }
+
+    public void move() {
+        move(vx, vy);
+    }
+}</pre>
+<p>
+	GPlanet ist also ein GOval, hat aber zusätzlich noch eine Geschwindigkeit <em>vx</em> und <em>vy</em>.&nbsp; Im Konstruktor rufen wir einfach den Konstruktor der Superklasse auf, also den Konstruktor von GOval, und der erzeugt ein GOval mit gegebener Höhe und Breite.&nbsp; Ansonsten benötigen wir lediglich eine <em>move()</em> Methode um unseren Planeten zu bewegen.</p>
+<p>
+	In unserem Planets GraphicsProgram wollen wir jetzt im setup() drei Planeten erzeugen, also</p>
+<pre>
+    private void setup() {
+        // create sun
+        sun = new GPlanet(SUN_MASS);
+        sun.setFilled(true);
+        sun.setColor(Color.YELLOW);
+        sun.vy = SUN_SPEED;
+        add(sun, (SIZE - SUN_MASS) / 2, (SIZE - SUN_MASS) / 2);
+
+        // create earth
+        ...
+
+        // create earth
+        ...
+
+    }</pre>
+<p>
+	Wir setzen hier den Radius der Sonne gleich der Masse der Sonne.&nbsp; Das ist nicht ganz richtig, für die Simulation aber nicht weiter schlimm.&nbsp; Als nächstes betrachten wir den GameLoop:</p>
+<pre>
+        while (true) {
+            sun.move();
+            earth.move();
+            moon.move();
+            calculateNewVelocities(sun, earth);
+            calculateNewVelocities(sun, moon);
+            calculateNewVelocities(earth, moon);
+            pause(DELAY);
+        }</pre>
+<p>
+	Wie üblich im GameLoop, bewegen wir erst die einzelnen Planeten und danach berechnen wir die neuen Geschwindigkeiten.&nbsp; Die Methode <em>calculateNewVelocities()</em> sieht etwas kompliziert aus, ist aber nichts anderes als Newton&#39;s Gravitationsgesetz.&nbsp;</p>
+<p>
+	An diesem Beispiel sieht man sehr schön, dass Simulationen nicht ganz einfach sind: denn nach der zweiten Umkreisung um die Sonne, verläßt uns unser Mond auf Nimmer-Wiedersehen... Schade.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/angryCanon.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 200px; float: right;" />AngryCanon</h2>
+<p>
+	Unser erstes Projekt das mit Tastatur Events arbeitet wurde von einem populären Spiel mit Vögeln und Schweinen inspiriert.&nbsp; Wie üblich müssen wir die Dinge etwas vereinfachen.&nbsp; Das Ziel ist ein blaues GRect, das wir mit einer Kugel (grünes GOval) treffen sollen.&nbsp; Geschossen wird die Kugel von einer Kanone.&nbsp;</p>
+<p>
+	Das schwierigste an diesem Spiel ist die Kanone: denn wir möchten, dass wir ihre Richtung ändern können, dass wir sie drehen können.&nbsp; Es stellt sich heraus, dass nur das GPolygon in der ACM Graphics Library diese Funktionalität bietet, nämlich eine <em>rotate()</em> Methode. Wir basteln unsere Kanone, also das Rohr, aus einem GPolygon.&nbsp; Damit das ganze dann hübsch aussieht verstecken wir die &quot;Mechanik&quot; der Kanone hinter einem roten GOval.</p>
+<p>
+	In der <em>setup()</em> Methode also basteln wir die Kanone, das Ziel ein blaues Rechteck, und wir fügen noch den KeyListener hinzu.&nbsp;</p>
+<p>
+	Als nächstes schreiben wir die <em>keyPressed()</em> Methode: dort wollen wir abhängig vom KeyCode, die Kanone entweder nach links oder rechts drehen,</p>
+<pre>
+    public void keyPressed(KeyEvent e) {
+        int code = e.getKeyCode();
+        switch (code) {
+        case 37:
+            angle += 5;
+            canon.rotate(5);
+            break;
+        case 39:
+            angle -= 5;
+            canon.rotate(-5);
+            break;
+        case 32:
+            fireBullet();
+            break;
+        }
+    }</pre>
+<p>
+	oder wenn der Spieler auf die Leertaste drückt wollen wir die Kugel abfeuern.&nbsp; Wir benötigen den Winkel <em>angle</em> als Instanzvariable, damit wir beim Abfeuern die Anfangsgeschwindigkeiten der Kugel setzen können:</p>
+<pre>
+    private void fireBullet() {
+        if (bullet == null) {
+            vx = -Math.sin(Math.toRadians(angle)) * BULLET_SPEED;
+            vy = -Math.cos(Math.toRadians(angle)) * BULLET_SPEED;
+
+            bullet = new GOval(BULLET_SIZE, BULLET_SIZE);
+            ...
+        }
+    }</pre>
+<p>
+	Die Bewegung der Kugel selbst wird dann im GameLoop berechnet:</p>
+<pre>
+    while (true) {    
+        if (bullet != null) {
+            moveBullet();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;    collisionWithWalls();
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;    collisionWithTarget();
+        }
+        pause(DELAY);
+    }</pre>
+<p>
+	In moveBullet() wollen wir die Kugel bewegen und wir müssen die Schwerkraft wirken lassen:</p>
+<pre>
+    private void moveBullet() {
+        bullet.move(vx, vy);
+        vy += GRAVITY;
+    }</pre>
+<p>
+	Kommt es zu Kollisionen mit der Wand (also oben, rechts, links oder unten) dann verschwindet die Kugel einfach:</p>
+<pre>
+    remove(bullet);
+    bullet = null;</pre>
+<p>
+	Kommt es zu Kollisionen mit dem blauen Rechteck, dann verschwindet die Kugel, das Rechteck und das Spiel ist vorbei.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/flappyBall.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 200px; float: right;" />FlappyBall</h2>
+<p>
+	Auch unser nächstes Projekt ist wieder von einem Spiel mit einem Vogel inspiriert:&nbsp; Allerdings ist unser Vogel ein GOval.&nbsp; Wir können den Vogel mit der Tastatur steuern, genauer der Leertaste.&nbsp; Und der Vogel muss durch ein Hindernis durchfliegen, zwei sich bewegende GRects.</p>
+<p>
+	Für das Spiel benötigen wir also einen Vogel (ball) und eine zweigeteilte Wand als Instanzvariablen:</p>
+<pre>
+    private GOval ball;
+    private GRect upperWall;
+    private GRect lowerWall;</pre>
+<p>
+	Im <em>setup()</em> initialisieren wir diese:&nbsp; Der Ball kommt einfach in die Mitte, und die beiden Rechtecke an den rechten Rand.&nbsp; Die Höhe des Spalts sollte zufällig sein, die Breite des Spalts sollte aber zweimal der Durchmesser des Balls sein.&nbsp; Und natürlich nicht vergessen den KeyListener hinzuzufügen.</p>
+<p>
+	Folgt der GameLoop:</p>
+<pre>
+    while (alive) {
+        moveBall();
+        moveWall();
+        checkForCollision();
+        pause(DELAY);
+    }</pre>
+<p>
+	Der Ball bewegt sich nur nach oben oder unten.&nbsp; Normalerweise wirkt die Schwerkraft auf ihn, deswegen fällt er normalerweise nach unten.&nbsp; Die Wand bewegt sich mit konstanter Geschwindigkeit von rechts nach links.&nbsp; Wenn sie den linken Bildschirmrand erreicht verschwindet sie einfach, und eine neue Wand erscheint am rechten Rand.&nbsp;</p>
+<p>
+	Was Kollisionen angeht, müssen wir zum einen nach Kollisionen mit der Wand checken: falls es da eine gibt, ist das Spiel vorbei.&nbsp; Bei Kollisionen mit dem Boden, macht es Sinn die Ball-Geschwindigkeit einfach auf 0 zu setzen, und den Ball einfach unten am Bildschirm zu positionieren.</p>
+<p>
+	Bleibt noch zu überlegen, was zu tun ist, wenn die Leertaste gedrückt wird?&nbsp; Das ist überraschend einfach:</p>
+<pre>
+    public void keyTyped(KeyEvent e) {
+        ballVel = -5.0;
+    }</pre>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/speedRace.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 200px; float: right;" />SpeedRace</h2>
+<p>
+	Die erste Version von <em>Speed Race</em> erschien im Jahr 1974 geschrieben von Tomohiro Nishikado, dem Autor von <em>Space Invaders</em> [10].&nbsp; Es handelt sich salopp gesagt um GTA 0.1, also ein Autorennspiel der ersten Generation.&nbsp; Interessant daran ist wie einfach sich das Gehirn doch überlisten lässt: einfach ein paar weiße Rechtecke die sich von oben nach unten bewegen, schon glaubt man auf einer Straße zu fahren!</p>
+<p>
+	Effektiv besteht das Spiel aus einer ganzen Menge Rechtecke.&nbsp; Das erste ist die Straße: die besteht aus zwei Teilen: einem großen schwarzes Rechteck das gar nichts macht und dem Mittelstreifen (middleLane) der aus mehreren (5) weißen Rechtecken besteht, die sich mit konstanter Geschwindigkeit von oben nach unten bewegen.&nbsp;</p>
+<p>
+	Es folgt das eigene Auto (car): ein rotes Rechteck, dass sich nur nach links und rechts steuern lässt.&nbsp; Und schließlich die anderen Autos (otherCars), bei denen es sich auch nur um farbige Rechtecke handelt, die sich auch von oben nach unten durch den Bidlschirm bewegen.&nbsp; Im <em>setup()</em> werden wie üblich die ganzen Rechtecke angelegt und der KeyListener hinzugefügt.</p>
+<p>
+	Der Code für den GameLoop hält sich auch in Grenzen:</p>
+<pre>
+    while (true) {
+        moveRoad();
+        moveCars();
+        checkForCollisionCarsWithWall();
+        pause(DELAY);
+    }</pre>
+<p>
+	Als erstes bewegen wir die Stráße.&nbsp; Das ist eigentlich total trivial, wenn wir uns an unseren Freund den Remainder Operator (%) erinnern:</p>
+<pre>
+    private void moveRoad() {
+        for (int i = 0; i &lt; NR_OF_LANES; i++) {
+            middleLane[i].move(0, CAR_SPEED);
+            double x = middleLane[i].getX();
+            double y = middleLane[i].getY() + LANE_LENGTH;
+            middleLane[i].setLocation(x, y % SIZE - LANE_LENGTH);
+        }
+    }</pre>
+<p>
+	if-else war gestern.&nbsp; Noch einfacher ist moveCars(), wir bewegen einfach ein Auto nach dem andern.&nbsp; In <em>checkForCollisionCarsWithWall()</em> wollen wir eigentlich nur feststellen ob eines der <em>otherCars</em> den Bildschirm unten verlassen hat: dann schicken wir es einfach oben wieder auf die Reise, allerdings an einer anderen, zufälligen x-Posiiton.</p>
+<p>
+	Bleibt noch die <em>keyPressed()</em> Methode: wenn der Spieler auf die linke Pfeiltaste drückt (keyCode = 37), dann bewegen wir das Auto (car) einfach um 5 Pixel nach links, wenn er auf die rechte Pfeiltaste drückt (keyCode = 39), nach rechts um 5 Pixel.&nbsp; Hätte komplizierter sein können.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/geometryRun.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />GeometryRun</h2>
+<p>
+	Viele von uns haben einen bleibenden Schaden vom Matheunterricht in der Schule davon getragen, deswegen vermeiden wir geometrische Objekte wie die Pest.&nbsp; In diesem Spiel geht es darum, dass wir (ein grünes GOval) unter allen Umständen es vermeiden müssen (mit der Leertaste) mit den ankommenden geometrischen Objekten (GRects) zu kollidieren.&nbsp;</p>
+<p>
+	Wie üblich überlegen wir uns zunächst welche Instanzvariablen nötig sind:</p>
+<pre>
+    private GeometryObstacle[] obstacles;
+    private Geometry runner;</pre>
+<p>
+	Bei der <em>Geometry</em> Klasse handelt es sich einfach um ein GOval, bei der <em>GeometryObstacle</em> um ein GRect.&nbsp; Beide haben aber noch zusätzlich eine Geschwindigkeit:</p>
+<pre>
+public class Geometry <span style="color:#0000ff;">extends</span> GOval <span style="color:#0000ff;">implements</span> GeometryConstants {
+    public int vx = 0;
+    public int vy = 0;
+
+&nbsp;&nbsp;&nbsp; public Geometry() {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;super(DASH_SIZE, DASH_SIZE);
+&nbsp;&nbsp; &nbsp;}
+
+    public void move() {
+        this.move(vx, vy);
+    }
+}</pre>
+<p>
+	Das mit <em>extends</em> haben wir ja schon gesehen, neu ist das <em>implements</em>.&nbsp; In diesem Projekt haben wir drei Klassen: <em>GeometryRun</em>, <em>Geometry</em> und <em>GeometryObstacle</em>.&nbsp; Alle drei haben Konstanten, und teilweise die gleichen Konstanten.&nbsp; Damit wir die aber nicht doppelt und dreifach schreiben müssen, fassen wir einfach alle Konstanten in ein <em>Interface</em> zusammen:</p>
+<pre>
+public interface GeometryConstants {
+    public final int APP_WIDTH = 400;
+    public final int APP_HEIGHT = 200;
+    public final int GRAVITY = 2;
+    public final int DELAY = 50;
+
+    public final int NR_OF_OBSTACLES = 3;
+    public final int OBSTACLES_SIZE = 40;
+    public final int OBSTACLES_SPEED = 5;
+
+    public final int DASH_SIZE = 30;
+    public final int DASH_JUMP = 20;
+    public final int DASH_X_POS = APP_WIDTH / 2;
+    public final int DASH_Y_POS = APP_HEIGHT - 2 * OBSTACLES_SIZE;
+}</pre>
+<p>
+	Und damit wir die Konstanten benutzen können müssen wir einfach &quot;implements GeometryConstants&quot; an die Klassendeklaration anhängen.</p>
+<p>
+	Machen wir weiter mit unserem Spiel, wir beginnen mit dem <em>setup()</em>: wir initialisieren den <em>runner</em> und die <em>obstacles</em>.&nbsp; Den <em>runner</em> plazieren wir in die Mitte, die <em>obstacles</em> plazieren wir unten am Bildschirm, an zufälligen x-Positionen.&nbsp; Und den KeyListener dürfen wir nicht vergessen.</p>
+<p>
+	Der GameLoop ist wieder ganz einfach:</p>
+<pre>
+    while (true) {
+        moveObstacles();
+        moveDash();
+        checkForCollision();
+        pause(DELAY);
+    }</pre>
+<p>
+	Die <em>obstacles</em> bewegen sich mit konstanter Geschwindigkeit von rechts nach links, und auf den <em>runner</em> wirkt nur die Schwerkraft.&nbsp; Die <em>checkForCollision()</em> Methode muss einmal dafür sorgen, dass <em>obstacles</em> die links verschwinden rechts wieder erscheinen, und sollte Kollision zwischen unserem <em>runner</em> und den <em>obstacles</em> erkennen.</p>
+<p>
+	Bleibt noch die <em>keyPressed()</em> Methode: wann immer die Leertaste gedrückt wird, soll die y-Geschwindigkeit des runners einen kleinen Stups erhalten:</p>
+<pre>
+    runner.vy -= DASH_JUMP;</pre>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/jumpAndRun.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 122px; float: right;" />JumpAndRun</h2>
+<p>
+	GeometryRun ist eigentlich ein typisches Jump-and-Run Spiel.&nbsp; Donkey Kong [13] war eines der ersten bekannten Spiele dieses Genres, das im Englischen auch unter dem Begriff &quot;Platform Game&quot; bekannt ist [12].&nbsp; Was Jump-and-Run Spiele ausmacht ist zum einen, dass es verschiedene Objekte gibt, und zum anderen, dass es verschiedene Levels gibt.</p>
+<p>
+	In unserem <em>JumpAndRun</em> Projekt haben wir deshalb folgende Instanzvariablen:</p>
+<pre>
+    private GOval ball;
+    private GObject[] movingObject = new GObject[12];</pre>
+<p>
+	Wir haben also einen <em>ball</em> für den Spieler und die <em>movingObjects</em> ein Array von GObjects.&nbsp; D.h. das könnten GOval, GRects, oder jedes andere GObject sein.&nbsp; Um welches GObject es sich handeln soll, bestimmen wir mit dem String <em>world</em>:</p>
+<pre>
+    private String world = &quot;  RRRR  O   RO  OOO  R&quot;;</pre>
+<p>
+	Wenn in dem String ein &#39;R&#39; steht, soll an der Stelle ein GRect erzeugt werden, für ein &#39;O&#39; ein GOval, und ansonsten nichts.&nbsp; D.h. mit verschiedenen <em>world</em> Strings können wir verschiedene Levels beschreiben.&nbsp; Und ein Level Editor würde nichts anderes machen als diesen String zu editieren.</p>
+<p>
+	Was macht die <em>setup()</em> Methode?&nbsp; Sie erzeugt den <em>ball</em>, fügt den KeyListener hinzu und erzeugt die Welt:</p>
+<pre>
+    private void createNewObjects() {
+        for (int i = 0; i &lt; movingObject.length; i++) {
+            switch (world.charAt(i)) {
+            case &#39;R&#39;:
+                GRect rect = new GRect(WIDTH + i * BALL_DIAM, Y_START, BALL_DIAM, BALL_DIAM);
+                rect.setColor(rgen.nextColor());
+                rect.setFilled(true);
+                rect.setFillColor(rgen.nextColor());
+                movingObject[i] = rect;
+                add(movingObject[i]);
+                break;
+            case &#39;O&#39;:
+                ...
+            default:
+                movingObject[i] = null;
+                break;
+            }
+        }
+    }</pre>
+<p>
+	Der GameLoop ist identisch zum letzten Projekt.&nbsp; Was etwas anders ist, ist die <em>checkForCollisionWithObjects()</em> Methode:</p>
+<pre>
+    private void checkForCollisionWithObjects() {
+        GObject obj = getElementAt(ball.getX() + BALL_DIAM / 2, ball.getY()
+                + BALL_DIAM + 1);
+        if ((obj != null)) {
+            if (obj instanceof GRect) {
+                ballVel = 0.0;
+                // ball.setLocation(X_START, HEIGHT - BALL_OFFSET);
+            } else {
+                alive = false;
+            }
+        }
+    }</pre>
+<p>
+	denn abhängig vom Objekt-Typ soll etwas anderes passieren: auf GRects können wir nämlich stehen, aber wenn wir mit GOvals in Berührung kommen, sterben wir.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/minesClone.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 200px; float: right;" />MinesClone</h2>
+<p>
+	Wir alle haben schon einmal das Spiel <em>MineSweeper</em> (oder <em>Mines</em>) gespielt.&nbsp; In dem Spiel geht es darum durch logisches Denken herauszufinden, hinter welchen Feldern Minen versteckt sind [14].</p>
+<h3>
+	1. Spielfeld</h3>
+<p>
+	Die erste Frage die wir uns stellen müssen: wie wollen wir das Spielfeld darstellen?&nbsp; Eine Möglichkeit ist ein zweidimensionales Array&nbsp; von chars:</p>
+<pre>
+    private char[][] field = new char[FIELD_SIZE][FIELD_SIZE];</pre>
+<p>
+	Warum chars?&nbsp; Weil es dann recht einfach ist darzustellen was sich in der jeweilige Zelle befindet, z.B. könnte ein &#39;M&#39; eine Mine darstellen und ein Lehrzeichen &#39; &#39; bedeutet, dass die Zelle leer ist.&nbsp;</p>
+<p>
+	Natürlich müssen wir das Array initialisieren und wir sollten ein paar Minen verteilen.&nbsp; Das tun wir mit der Methode <em>initialzeField()</em>:</p>
+<pre>
+    for (int i = 0; i &lt; NUMBER_OF_MINES; i++) {
+        int x = rgen.nextInt(0, FIELD_SIZE - 1);
+        int y = rgen.nextInt(0, FIELD_SIZE - 1);
+        field[x][y] = &#39;M&#39;;
+    }</pre>
+<h3>
+	2. Minen in der Umgebung</h3>
+<p>
+	Nachdem wir die Minen versteckt haben, müssen wir zählen, wieviele Minen sich in der jeweilige Umgebung einer Zelle befinden.&nbsp; Das können wir natürlich auch selbst, aber ein netter Buchautor hat das schon mal für uns erledigt:</p>
+<pre>
+    MinesHelper.countMines(field);</pre>
+<p>
+	Diese Methode nimmt unser Spielfeld Array als Parameter und verändert es.&nbsp; Das geht deshalb weil Arrays ja als Referenzen übergeben werden (pass-by-reference), also im Original.&nbsp; Jede Zelle (außer Minen) enthält danach die Ziffer die der Anzahl der angrenzenden Minen entspricht:</p>
+<table align="center" border="0" cellpadding="10" cellspacing="10" style="width: 100%;">
+	<tbody>
+		<tr>
+			<td style="text-align: center; vertical-align: middle;">
+				<p style="margin-left: 40px;">
+					<img alt="" src="../images/mines_array_initial.png" style="width: 153px; height: 160px;" /><br />
+					vorher</p>
+			</td>
+			<td style="text-align: center; vertical-align: middle;">
+				<p>
+					<img alt="" src="../images/mines_array_modified.png" style="width: 171px; height: 160px;" /><br />
+					nachher</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<p>
+	&nbsp;</p>
+<h3>
+	<img alt="" src="../images/Mines_initial.png" style="width: 200px; height: 233px; float: right;" />3. Spielfeld anzeigen</h3>
+<p>
+	Nachdem unsere Datenstruktur (das Array) jetzt steht, machen wir mit dem grafischen Teil weiter.&nbsp; Als erstes schreiben wir die&nbsp; <em>drawInitialField()</em> Methode.&nbsp; Da am Anfang alle Zellen noch verdeckt sind, ist das ganz einfach, wir zeichnen einfach 8 * 8 &quot;initial.png&quot; Bilder.&nbsp; Das geht ganz einfach mit der <em>GImage</em> Klasse:</p>
+<pre>
+    GImage img = new GImage(&quot;initial.png&quot;);
+&nbsp;&nbsp; &nbsp;add(img, i * PIXEL_PER_TILE, j * PIXEL_PER_TILE);</pre>
+<p>
+	Unser Spiel sieht jetzt dem Original schon sehr ähnlich.</p>
+<h3>
+	4. MouseEvents</h3>
+<p>
+	Um auf Klicks der Maustasten reagieren zu können müssen wir natürlich den MouseListener im Setup hinzufügen.&nbsp; Als nächstes implementieren wir die <em>mouseClicked()</em> Methode. Wenn die Maus geklickt wurde, müssen wir als erstes herausfinden, auf welche Zelle der Spieler geklickt hat.&nbsp; Hier hilft uns wieder unser alter Freund Ganzzahl-Division:</p>
+<pre>
+    int x = e.getX() / PIXEL_PER_FIELD;
+    int y = e.getY() / PIXEL_PER_FIELD;</pre>
+<p>
+	Mit diesen Koordination können wir in unserem Array <em>field[x][y]</em> nachsehen was sich dort befindet:</p>
+<pre>
+    if (field[x][y] == &#39;M&#39;) {
+        ...
+    } else if (field[x][y] == &#39;0&#39;) {
+        ...
+    } else {
+        ...
+    }</pre>
+<p>
+	Wenn der Spieler auf eine Mine geklickt hat, dann ist das Spiel vorbei.&nbsp; Dann könnte man eine Methode <em>drawWholeField()</em> schreiben, die das gesamte Spielfeld aufdeckt.&nbsp; Andernfalls, sollten wir die Methode <em>drawOneTile(x, y)</em> aufrufen, die an der Stelle x,y das richtige Bild für diese Zelle zeichnet, also das Bild einer Mine (&quot;mine.png&quot;) falls es sich um eine Mine handelt, oder das Bild für das leer Feld (&quot;empty.png&quot;) überlagert mit einem GLabel, der die Anzahl der angrenzenden Minen anzeigt. Wenn man möchte, könnte man den GLabel auch noch die passende Farbe aus dem LABEL_COLORS[] Array geben.</p>
+<h3>
+	5. Markieren von Zellen</h3>
+<p>
+	Ein wichtiger Aspekt fehlt noch in unserem MinesClone: und zwar das Markieren von Zellen als potentielle Minen.&nbsp; Im Original geht das mit der rechten Maustaste.&nbsp; Das ist eigentlich ganz einfach, denn der MouseEvent enthält nämlich die Information welche der Maustasten gedrückt wurde:</p>
+<pre>
+    if (e.getButton() == MouseEvent.BUTTON3) {  ...  }</pre>
+<p>
+	Wenn also der Spieler die dritte Maustaste gedrückt hat, dann soll das Bild &quot;marked.png&quot; an der entsprechenden Stelle gezeichnet werden.</p>
+<p>
+	Auch in unserem MinesClone verwenden wir wieder ein Interface (<em>MinesConstant</em>) wo wir alle unsere Konstanten speichern.</p>
+<h3>
+	Erweiterungen</h3>
+<p>
+	Man kann sich noch eine ganze Menge Erweiterungen zu unserem MinesClone denken:</p>
+<ul>
+	<li>
+		Wenn der Spieler auf eine Mine klickt, könnte man diese als explodierte Mine zeichnen, um sie von den anderen Minen zu unterscheiden</li>
+	<li>
+		Man könnte eine Methode <em>discoverEmtpyTiles()</em> schreiben: wenn der Spieler auf ein leere Kachel klickt, dann könnten alle leeren umliegenden Kacheln aufgedeckt werden</li>
+	<li>
+		Wenn der Benutzer auf eine Mine klickt, und damit verliert, können Sie die folgenden Zeilen verwenden, um einen Dialog mit dem Benutzer anzuzeigen:<br />
+		<br />
+		<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; IODialog dia = getDialog();<br />
+		&nbsp;&nbsp;&nbsp; dia.println(&quot;You lost!&quot;);</span></li>
+</ul>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/Asteroids.png" style="width: 200px; height: 200px; float: right; margin: 5px;" />Asteroids</h2>
+<p>
+	Laut Wikipedia &quot;ist Asteroids einer der größten Erfolge aller Zeiten in der Geschichte der Computerspiele&quot; [15].&nbsp; Das soll uns nicht davor abschrecken <em>Asteroids</em> selbst zu entwickeln.&nbsp; In dem Spiel geht es darum mit einem Raumschiff durch ein Asteroiden Feld zu fliegen.&nbsp; Und natürlich geht es darum nicht mit den Asteroiden zusammenzustoßen.</p>
+<h3>
+	1. Vorgefertigte Klassen</h3>
+<p>
+	Damit wir es schaffen das Spiel in einer vertretbaren Zeit zu entwickeln sind bereits einige Klassen vorgefertigt.&nbsp; Allerdings wenn wir <em>MarsLander</em> uns genauer anschauen, dann ist da nichts Neues:</p>
+<ul>
+	<li>
+		<strong>GAsteroid:</strong>&nbsp; ist ein GRect mit Geschwindigkeit vx und vy, sowie einer move() Methode.</li>
+	<li>
+		<strong>GBullet:</strong>&nbsp; ist ein GOval, ansonsten identisch zu GAsteroid.</li>
+	<li>
+		<strong>GSpaceShip:</strong>&nbsp; ist ein GPolygon, genauso wie GAsteroid hat es Geschwindigkeit vx und vy, sowie eine move() Methode.&nbsp; Zusätzlich kann es sich aber drehen, <em>rotate()</em>, und beschleunigen via <em>startEngine()</em>.</li>
+</ul>
+<p>
+	Auch gibt es wieder ein Interface für die Konstanten, <em>AsteroidConstants</em>.</p>
+<p>
+	In der <em>setup()</em> Methode initialisieren wir das Raumschiff, die Asteroiden und fügen den KeyListener hinzu.&nbsp; Das Raumschiff soll in der Mitte des Bildschirms starten.&nbsp; Es soll zehn Asteroiden geben, die blau sein sollen und zufällig verteilt sein sollen.&nbsp; Auch die Geschwindigkeiten sollen zufällig sein:</p>
+<pre>
+    asteroids[i].vx = rgen.nextInt(-ASTEROID_MAX_SPEED, ASTEROID_MAX_SPEED);
+    asteroids[i].vy = rgen.nextInt(-ASTEROID_MAX_SPEED, ASTEROID_MAX_SPEED);</pre>
+<h3>
+	2. Game Loop</h3>
+<p>
+	Der GameLoop von Asteroids ist nur geringfügig komplizierter verglichen mit unseren anderen Projekten:</p>
+<pre>
+    public void run() {
+        setup();
+        waitForClick();
+        while (spaceShip != null) {
+            moveSpaceShip();
+            moveAsteroids();
+            moveBullet();
+            checkForCollisions();
+            pause(DELAY);
+        }
+        displayGameOver();
+    }</pre>
+<p>
+	Nach dem <em>setup()</em> warten wir bis der Spieler mit der Maus irgendwohin klickt.&nbsp; Dann beginnt das Spiel: in jeder Iteration bewegen wir erst das Raumschiff, dann die Asteroiden, gefolgt von der Kugel, falls eine abgefeuert wurde.&nbsp; Und natürlich müssen wir alle möglichen Kollisionen checken, dazu später mehr.</p>
+<h3>
+	3. Key Events</h3>
+<p>
+	Das Raumschiff wird über die Tastatur gesteuert, also müssen wir die <em>keyPressed()</em> Methode implementieren:</p>
+<pre>
+    public void keyPressed(KeyEvent e) {
+        int code = e.getKeyCode();
+        // your code...
+        
+    } </pre>
+<p>
+	Wenn der Spieler auf die nach oben Pfeiltaste (38) drückt, dann soll das Raumschiff beschleunigen (<em>startEngine()</em>), drückt er auf die linke Pfeiltaste (37) soll sich das Raumschiff um 10 Grad nach links drehen, drückt er auf die rechte Pfeiltaste (39), dann soll sich das Raumschiff um 10 Grad nach rechts drehen, also -10 Grad.&nbsp;</p>
+<p>
+	Soweit, so gut.&nbsp; Wenn wir unser Spiel jetzt mal kurz antesten, dann sollten die Asteroiden durch die Gegend fliegen, und unser Raumschiff sollte sich drehen können und beschleunigen.</p>
+<p>
+	Was noch fehlt ist unsere Selbstverteidigung: wenn wir auf die Leertaste drücken, soll das Raumschiff eine Kugel abfeuern.&nbsp; Also benötigen wir noch einen Eintrag in die <em>keyPressed()</em> Methode: wenn der Spieler die Leertaste drückt (&#39; &#39;), dann soll die Methode <em>fireBullet()</em> aufgerufen werden.&nbsp; In <em>fireBullet()</em> soll also eine neue GBullet erzeugt werden, und zwar an der Position des Raumschiffs, und mit der folgenden Geschwindigkeit:</p>
+<pre>
+    bullet.vx = -Math.sin(Math.toRadians(spaceShip.angle)) * BULLET_SPEED;
+    bullet.vy = -Math.cos(Math.toRadians(spaceShip.angle)) * BULLET_SPEED;</pre>
+<p>
+	Ein kleiner Test sollte zeigen, dass wir jetzt Kugeln abfeuern können.</p>
+<h3>
+	4. Kollisionen</h3>
+<p>
+	Interessant wird das Spiel durch die Kollisionen.&nbsp; Alles in allem gibt es fünf verschiedene:</p>
+<pre>
+    private void checkForCollisions() {
+        checkForCollisionAsteroidsWithWall();
+        checkForCollisionSpaceShipWithWall();
+        checkForCollisionBulletWithWall();
+        checkForCollisionBulletWithAsteroid();
+        checkForCollisionAsteroidWithSpaceShip();
+    }</pre>
+<p>
+	Die Kollisionen mit der Wand sind die einfachsten.&nbsp; Sowohl das Raumschiff, als auch die Asteroiden sollen wenn sie den Bildschirm verlassen einfach auf der gegenüberliegenden Seite des Bildschirms wieder erscheinen.&nbsp; Sollte die Kugel den Bildschirm verlassen, dann soll sie einfach verschwinden:</p>
+<pre>
+    remove(bullet);
+    bullet = null;</pre>
+<p>
+	Um Kollisionen zwischen der Kugel und einem Asteroiden festzustellen, verwenden wir die getElementAt() Methode: falls an der Stelle wo die Kugel ist sich ein GObject befindet, dann muss das ein Asteroid sein.&nbsp; Wir entfernen dann den Asteroiden und die Kugel:</p>
+<pre>
+    remove(obj);
+    remove(bullet);
+    bullet = null;</pre>
+<p>
+	Ganz wichtig, wir setzen nicht das <em>obj</em> auf <em>null</em> (warum?)!</p>
+<p>
+	Bleiben noch Kollisionen zwischen Raumschiff und Asteroiden: für das Raumschiff sind die katastrophal, denn die führen zum Ende des Spiels.&nbsp; Wir setzen einfach das Raumschiff auf <em>null</em>,</p>
+<pre>
+    remove(spaceShip);
+    spaceShip = null;</pre>
+<p>
+	und das beendet damit den GameLoop.</p>
+<h3>
+	Erweiterungen</h3>
+<p>
+	Man kann sich noch eine ganze Menge Erweiterungen zu unserem Asteroids Spiel denken:</p>
+<ul>
+	<li>
+		Game over:&nbsp; wir könnten noch eine Methode <em>displayGameOver()</em> schreiben, die einen großen Text (SansSerif-36) in der Mitte des Bildschirms anzeigt.</li>
+	<li>
+		Hyperspace:&nbsp; Der Spieler kann auch das Raumschiff in den Hyperraum zu senden, so dass es an einer zufälligen Stelle auf dem Bildschirm wieder erscheint. Natürlich besteht das Risiko, sich dabei selbst zu zerstören wenn man innerhalb eines Asteroiden wieder auftaucht.</li>
+	<li>
+		Hübschere Asteroiden:&nbsp; im echten Spiel sind die Asteroiden nicht einfach nur GRects, sondern hübsche GPolygons.&nbsp; Wir müssen eigentlich nur die Klasse <em>GAsteroid</em> so modifizieren, dass die Asteroiden wie die im echten Spiel aussehen.</li>
+	<li>
+		Asteroiden teilen (schwer):&nbsp; im echten Spiel verschwinden die Asteroiden nicht einfach wenn sie von einer Kugel getroffen werden, sondern sie halbieren sich.&nbsp; Die kleineren Teile bewegen sich dann mit unterschiedlichen Geschwindigkeiten in unterschiedliche Richtungen.&nbsp; Das ist mit einem Array nicht so einfach, wenn man aber eine ArrayList verwendet (nächstes Kapitel), dann ist das gar nicht so schwer.</li>
+</ul>
+<p>
+	.</p>
+<hr />
+<h1>
+	Fragen</h1>
+<ol>
+	<li>
+		Nennen Sie zwei Merkmale einer objektorientierten Sprache.<br />
+		&nbsp;</li>
+	<li>
+		Geben Sie ein Beispiel für Vererbung.<br />
+		&nbsp;</li>
+	<li>
+		Nennen Sie jeweils den Verursacher für die folgenden Events, bzw was passieren muss damit einer dieser Events ausgelöst wird:
+		<ul>
+			<li>
+				MouseEvent</li>
+			<li>
+				KeyEvent</li>
+			<li>
+				ActionEvent<span id="cke_bm_88E" style="display: none;">&nbsp;</span><br />
+				&nbsp;</li>
+		</ul>
+	</li>
+	<li>
+		Beschreiben Sie die Schritte die nötig sind, damit ein GraphicsProgram&nbsp; auf Tastatureingaben (Key Events) reagieren kann.<br />
+		&nbsp;</li>
+	<li>
+		Deklarieren Sie ein Array von Ganzzahlen (int) mit fünf Elementen, das die Zahlen von 1 bis 5 enthält.<br />
+		&nbsp;</li>
+	<li>
+		Vergleichen Sie die beiden Codezeilen:<br />
+		<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp; &nbsp;&nbsp; GOval[] circles = new GOval[4];<br />
+		&nbsp;&nbsp; &nbsp;&nbsp; GOval o = new GOval(0,0,100,100);</span><br />
+		Was ist der Unterschied?</li>
+</ol>
+<p>
+	.</p>
+<hr />
+<h1>
+	Referenzen</h1>
+<p>
+	Referenzen aus Kapitel 2 bilden auch in diesem Kapitel die Grundlage.&nbsp; Weiter Details zu vielen der Projekte liefert die Wikipedia.</p>
+<p>
+	[1] Taj Mahal, Wikipedia, <a href="https://en.wikipedia.org/wiki/File:Taj_Mahal_(Edited).jpeg">https://en.wikipedia.org/wiki/File:Taj_Mahal_(Edited).jpeg</a>, Author: Yann; edited by Jim Carter, License: Creative Commons Attribution-Share Alike 4.0</p>
+<p>
+	[2] Three algorithms for converting color to grayscale, <a href="http://www.johndcook.com/blog/2009/08/24/algorithms-convert-color-grayscale/">www.johndcook.com/blog/2009/08/24/algorithms-convert-color-grayscale/</a></p>
+<p>
+	[3] Steganographie, <a href="https://de.wikipedia.org/wiki/Steganographie">https://de.wikipedia.org/wiki/Steganographie</a></p>
+<p>
+	[4] RAID, <a href="https://de.wikipedia.org/wiki/RAID">https://de.wikipedia.org/wiki/RAID</a></p>
+<p>
+	[5] GNU Image Manipulation Program, Faltungsmatrix, <a href="http://docs.gimp.org/de/plug-in-convmatrix.html">http://docs.gimp.org/de/plug-in-convmatrix.html</a></p>
+<p>
+	[6] Giordano Bruno, <a href="https://de.wikipedia.org/wiki/Giordano_Bruno">https://de.wikipedia.org/wiki/Giordano_Bruno</a></p>
+<p>
+	[7] Schiffe versenken, <a href="https://de.wikipedia.org/wiki/Schiffe_versenken">https://de.wikipedia.org/wiki/Schiffe_versenken</a></p>
+<p>
+	[8] Conways Spiel des Lebens, <a href="https://de.wikipedia.org/wiki/Conways_Spiel_des_Lebens">https://de.wikipedia.org/wiki/Conways_Spiel_des_Lebens</a></p>
+<p>
+	[9] Mandelbrot-Menge, <a href="https://de.wikipedia.org/wiki/Mandelbrot-Menge">https://de.wikipedia.org/wiki/Mandelbrot-Menge</a></p>
+<p>
+	[10] Tomohiro Nishikado, Speed Race, <a href="https://en.wikipedia.org/wiki/Tomohiro_Nishikado#Speed_Race">https://en.wikipedia.org/wiki/Tomohiro_Nishikado#Speed_Race</a></p>
+<p>
+	[11] Flocking (behavior), <a href="https://en.wikipedia.org/wiki/Flocking_(behavior)#Flocking_rules">https://en.wikipedia.org/wiki/Flocking_(behavior)#Flocking_rules</a></p>
+<p>
+	[12] Platform game, <a href="https://en.wikipedia.org/wiki/Platform_game">https://en.wikipedia.org/wiki/Platform_game</a></p>
+<p>
+	[13] Donkey Kong (Arcade), <a href="https://de.wikipedia.org/wiki/Donkey_Kong_(Arcade)">https://de.wikipedia.org/wiki/Donkey_Kong_(Arcade)</a></p>
+<p>
+	[14] Minesweeper, <a href="https://de.wikipedia.org/wiki/Minesweeper">https://de.wikipedia.org/wiki/Minesweeper</a></p>
+<p>
+	[15] Asteroids, <a href="https://de.wikipedia.org/wiki/Asteroids">https://de.wikipedia.org/wiki/Asteroids</a></p>
+<p>
+	.</p>
+<p class="footer">
+Copyright &copy; 2016-2021 <a href="http://www.lano.de">Ralph P. Lano</a>.  All rights reserved.
+</p>
+</div>
+</center>
+</div>
+</body>
+</html>

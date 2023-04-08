@@ -1,0 +1,931 @@
+<!DOCTYPE html><html lang="de"><head>
+  <title>Variationen zum Thema: Java</title>
+  <meta name="title" content="Variationen zum Thema: Java">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta charset="UTF-8">
+  <meta name="description" content="Introduction to Java Programming">
+  <meta name="keywords" content="java,introduction">
+  <meta name="author" content="Ralph P. Lano">
+  <meta name="robots" content="index,follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../book.css">
+</head>
+<body><center>
+<div id="wrap">
+	<ul class="sidenav">
+	  <p><a href="index.html">Variationen zum Thema</a><a href="index.html">Java</a></p>
+	  <li><a href="Karel.html">Karel</a></li>
+	  <li><a href="Graphics.html">Graphics</a></li>
+	  <li><a href="Console.html">Console</a></li>
+	  <li><a href="Agrar.html">Agrar</a></li>
+	  <li><a href="MindReader.html">MindReader</a></li>
+	  <li><a href="Swing.html">Swing</a></li>
+	  <li><a href="Asteroids.html">Asteroids</a></li>
+	  <li><a href="Stocks.html">Stocks</a></li>
+	</ul>
+<div class="content"><p>
+	<img alt="" src="../images/b6b4d73c-045b-41e8-9aa4-02379366993d.png" style="display: block; margin-left: auto;  margin-right: auto;width: 325px; height: 262px;" /></p>
+<h1>
+	MindReader</h1>
+<p>
+	Dieses Kapitel beschäftigen wir uns mit zwei Themen.&nbsp; Wir beginnen mit Buchstaben, Zeichen und Zeichenketten, auch Strings genannt.&nbsp; Wir werden also wieder Konsolenprogramme schreiben, aber dieses Mal geht es vor allem um Text und Textverarbeitung.&nbsp;</p>
+<p>
+	Außerdem werden wir aber unser Verständnis von Klassen vertiefen.&nbsp; Wir werden sehen wie Klassen aufgebaut sind, und wir werden unsere ersten eigenen Klassen schreiben.</p>
+<p>
+	.</p>
+<h2>
+	char</h2>
+<p>
+	Wir beginnen mit dem &#39;char&#39; Datentyp, den wir ganz kurz im vorletzten Kapitel gesehen haben.&nbsp; Eine Variable <em>c</em> vom Datentyp <em>char</em> legt man wie folgt an:</p>
+<pre>
+    char c = &#39;A&#39;;</pre>
+<p>
+	In einer <em>char</em> Variablen kann immer nur ein Zeichen sein.&nbsp; Zeichen können Buchstaben, Ziffern und alle möglichen Sonderzeichen sein.&nbsp; Die Apostrophen (single quote) sind u.a. deswegen notwendig, damit man Ziffern von Zahlen unterscheiden kann:</p>
+<pre>
+    int x = 5;
+    char d = &#39;5&#39;;
+</pre>
+<p>
+	Im ersten Beispiel handelt es sich um die Zahl 5, im zweiten um die Ziffer &#39;5&#39;.&nbsp; Man kann auch Sonderzeichen darstellen, z.B., &#39;.&#39;, &#39;$&#39;, aber auch unsichtbare Zeichen wie &#39;\n&#39; für eine neue Zeile.</p>
+<p>
+	.</p>
+<h2>
+	Character</h2>
+<p>
+	Die <em>Character</em> Klasse ist eine Hilfsklasse die man ab und zu gut gebrauchen kann.&nbsp; Z.B. hat sie eine Methode die feststellt ob ein Buchstabe ein Großbuchstabe ist:</p>
+<pre>
+    char c = &#39;A&#39;;
+    if ( Character.isUpperCase( c ) ) { 
+        println(&quot;Is upper case character.&quot;);
+    }</pre>
+<p>
+	Zusätzlich gibt es noch die folgenden Methoden, die testen ob es sich bei dem Zeichen</p>
+<ul>
+	<li>
+		<strong>isDigit(c):</strong>&nbsp; um eine Ziffer,</li>
+	<li>
+		<strong>isLetter(c):</strong>&nbsp; um einen Buchstaben,</li>
+	<li>
+		<strong>isLetterOrDigit(c):</strong>&nbsp; um einen Buchstaben oder eine Ziffer,</li>
+	<li>
+		<strong>isWhitespace(c):</strong>&nbsp; um ein Leerzeichen, Tab (&#39;\t&#39;) oder Neu Zeile (&#39;\n&#39;),</li>
+	<li>
+		<strong>isLowerCase(c):</strong>&nbsp; um einen Kleinbuchstaben</li>
+	<li>
+		<strong>isUpperCase(c):</strong>&nbsp; oder um einen Großbuchstaben</li>
+</ul>
+<p>
+	handelt.</p>
+<p>
+	Ansonsten wird die Character Klasse aber eher selten benötigt.</p>
+<p>
+	.</p>
+<h2>
+	String</h2>
+<p>
+	<img alt="" src="../images/3252a125-0883-496a-88cd-8183ff7af75d.png" style="margin-left: 10px; margin-right: 10px; width: 186px; height: 60px; float: right;" />Viel, viel wichtiger hingegen ist die <em>String</em> Klasse.&nbsp; Strings bezeichnet man auch als Zeichenketten, also mehrere Zeichen.&nbsp; Fangen wir mit ein paar Beispielen an:</p>
+<pre>
+    String s1 = &quot;Hello&quot;;
+    String s2 = &quot;world&quot;;</pre>
+<p>
+	Hier deklarieren wir zwei Strings, s1 und s2, und initialisieren sie auf die Werte &quot;Hello&quot; und &quot;world&quot;.&nbsp; Wichtig sind dabei die Anführungszeichen (double quotes) um Strings von chars zu unterscheiden.&nbsp; Denn ein char ist immer genau ein Zeichen, Strings hingegen können ein oder mehrere Zeichen enthalten, sie können sogar leer sein:</p>
+<pre>
+    String s3 = &quot;!&quot;;
+    String s4 = &quot; &quot;;
+    String s5 = &quot;&quot;;</pre>
+<p>
+	Hier enthält s3 ein Zeichen, das Ausrufezeichen.&nbsp; Auch s4 enthält ein Zeichen, das Leerzeichen.&nbsp; Und s5 enthält gar kein Zeichen, s5 ist aber trotzdem ein String.</p>
+<p>
+	<img alt="" src="../images/StringExample.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" /> Was Strings wirklich interessant macht ist, dass wir aus alten neue machen können indem wir sie aneinanderfügen</p>
+<pre>
+    String s6 = s1 + s4 + s2 + s3;</pre>
+<p>
+	und auch augeben können</p>
+<pre>
+    println( s6 );</pre>
+<p>
+	Und ähnlich wie wir Zahlen (int und double) von der Konsole einlesen können, können wir auch Strings von Konsole einlesen:</p>
+<pre>
+    String name = readLine(&quot;Enter your name: &quot;);</pre>
+<p>
+	So wie die Character Klasse, hat auch die String Klasse zahlreiche Methoden:</p>
+<ul>
+	<li>
+		<strong>length():</strong>&nbsp; gibt die Anzahl der Zeichen in einem String zurück</li>
+	<li>
+		<strong>charAt(int pos):</strong>&nbsp; gibt das Zeichen (char) an der Position <em>pos</em> zurück</li>
+	<li>
+		<strong>equals(String s2):</strong>&nbsp; stellt fest ob dieser String und der String s2 gleich sind</li>
+	<li>
+		<strong>substring(int p1):</strong>&nbsp; gibt den Teilstring ab der Position p1 bis zum Ende des Strings zurück</li>
+	<li>
+		<strong>substring(int p1, int p2):</strong>&nbsp; gibt den Teilstring von Position p1&nbsp; bis zu Position p2 zurück, allerdings ohne das Zeichen an Position p2</li>
+	<li>
+		<strong>indexOf(char c):</strong>&nbsp; stellt fest ob das Zeichen <em>c</em> im String enthalten ist, falls ja gibt es die Position des Zeichens anderfalls -1 zurück</li>
+	<li>
+		<strong>indexOf(String s2):</strong>&nbsp; macht das Gleiche, sucht aber nach einem ganzen String</li>
+	<li>
+		<strong>compareTo(String s2):</strong>&nbsp; vergleicht zwei Strings alphabetisch, d.h. ein String der mit &#39;A&#39; anfängt kommt vor einem String der mit &#39;B&#39; anfängt</li>
+	<li>
+		<strong>toUpperCase():</strong>&nbsp; gibt die Großbuchstabenversion eines Strings zurück, natürlich gibt es auch eine toLowerCase().</li>
+</ul>
+<p>
+	Wie wir gleich sehen werden, kann man damit einiges anstellen.</p>
+<p>
+	.</p>
+<h2>
+	Übung: Die Zeichen eines Strings ausgeben</h2>
+<p>
+	Als erstes Beispiel iterieren wir durch die Zeichen eines Strings und geben diese auf der Konsole aus:</p>
+<pre>
+    String s1 = &quot;Hello&quot;;
+  &nbsp; for ( int i=0; i&lt;s1.length(); i++) {
+      &nbsp; char c = s1.charAt( i );
+        println( c );
+    }
+</pre>
+<p>
+	.</p>
+<h2>
+	Übung: Einen String umkehren</h2>
+<p>
+	Man kann was wir gerade gelernt haben dazu verwenden einen String umzudrehen:</p>
+<pre>
+    String s1 = &quot;stressed&quot;;
+    String s2 = &quot;&quot;;
+  &nbsp; for ( int i=0; i&lt;s1.length(); i++) {
+      &nbsp; char c = s1.charAt( i );
+        s2 = c + s2;
+    }
+    println( s2 );</pre>
+<p>
+	dann wird aus dem Wort &quot;stressed&quot; das Wort &quot;desserts&quot;.&nbsp; Worte die gleich bleiben wenn man sie umkehrt, wie z.B. &quot;racecar&quot; oder &quot;rentner&quot;, nennt man auch Palindrome.</p>
+<p>
+	.</p>
+<h2>
+	Übung: Zwei Strings vergleichen</h2>
+<p>
+	Als nächstes wollen wir feststellen, ob zwei Strings gleich sind.&nbsp; Bisher haben wir dafür &quot;==&quot; verwendet.&nbsp; Das funktioniert sehr gut für int, double und auch char, aber nicht für Strings, wie das folgende Beispiel zeigt:</p>
+<pre>
+&nbsp;&nbsp; &nbsp;String s1 = &quot;Hello &quot;;
+&nbsp;&nbsp; &nbsp;String s2 = s1 + &quot;world&quot;;
+&nbsp;&nbsp; &nbsp;String s3 = &quot;Hello world&quot;;
+&nbsp;&nbsp; &nbsp;if (s2 == s3) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;println(&quot;Equal&quot;);
+&nbsp;&nbsp; &nbsp;} else {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;println(&quot;Not Equal&quot;);&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+&nbsp;&nbsp; &nbsp;}</pre>
+<p>
+	Überraschenderweise wird hier &quot;Not Equal&quot; ausgegeben.&nbsp; Dies hat damit zu tun, dass wir die <em>equals()</em> Methode verwenden müssen wenn wir zwei Strings vergleichen wollen, also:</p>
+<pre>
+&nbsp;&nbsp; &nbsp;String s1 = &quot;Hello &quot;;
+&nbsp;&nbsp; &nbsp;String s2 = s1 + &quot;world&quot;;
+&nbsp;&nbsp; &nbsp;String s3 = &quot;Hello world&quot;;
+&nbsp;&nbsp; &nbsp;if (<span style="color:#ff0000;">s2.equals(s3)</span>) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;println(&quot;Equal&quot;);
+&nbsp;&nbsp; &nbsp;} else {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;println(&quot;Not Equal&quot;);&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+&nbsp;&nbsp; &nbsp;}</pre>
+<p>
+	Warum das so ist werden wir etwas später herausfinden.</p>
+<p>
+	.</p>
+<h2>
+	Übung: Einen String auseinanderschneiden</h2>
+<p>
+	Als letzte kleine Übung zu Strings wollen wir einen String auseinanderschneiden.&nbsp; Dazu verwenden wir die Methoden <em>indexOf()</em> und <em>substring()</em>.</p>
+<pre>
+&nbsp;&nbsp; &nbsp;String s1 = &quot;Hello world&quot;;
+&nbsp;&nbsp; &nbsp;int posSpace = s1.indexOf(&#39; &#39;);
+&nbsp;&nbsp; &nbsp;String s2 = s1.substring(0, posSpace);
+&nbsp;&nbsp; &nbsp;String s3 = s1.substring(posSpace);
+&nbsp;&nbsp; &nbsp;println(s2);
+&nbsp;&nbsp; &nbsp;println(s3);</pre>
+<p>
+	Wir finden die Position des Leerzeichens mit Hilfe der <em>indexOf()</em> Methode.&nbsp; Dann schneiden wir den vorderen Teil mit der <em>substring()</em> Methode ab.&nbsp; Wichtig sind hier zwei Dinge: das erste Zeichen ist an Position 0, d.h. wie üblich fangen wir bei 0 an zu zählen, und das Zeichen an der Position <em>posSpace</em> wird nicht mit abgeschnitten.&nbsp; Schließlich schneiden wir den Rest ab, also s3 ist alles ab Position <em>posSpace</em>.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/StringTokenizerExample.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />StringTokenizer</h2>
+<p>
+	Das Auseinanderschneiden von Strings ist etwas das wir so häufig tun werden, dass es dafür eine eigene Klasse gibt, den <em>StringTokenizer</em>.&nbsp;</p>
+<pre>
+&nbsp;&nbsp; &nbsp;String sentence = &quot;hi there what&#39;s up?&quot;;
+&nbsp;&nbsp; &nbsp;StringTokenizer st = new StringTokenizer( sentence, &quot; .,?&quot; );
+&nbsp;&nbsp; &nbsp;while ( st.hasMoreTokens() ) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;println( st.nextToken() );
+&nbsp;&nbsp; &nbsp;}</pre>
+<p>
+	Zunächst initialisieren wir den StringTokenizer indem wir ihm sagen, was er auseinanderschneiden soll (sentence), und wie, also, welche Trennzeichen er verwenden soll (&#39; &#39;,&#39;.&#39;,&#39;,&#39; und &#39;?&#39;).&nbsp; Der StringTokenizer zerlegt den String in Tokens, also eigentlich Wörter.&nbsp; Um an diese Wörter zu gelangen, fragen wir den StringTokenizer ob er Tokens hat, also wir rufen die Methode <em>hasMoreTokens()</em> auf.&nbsp; Falls ja, bitten wir den StringTokenizer mittels <em>nextToken()</em> uns doch das nächste Token zu geben.&nbsp; Und das machen wir solange, bis alle Tokens aufgebraucht sind.</p>
+<p>
+	.</p>
+<h2>
+	Immutability</h2>
+<p>
+	Etwas das manchmal zu Verwirrungen führt, ist die <em>Immutability</em> von Strings.&nbsp; Immutability heißt Unveränderlichkeit, also soviel wie ein String kann nicht verändert werden.&nbsp; Am besten wir sehen uns ein Beispiel an:</p>
+<pre>
+    String s1 = &quot;Hello&quot;;
+    s1.toUpperCase();
+    println( s1 );
+</pre>
+<p>
+	Was wird auf der Konsole ausgegeben?&nbsp; Es wird &quot;Hello&quot; ausgegeben, und nicht wie man vielleicht hoffen würde &quot;HELLO&quot;.&nbsp; Das hat damit zu tun, dass Strings unveränderlich sind.&nbsp;</p>
+<p>
+	<img alt="" src="../images/Immutability.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" /> Es gibt aber einen Trick, wie wir Strings trotzdem verändern können: wir weisen ihnen einfach einen neuen Wert zu:</p>
+<pre>
+    String s1 = &quot;Hello&quot;;
+    <span style="color:#ff0000;">s1 = </span>s1.toUpperCase();
+    println( s1 );
+</pre>
+<p>
+	.</p>
+<h2>
+	Klassen</h2>
+<p>
+	Wir haben jetzt schon viel von Klassen gehört, und auch schon viele Klassen verwendet, z.B. die Karel Klassen, aber auch die Graphik Klassen wie GRect und GOval.&nbsp; Zuletzt haben wir die String Klasse und die StringTokenizer Klasse verwendet.&nbsp; Die Frage die sich stellt, können wir auch eigene Klassen machen?</p>
+<p>
+	Natürlich, und es ist gar nicht mal so schwer.&nbsp; Als erstes Beispiel betrachten wir mal einen Studenten aus der Sicht einer Hochschule.&nbsp; Welche Information müsste denn eine Hochschule über einen Studenten wissen?&nbsp; Wenn wir uns auf das Wesentliche beschränken, dann sind das Name, Matrikelnummer und Leistungspunkte (ECTS).&nbsp; Wir nehmen also diese Eigenschaften (Attribute) eines Studenten und fassen sie zusammen zu einer Klasse:</p>
+<pre>
+public class Student {
+&nbsp;&nbsp; &nbsp;private String name;
+&nbsp;&nbsp; &nbsp;private int id;
+&nbsp;&nbsp; &nbsp;private double credits;
+}</pre>
+<p>
+	Im Prinzip ist also eine Klasse nichts anderes als ein Datencontainer.&nbsp; Jede Klasse sollte in ihrer eigenen Datei gespeichert werden, der Name der Datei muss genauso lauten wie der Name der Klasse.</p>
+<p>
+	<strong><strong>SEP: Klassennamen sollten immer mit Großbuchstaben beginnen und der CamelCase Konvention folgen.</strong></strong></p>
+<p>
+	<strong><strong>SEP: <strong><strong>Information Hiding: </strong></strong>Die Sichtbarkeit von Attributen sollte immer <em>private</em> sein.</strong></strong></p>
+<p>
+	.</p>
+<h2>
+	Konstuktor</h2>
+<p>
+	Allerdings sind Klassen &#39;intelligente&#39; Datencontainer.&nbsp; Soll heißen, dass sie die Daten nicht nur enthalten und bündeln, sondern auch initialisieren, verwalten und ändern.&nbsp; Sie tun also auch etwas mit den Daten, und dafür haben Klassen Methoden.&nbsp; Die wichtigste Methode ist der <em>Konstuktor</em>, der initialisiert die Daten.</p>
+<pre>
+    public Student(String n, int i, double c) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;name = n;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;id = i;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;credits = c;
+&nbsp;&nbsp; &nbsp;}</pre>
+<p>
+	Der Konstuktor hat immer den gleichen Namen wie die Klasse, manchmal kann es mehr als einen Konstuktor geben, sie unterscheiden sich dann durch ihre Parameter.&nbsp; Ein Konstuktor hat nie einen Rückgabewert, also ein return.&nbsp;</p>
+<p>
+	So, jetzt haben wir eine Klasse, was machen wir damit?&nbsp; Wir benutzen sie wie jede andere Klasse.&nbsp; Dazu schreiben wir ein ConsolenProgram in dem wir mal eine Instanz einer Student Klasse erzeugen:</p>
+<pre>
+public class University extends ConsoleProgram {
+&nbsp;&nbsp; &nbsp;public void run() {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;Student fritz = <span style="color:#ff0000;">new</span> Student(&quot;Fritz&quot;, 12345, 0.0);
+&nbsp;&nbsp; &nbsp;}
+}
+</pre>
+<p>
+	Wir erzeugen also eine neue Instanz (<em>new</em>) der Klasse Student.&nbsp; Diese Instanz (auch Objekt genannt) soll <em>fritz</em> heißen.&nbsp; Um das Objekt zu erzeugen müssen wir den Konstruktor mit &quot;new&quot; aufrufen.&nbsp; Darin initialisieren wir die Instanzvariable <em>name</em> auf den Wert &quot;Fritz&quot;, die Instanzvariable <em>id</em> auf den Wert 12345, und die Instanzvariable <em>credits</em> auf den Wert 0.0.</p>
+<p>
+	.</p>
+<h2>
+	Methoden</h2>
+<p>
+	Viel anfangen können wir mit dem <em>fritz</em> noch nicht, weil er nämlich nichts zu tun hat, also keine Methoden hat.&nbsp; Das können wir aber schnell ändern in dem wir &quot;getter&quot; Methoden hinzufügen:</p>
+<pre>
+&nbsp;&nbsp;&nbsp; public String getName() {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;return name;
+&nbsp;&nbsp; &nbsp;}
+
+&nbsp;&nbsp; &nbsp;public int getId() {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;return id;
+&nbsp;&nbsp; &nbsp;}
+
+&nbsp;&nbsp; &nbsp;public double getCredits() {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;return credits;
+&nbsp;&nbsp; &nbsp;}</pre>
+<p>
+	Jetzt können wir auf die Daten der Klasse lesend zugreifen.&nbsp; Um die Daten der Klasse aber zu verändern brauchen wir noch &quot;setter&quot; Methoden.&nbsp;</p>
+<pre>
+&nbsp;&nbsp;&nbsp; public void setName(String n) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;name = n;
+&nbsp;&nbsp; &nbsp;}
+
+&nbsp;&nbsp; &nbsp;public void incrementCredits(double c) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;if (c &gt;= 0) {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;credits += c;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}
+&nbsp;&nbsp; &nbsp;}</pre>
+<p>
+	Nicht immer wollen wir dem Benutzer unserer Klasse erlauben Daten zu ändern.&nbsp; Z.B., kann ein Student zwar seinen Namen ändern, seine Matrikelnummer kann er aber nicht ändern.&nbsp; Deswegen gibt es keine <em>setId()</em> Methode.&nbsp; Auch soll ein Student nie negative Leistungspunkte erhalten können.&nbsp; Deswegen haben wir anstelle einer <em>setCredits()</em> Methode die <em>incrementCredits()</em>:&nbsp; diese stellt sicher, dass Leistungspunkte nur vermehrt werden können.</p>
+<p>
+	Abschließend, ist es noch üblich jeder Klasse eine <em>toString()</em> Methode zu geben:</p>
+<pre>
+&nbsp;&nbsp;&nbsp; public String toString() {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;return &quot;Student [name=&quot; + name + &quot;, id=&quot; + id 
+                + &quot;, credits=&quot; + credits + &quot;]&quot;;
+&nbsp;&nbsp; &nbsp;}</pre>
+<p>
+	Die Aufgabe der <em>toString()</em> Methode ist es Informationen über das Objekt, also in der Regel die Werte der Attribute, auszugeben.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/University.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />Übung: Hansel und Gretel</h2>
+<p>
+	Die Klasse Student ist jetzt einsatzbereit und als Beispiel schauen wir uns mal die beiden Studenten Hansel und Gretel an der Brüder Grimm Berufsakademie an:</p>
+<pre>
+public class University extends ConsoleProgram {
+
+&nbsp;&nbsp; &nbsp;public void run() {
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;Student hansel = new Student(&quot;Hänschen&quot;, 12345, 0.0);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;println(hansel.getName());
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;Student gretel = new Student(&quot;Gretel&quot;, 54321, 11.0);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;println(gretel.getName());
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;gretel.setName(&quot;Gretchen&quot;);
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;gretel.incrementCredits(5);
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;println(gretel.toString());
+&nbsp;&nbsp; &nbsp;}
+} 
+</pre>
+<p>
+	.</p>
+<h2>
+	Wrapper</h2>
+<p>
+	Es ist nicht selten, dass man einen String in eine Zahl umwandeln muss.&nbsp; Dafür gibt es die Wrapper Klassen <em>Integer</em> und <em>Double</em>.&nbsp; Wenn man z.B. aus dem String &quot;42&quot; die Zahl 42 machen möchte, dann verwendet man die parseInt() Methode der Integer Klasse:</p>
+<pre>
+    String fourtyTwo = &quot;42&quot;;
+    int x = Integer.parseInt(fourtyTwo);
+</pre>
+<p>
+	Umgekehrt um aus einer Zahl einen String zu erzeugen kann man auch wieder die Integer Klasse verwenden,</p>
+<pre>
+    int x = 42;
+    String fourtyTwo = Integer.toString(x);</pre>
+<p>
+	oder man behilft sich mit einem kleinen Trick:</p>
+<pre>
+    String fourtyTwo = &quot;&quot; + x;</pre>
+<p>
+	Es gibt für jeden primitiven Datentyp, also z.B. int, double, boolean und char, eine Wrapper Klasse.&nbsp; Es gibt sogar eine Wrapper Klasse für <em>void</em>, allerdings ist das wahrscheinlich die nutzloseste Klasse der Welt.</p>
+<p>
+	.</p>
+<hr />
+<h1>
+	Review</h1>
+<p>
+	<img alt="" src="../images/31416ad3-7e12-41e1-9967-a02c1dc79a82.png" style="width: 203px; height: 240px; float: right;" />In diesem Kapitel haben wir uns hauptsächlich mit Strings und mit Klassen beschäftigt.&nbsp; Wir haben das erste Mal eine eigene Klasse geschrieben.&nbsp; Dabei haben wir gesehen, dass Klassen immer wie folgt aufgebaut sind:</p>
+<pre>
+public class Name {&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; // variables
+&nbsp;&nbsp;&nbsp; // methods 
+}
+</pre>
+<p>
+	d.h. eine Klasse hat Variablen und Methoden.&nbsp; Manchmal nennen wir die Variablen auch Instanzvariablen, Eigenschaften einer Klasse oder auch Attribute einer Klasse.&nbsp; Bei den Methoden haben wir gesehen, dass diese immer etwas tun, und dass es eine spezielle Methode gibt, den Konstruktor.</p>
+<p>
+	Ausserdem haben wir die folgenden Themen behandelt:</p>
+<ul>
+	<li>
+		Character</li>
+	<li>
+		String</li>
+	<li>
+		StringTokenizer</li>
+	<li>
+		Wrappers</li>
+</ul>
+<p>
+	Das wichtigste in diesem Kapitel waren aber die Klassen.</p>
+<p>
+	.</p>
+<hr />
+<h1>
+	Projekte</h1>
+<p>
+	Die Projekte in diesem Kapitel beschäftigen sich hauptsächlich mit Strings und dem Schreiben von einfachen Klassen.</p>
+<p>
+	.</p>
+<h2>
+	Student</h2>
+<p>
+	In dem Beispiel zu Student stellt sich die Frage warum die Instanzvariablen <em>private</em> waren?&nbsp; Betrachten wir das Problem einmal von der anderen Seite.&nbsp; Nehmen wir an Instanzvariablen wären <em>public</em>:&nbsp; könnte man dann verhindern, dass ein Student negative <em>credits</em> bekommt, oder dass seine <em>id</em> geändert werden kann?</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/ASCII.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />ASCII</h2>
+<p>
+	Um Zeichen (chars) zu speichern verwendet der Computer Zahlen.&nbsp; Deswegen kann man chars addieren, subtrahieren und man kann sie sogar in Bedingungen und Schleifen verwenden.&nbsp; Z.B. um festzustellen ob ein char ein Großbuchstabe ist kann man folgende Bedingung verwenden:</p>
+<pre>
+    if ( c &gt;= &#39;A&#39; &amp;&amp; c &lt;= &#39;Z&#39; ) { ... }&nbsp;&nbsp;&nbsp; </pre>
+<p>
+	Oder um aus einem Großbuchstabem einen Kleinbuchstaben zu machen, hilft folgender Trick:</p>
+<pre>
+    char gross = &#39;D&#39;;
+    char klein = gross - &#39;A&#39; + &#39;a&#39;;&nbsp;&nbsp;&nbsp; </pre>
+<p>
+	Man kann auch aus chars ints machen und umgekehrt via <em>Cast</em> bzw. Typumwandlung</p>
+<pre>
+    char c = &#39;A&#39;;
+&nbsp;&nbsp; &nbsp;int ascii = (int) c; 
+    char d = (char) ascii;
+</pre>
+<p>
+	Mit diesem Wissen wollen wir die folgenden Methoden schreiben:</p>
+<ul>
+	<li>
+		isUpperCase(char c)</li>
+	<li>
+		toUpperCase(char c)</li>
+	<li>
+		printASCIITable()</li>
+</ul>
+<p>
+	Bei letzterer genügt es die ASCII Zeichen zwischen 32 und 128 auszugeben, da die ersten 31 ASCII Zeichen teilweise nicht druckbar sind.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/passwordCreator.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />PasswordCreator</h2>
+<p>
+	Mit unserem Wissen über Strings können wir jetzt einen Passwort Generator schreiben.&nbsp; Ein gutes Passwort soll mindestens 8 Zeichen lang sein, und mindestens je einen Kleinbuchstaben, einen Großbuchstaben, eine Ziffer und ein Symbol enthalten.&nbsp; Man könnte also vier Strings definieren die die möglichen Zeichen enthalten, und dann mit dem RandomGenerator daraus z.B. je zwei zufällig auswählen und zu einem Passwort zusammensetzen:</p>
+<pre>
+    String small = &quot;abcdefghijklmnopqrstuvwxyz&quot;;
+    password += small.charAt(rgen.nextInt(small.length()));</pre>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/randomText.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />RandomText</h2>
+<p>
+	Für Testzweck ist es manchmal hilfreich Zufallstext erzeugen zu können.&nbsp; Das ist gar nicht so schwer.&nbsp; Wir beginnen wieder mit dem Top-Down Ansatz.&nbsp; Nehmen wir an wir hätten eine Methode <em>createRandomSentence()</em> die einen Zufallssatz generiert.&nbsp; Dann könnten wir einen Zufallstext erzeugen, indem wir einfach mehrere Zufallssätze erzeugen.&nbsp; Die Methode <em>createRandomSentence()</em> wiederum ist einfach wenn wir annehmen es gäbe eine Methode namens <em>createRandomWord()</em>, denn dann würden wir einfach irgendwo zwischen drei und 5 Wörter nehmen, Lehrzeichen dazwischen setzen und einen Punkt am Ende hinzufügen.&nbsp; Und auch die <em>createRandomWord()</em> Methode ist nicht so schwer, denn Wörter bestehen aus Kleinbuchstaben, und haben in etwa 3 bis 8 Buchstaben, also</p>
+<pre>
+    private String createRandomWord() {
+        String word = &quot;&quot;;
+        int nrOfCharsInWord = rgen.nextInt(3, 8);
+        for (int i = 0; i &lt; nrOfCharsInWord; i++) {
+            word += (char)(&#39;a&#39; + rgen.nextInt(26));
+        }
+        return word;
+    }</pre>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/palindrome.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />Palindrome</h2>
+<p>
+	Worte die gleich bleiben wenn man sie umkehrt, wie z.B. &quot;racecar&quot; oder &quot;rentner&quot;, nennt man auch Palindrome.&nbsp; Wir wollen eine Methode namens <em>isPalindrome(String s)</em> schreiben, die feststellt ob ein String ein Palindrom ist.&nbsp; Dazu schreiben wir eine Methode <em>reverse()</em> die einen gegebenen String umdreht, und dann vergleichen wir mittels <em>equals()</em> den Orignal mit dem umgekehrten String.&nbsp; Sind beide gleich, handelt es sich um ein Palindrom.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/countUpperCase.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />CountUpperCase</h2>
+<p>
+	Hier sollen wir eine Methode schreiben, die die Großbuchstaben in einem String zählt.&nbsp; Das kann z.B. ganz nützlich sein wenn man bestimmen will ob ein bestimmter Text deutsch oder englisch ist:&nbsp; englischer Text hat im Durchschnitt weniger Großbuchstaben.&nbsp; Dazu können wir entweder die Character Klasse verwenden oder die Methode die wir oben selbst geschrieben haben.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/readOneChar.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />ReadOneChar</h2>
+<p>
+	Wir möchten, dass der Nutzer nur einen Buchstaben eingeben kann. Er soll also nicht 0 oder mehrere, sondern genau einen Buchstaben eingeben.&nbsp; Dazu wollen wir eine Methode <em>readOneChar()</em> schreiben, die einen char als Rückgabewert liefert.</p>
+<p>
+	Es gibt die <em>readString()</em> Methode zum Einlesen von Strings.&nbsp; Wir benutzen also den Loop-and-a-Half, und benutzen als Abbruchkriterium, dass der eingelesene String die Länge eins haben soll.</p>
+<pre>
+    while (true) {
+        s = readLine();
+        if (s.length() == 1)
+            break;
+        println(&quot;Please, enter only one character:&quot;);
+    }</pre>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/bdedbd5d-3b32-412e-9bcc-fccde618d3bb.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 203px; float: right;" />Encrypt</h2>
+<p>
+	Eine andere interessante Anwendung, die wir jetzt ganz einfach realisieren können, ist ein kleines Verschlüsselungsprogramm.&nbsp; Wir verwenden dafür die sogenannte Caesar Cipher, die bereits Julius Caesar verwendet haben soll.&nbsp; Bei der Caesar Cipher [2] werden die Buchstaben in einem gegeben Text einfach um eine feste Anzahl, den Schlüssel, verschoben.&nbsp; Beträgt der Schlüssel z.B. vier, dann wird aus einem &#39;a&#39; ein &#39;e&#39;, aus einem &#39;b&#39; ein &#39;f&#39;, usw.&nbsp; Zum Entschlüsseln macht man den Vorgang einfach rückgängig.</p>
+<p>
+	Um das umzusetzen, schreiben wir zwei Methoden, <em>encrypt()</em> und <em>decrypt()</em>, die eine verschlüsselt, die andere entschlüsselt.&nbsp; Beide nehmen einen String <em>text</em> und einen int <em>key</em> als Parameter.&nbsp; Die eine gibt den verschlüsselten Text als String zurück, die andere den entschlüsselten.</p>
+<p>
+	.</p>
+<p>
+	<img alt="" src="../images/encrypt.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />Hinweise: damit das Ganze nicht zu kompliziert wird, macht es Sinn den Text erst einmal in Kleinbuchstaben umzuwandeln bevor man mit der Verschlüsselung anfängt.&nbsp; Und der Restwert Operator &#39;%&#39; ist hier sehr praktisch:</p>
+<pre>
+    char c = &#39;a&#39;;
+    int d = c - &#39;a&#39;;
+    int e = d + key;
+    int f = e % 26;
+    char g = (char) ( f + &#39;a&#39;); 
+</pre>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/abjad.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />Abjad</h2>
+<p>
+	Um etwa 1500 v. Chr. entwickelten die Phönizier die erste Alphabetschrift, eine linksläufige Konsonantenschrift. Unter Konsonantenschriften versteht man Schriftsysteme, in denen nur Zeichen für Konsonanten verwendet werden [2].</p>
+<p>
+	Um zu zeigen, dass eine solche Schrift durchaus lesbar sein kann, haben Archäologen uns beauftragt ein ConsoleProgramm zu schreiben, das aus einem gegebenen Text alle Vokale entfernt.&nbsp; Wir können wie folgt vorgehen:</p>
+<ul>
+	<li>
+		mittels readLine() bitten wir den Benutzer einen normalen Text einzugeben,</li>
+	<li>
+		diesen durchsuchen wir dann nach Vokalen und entfernen diese,</li>
+	<li>
+		das Resultat geben wir dann mittels println() aus.</li>
+</ul>
+<p>
+	Idealerweise erinnern wir uns an den Top-Down Ansatz, d.h. wir sollten vielleicht davon ausgehen, dass es die Methoden <em>removeVowels()</em> und <em>isVowel()</em> gibt, und diese dann später implementieren.&nbsp; Man könnte auch die <em>replace()</em> Methode der String Klasse verwenden, aber dazu mehr im nächsten Projekt.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/franconian.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />Franconian</h2>
+<p>
+	Die Sprache der Franken, auch &#39;lingua franca&#39; genannt, ist zu unrecht in Vergessenheit geraten.&nbsp; Die &#39;lingua franca&#39; (italienisch für: &bdquo;fränkische Sprache&ldquo;) ist eine romanisch basierte Pidgin-Sprache. Pidgin-Sprache oder Pidgin bezeichnet eine reduzierte Sprachform, die verschiedensprachigen Personen zur Verständigung dient [3].</p>
+<p>
+	Um also zur Verständigung der Völker beizutragen, sollen wir ein Deutsch-Fränkisches Übersetzungsprogramm schreiben. Im Fränkischen finden u.a. folgende lautlichen Vereinfachungen statt (auch als &bdquo;binnendeutsche Konsonantenschwächung&ldquo; bekannt):</p>
+<ul>
+	<li>
+		t -&gt; d</li>
+	<li>
+		p -&gt; b</li>
+	<li>
+		k -&gt; g</li>
+</ul>
+<p>
+	So wird beispielsweise aus dem &#39;Politiker&#39; der &#39;Bolidiger&#39;.&nbsp;</p>
+<p>
+	Wir schreiben also eine Methode <em>translateGermanToFranconian()</em>, die einen String als Parameter hat mit dem deutschen Text, und einen String als Rückgabewert hat, welcher die übersetzte fränkische Version liefert.&nbsp; Dazu könnte man die <em>replace()</em> Methode der String Klasse verwenden:</p>
+<pre>
+    String german = &quot;politiker&quot;;
+    String franconian = old.replace(&#39;t&#39;,&#39;d&#39;);
+    ...
+</pre>
+<p>
+	Anmerkung: In der String Klasse [4] gibt es auch die Methoden replaceAll(), replaceFirst() und split().&nbsp; Diese sollten wir allerdings erst verwenden wenn wir wissen was &quot;Reguläre Ausdrücke&quot; sind (regular expressions).</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/pigLatin.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />PigLatin</h2>
+<p>
+	Pig Latin [5] ist eine Geheimsprache für Kinder die ganz einfache Regeln hat:</p>
+<ul>
+	<li>
+		beginnt ein Wort mit einem Konsonanten, dann wird der Konsonant ans Ende des Wortes verschoben und die Silbe &quot;ay&quot; angehängt.&nbsp; Also aus &quot;loser&quot; wird &quot;oserlay&quot; oder aus &quot;button&quot; wird &quot;uttonbay&quot;,</li>
+	<li>
+		beginnt ein Wort mit einem Vokal, dann wird nur die Silbe &quot;ay&quot; angehängt. Also aus &quot;eagle&quot; wird &quot;eagleay&quot; und aus &quot;america&quot; wird &quot;amercaay&quot;.</li>
+</ul>
+<p>
+	Wir sollen also auch hier wieder ein Konsolenprogramm schreiben, dass den Benutzer nach einem englischen Satz fragt und diesen dann ins Pig Latin übersetzt.&nbsp; Auch hier sollten wir wieder an den Top-Down Ansatz denken.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/yodish.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />YodaTalk</h2>
+<p>
+	In der Typologie von Sprachen [6], kommt die Satzstruktur Subjekt-Verb-Objekt (SVO), also das Subjekt an erster Stelle, das Verb an zweiter und das Objekt an dritter steht, sehr häufig vor. Circa 75% aller Sprachen der Welt folgen diesem oder einem sehr ähnlichen Muster.&nbsp; Wir wissen ja, dass Yoda vom Sumpfplaneten Dagobah kommt und dort ist der bevorzugte Satzbau Objekt-Subjekt-Verb (O,SV). Also, zum Beispiel, aus dem englischen Satz:</p>
+<p style="margin-left: 40px;">
+	You are lucky.</p>
+<p>
+	wird auf &ldquo;Yodish&rdquo;:</p>
+<p style="margin-left: 40px;">
+	Lucky, you are.</p>
+<p>
+	Um die interplanetaren Kommunikation zu vereinfachen, ist es nun unsere Aufgabe, ein ConsoleProgramm zu schreiben, das einen gegebenen Text aus dem Englischen ins Yodische übersetzt.&nbsp; Wir können davon ausgehen, dass jeder eingegebene Satz immer aus drei Worten besteht, immer in der Reihenfolge SVO.</p>
+<p>
+	Wir könnten folgendermaßen vorgehen:</p>
+<ul>
+	<li>
+		wir bitten den Benutzer einen englischen Text einzugeben</li>
+	<li>
+		dann identifizieren wir die drei Elemente Subjekt, Verb und Objekt mit Hilfe eines StringTokenizer</li>
+	<li>
+		mit Hilfe von println(), geben wir dann das übersetzte Yodish in der Form Objekt, Subjekt Verb aus.</li>
+</ul>
+<p>
+	Natürlich verwenden wir wieder den Top-Down Ansatz und implementieren eine Methode namens <em>translateFromEnglishToYodish()</em>.</p>
+<p>
+	.</p>
+<h2>
+	ELIZA</h2>
+<p>
+	Um zu sehen was man mit Strings alles machen kann, schauen wir uns mal die Java Version des Programms ELIZA an.&nbsp; ELIZA simuliert einen Psychotherapeuten der uns Fragen stellt und mit dem wir dann eine kleine Konversation führen können.&nbsp; Man muss bedenken, dass ELIZA bereits 1966 von Joseph Weizenbaum programmiert wurde [7].&nbsp; Es war das erste Programm das zeigte, dass man mit Computern auch mit normaler Sprache kommnuizieren kann.&nbsp; Moderne Version von ELIZA sind Siri und die Telemarketing-Software Samantha, die kategorisch abstreitet, eine Maschine zu sein [8].</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/randomGenerator.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />RandomGenerator</h2>
+<p>
+	Wir wollen unsere eigene <em>RandomGenerator</em> Klasse schreiben.&nbsp; Dass ist gar nicht so schwer, wenn wir wissen, dass es im Standard Java eine Methode namens Math.random() gibt.&nbsp; Diese Methode gibt eine Gleitkommazahl zwischen 0 und 1, einschließlich der 0, aber ausschließlich der 1.&nbsp; Wenn wir damit eine Zahl zwischen 1 und 6 erzeugen wollen, dann geht das so:</p>
+<pre>
+    int diceRoll = 1 + (int)(Math.random() * 6);</pre>
+<p>
+	Mit diesem Wissen wollen wir die Klasse RandomGenerator schreiben mit den Methoden nextInt(int a, int b), nextInt(int b), nextBoolean() und nextColor().&nbsp; In Zukunft können wir jetzt immer unsere eigene Klasse anstelle der ACM Klasse verwenden.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/counter.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />Counter</h2>
+<p>
+	Wir wollen eine Klasse <em>Counter</em> schreben, die als Zähler fungierten kann.&nbsp; Die Klasse soll eine private Instanzvariable namens <em>count</em> haben.&nbsp; Im Konstruktor soll diese Variable auf den Wert 0 gesetzt werden.&nbsp; Dann soll es eine Methode namens <em>getValue()</em> geben, die einfach den momentanen Wert der Variable <em>count</em> zurückgibt.&nbsp; Und es soll eine Methode namens incrementCounter<em>()</em> geben, die den Wert der Variable <em>count</em> um eins erhöht.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/point.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />Point</h2>
+<p>
+	Als nächstes wollen wir eine Klasse <em>Point</em> schreiben.&nbsp; Diese soll einem Punkt in zwei dimensionalen Raum entsprechen, also eine x und eine y Koordinate haben.&nbsp; Die Klasse soll einen Konstuktor <em>Point(int x, int y)</em>, sowie die Methoden getX(), getY(), move(int dx, int dy), equals(Point p), add(Point p) und toString() haben.&nbsp;</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/connectTwoMovingPoints.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 229px; float: right;" />ConnectTwoMovingPoints</h2>
+<p>
+	Unsere Klasse Point scheint so für sich alleine relative langweilig.&nbsp; Wenn sich aber zwei Punkte bewegen, und man diese mit einer farbigen Linie verbindet, dann sieht das schon sehr hübsch aus.</p>
+<p>
+	Wir beginnen mit der Klasse <em>Point</em>, die allerdings etwas andere Anforderungen hat, als die vom letzten Projekt.&nbsp; Sie soll möglichst einfach sein.&nbsp; Sie soll vier Instanzvariablen haben, nämlich <em>x</em>, <em>y</em>, <em>vx</em> und <em>vy</em>.&nbsp; Alle vier sollen <em>public</em> sein.&nbsp; Der Konstruktor soll keine Parameter haben, und er soll die Instanzvariablen mit zufälligen Werten initialisieren.&nbsp; Die Klasse soll nur eine Methode haben:</p>
+<pre>
+    public void move() {
+        x += vx;
+        y += vy;
+    }</pre>
+<p>
+	Diese Klasse wollen wir in unserem GraphicsProgram <em>ConnectTwoMovingPoints</em> verwenden:</p>
+<pre>
+    public void run() {
+        Point p1 = new Point();
+        Point p2 = new Point();
+
+        while (true) {
+            p1.move();
+            p2.move();
+            checkForCollisionWithWall(p1);
+            checkForCollisionWithWall(p2);
+            drawConnection(p1, p2);
+            pause(DELAY);
+        }
+    }</pre>
+<p>
+	Wir erzeugen also zwei Punkte, <em>p1</em> und <em>p2</em>. In unserem GameLoop, bewegen wir die beiden Punkte, schauen nach ob die Punkte noch im Spielfeld sind, und dann verbinden wir die beiden Punkte mit einer Linie.&nbsp; Das ist eigentlich ganz einfach.&nbsp; Allerdings wenn man immer nur zehn Linien anzeigen möchte, und die älteren wieder löschen möchte, benötigt man Arrays (nächstes Kapitel).</p>
+<p>
+	Noch eine kleine Feinheit in dem Program: wenn wir uns die Definition der Klasse <em>Point</em> ansehen,</p>
+<pre>
+public class ConnectTwoMovingPoints extends GraphicsProgram {
+
+    ...
+
+    class Point {
+        ...
+    }
+}
+</pre>
+<p>
+	dann stellen wir fest, dass dies innerhalb der Klasse <em>ConnectTwoMovingPoints</em> geschieht.&nbsp; Man nennt die Klasse Point daher auch eine <em>lokale</em> Klasse, weil sie nur lokal innerhalb der Klasse ConnectTwoMovingPoints existiert.&nbsp; Es gibt ein paar wenige Fälle wie hier, wo so etwas Sinn macht. ansonsten macht man so etwas aber eher selten.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/blackJack.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 200px; float: right;" />Blackjack</h2>
+<p>
+	Laut Wikipedia ist &quot;Black Jack das meistgespielte Karten-Glücksspiel, das in Spielbanken angeboten wird&quot; [9].&nbsp; Wir wollen eine etwas einfachere Version dieses Spiels implementieren.&nbsp;</p>
+<p>
+	Anstelle von Karten verwenden wir einfach Zahlen, und zwar Zahlen zwischen 1 und 11.&nbsp; Der Computer spielt den Croupier und beginnt indem er eine Zufallszahl zwischen 17 und 25 erzeugt. Dann ist der Spieler an der Reihe.&nbsp; Dieser fängt mit einer Karte an, also eine Zufallszahl zwischen 1 und 11.&nbsp; Er kann dann entscheiden ob er noch eine Karte möchte.&nbsp; Falls ja, wird wieder eine Zufallszahl zwischen 1 und 11 erzeugt und zur momentanen &quot;Hand&quot; hinzuaddiert.&nbsp; Wenn der Spieler keine neue Karte mehr haben möchte, wird die &quot;Hand&quot; des Spielers mit der des Computers verglichen.&nbsp;</p>
+<p>
+	Gewonnen hat derjenige der 21 Punkte oder weniger hat und mehr als der andere.&nbsp; Ansonsten ist es ein Unentschieden.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/simpleCraps.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 200px; float: right;" />SimpleCraps</h2>
+<p>
+	&quot;Craps bzw. Craps shooting oder Seven Eleven ist ein Würfelspiel, das sich vor allem in den USA großer Beliebtheit erfreut.&quot; [10]</p>
+<p>
+	Wir werden eine einfachere Version von Craps implementieren:&nbsp; Bei uns gibt es nur einen ganz normalen Würfel.&nbsp; Der Spieler beginnt mit einem Guthaben von 100 Euro.&nbsp; In jeder Runde werden 10 Euro gesetzt und der Spieler auf eines der folgenden Resultate setzen:</p>
+<ul>
+	<li>
+		odd</li>
+	<li>
+		even</li>
+	<li>
+		high (4,5,6)</li>
+	<li>
+		low (1,2,3)</li>
+</ul>
+<p>
+	Das Spiel ist beendet, wenn kein Guthaben mehr vorhanden ist.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/factorial.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 250px; float: right;" />Factorial</h2>
+<p>
+	Nicht alle Berechnungen die ein Computer macht sind richtig.&nbsp; Am besten wir sehen uns mal ein Beispiel an.</p>
+<p>
+	Die Fakultät einer Zahl ist das Produkt aller natürlichen Zahlen kleiner und gleich dieser Zahl.&nbsp; Z.B. ist die Fakultät von 3:</p>
+<pre>
+    3! = 1 * 2 * 3 = 6</pre>
+<p>
+	Wir wollen also eine Methode namens <em>calculateFactorial(int n)</em> schreiben, die die Fakultät der Zahl <em>n</em> berechnet.&nbsp; Und damit wollen wir dann die Fakultäten der Zahlen von 1 bis 20 ausgeben.&nbsp; Fakultäten berechnet man am besten mit einer <em>for</em> Schleife.</p>
+<p>
+	Die Fakultäten haben die Eigenschaft, dass sie sehr schnell sehr groß werden.&nbsp; Und das führt zu einem Problem, denn Computer können nicht so gut mit großen Zahlen rechnen!</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/rabbits.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />Rabbits</h2>
+<p>
+	Jeder der schon mal Kaninchen hatte weiß, dass diese eine interessante Eigenschaft haben: sie vermehren sich und zwar rasant.&nbsp; Wir wollen also ein Programm schreiben dass berechnet wie sich unsere Kaninchen-Population über die Monate entwickelt.&nbsp; Wir folgen dazu dem Modell von Fibonacci [12]:</p>
+<ul>
+	<li>
+		&quot;Jedes Paar Kaninchen wirft pro Monat ein weiteres Paar Kaninchen.</li>
+	<li>
+		Ein neugeborenes Paar bekommt erst im zweiten Lebensmonat Nachwuchs (die Austragungszeit reicht von einem Monat in den nächsten).</li>
+	<li>
+		Die Tiere befinden sich in einem abgeschlossenen Raum, sodass kein Tier die Population verlassen und keines von außen hinzukommen kann.&quot;</li>
+</ul>
+<p>
+	Wenn wir die Simulation richtig schreiben, dann müsste dabei die Fibonacci-Folge, also 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ... herauskommen.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/wordTwist.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 100px; float: right;" />WordTwist</h2>
+<p>
+	In dem Spiel <em>WordTwist</em> geht es darum ein Wort in dem einige Buchstaben vertauscht wurden, wiederzuerkennen.&nbsp; Also z.B. sollen wir erkennen, dass das Wort &quot;nhickce&quot; eigentlich aus dem Wort &quot;chicken&quot; entstanden ist.</p>
+<p>
+	Wir beginnen mit dem Ausgangswort, also z.B. &quot;chicken&quot;, und vertauschen einige Buchstaben.&nbsp; Das zeigen wir dann dem Nutzer, und er soll dann raten welches das Ausgangswort war.&nbsp; Wenn wir wieder den Top-Down Ansatz verwenden, dann macht es Sinn zunächst eine Methode <em>scrambleWord(String word)</em> zu schreiben, die das Ausgangswort als Parameter nimmt, und das durchmischte Wort als Rückgabewert liefert.&nbsp; Wenn wir den Top-Down Ansatz weiterverfolgen, macht es auch Sinn eine Methode namens <em>randomSwap(String word)</em> zu schreiben, die einfach zwei zufällig gewählte Buchstaben in dem Wort vertauscht.&nbsp; Wenn wir diese Methode mehrmals aufrufen, dann kommt dabei ein gut durchmischtes Wort heraus.</p>
+<p>
+	Die Methode <em>pickGuessWord()</em> existiert bereits und liefert uns ein zufälliges Wort.</p>
+<p>
+	.</p>
+<hr />
+<h1>
+	Challenges</h1>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/hangman.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 200px; float: right;" />Hangman</h2>
+<p>
+	Galgenmännchen ist ein einfaches Buchstabenspiel [12].&nbsp; Eigentlich ein grafisches Spiel, wollen wir hier eine Variante programmieren die textbasiert ist.&nbsp; Es beginnt damit, dass sich der Computer ein zufälliges Wort überlegt.&nbsp; Der Spieler darf dann einen Buchstaben raten.&nbsp; Das Programm zeigt dann an ob und an welcher Stelle im Wort dieser Buchstabe vorkommt.&nbsp; Das wird dann solange wiederholt, bis das Wort erraten wurde.&nbsp; Am Ende soll dann ausgegeben werden, wieviele Versuche notwendig waren um das Wort zu erraten.&nbsp; Dabei werden aber nur Fehlversuche gezählt.</p>
+<p>
+	Wir benötigen zwei Instanzvariablen,</p>
+<pre>
+    private String guessWord;
+    private String hintWord;</pre>
+<p>
+	wobei <em>guessWord</em> das Wort enthält das geraten werden soll (z.B. &quot;mother&quot;) und <em>hintWord</em> enthält die Buchstaben die bisher korrekt geraten wurden, also am anfang nur Striche (z.B. &quot;------&quot;).&nbsp; Wir müssen sowohl <em>guessWord</em> als auch <em>hintWord</em> initialisieren:</p>
+<pre>
+    guessWord = pickGuessWord();
+    createHintWord();</pre>
+<p>
+	wobei die Methode <em>pickGuessWord()</em> bereits existiert und wir die Methode <em>createHintWord()</em> aber noch schreiben müssen.</p>
+<p>
+	Danach beginnt der <em>GameLoop</em>: Im ersten Schritt zeigen wir dem Spieler das <em>hintWord</em> damit er eine Idee hat wieviel Buchstaben das Wort enthält.&nbsp; Dann bitten wir den Spieler einen Buchstaben einzugeben.&nbsp; Hier können wir die Methode <em>readOneChar()</em> aus dem Projekt ReadOneChar verwenden.&nbsp; Mittels <em>contains()</em>:</p>
+<pre>
+    char c = readChar();
+    if (guessWord.<span style="color:#0000ff;">contains</span>(&quot;&quot; + c)) {
+        buildNewHintWord(c);
+    }</pre>
+<p>
+	können wir feststellen, ob der neue Buchstabe in dem <em>guessWord</em> überhaupt vorkommt.&nbsp; Falls ja, müssen wir ein neues <em>hintWord</em> mittels der Methode <em>buildNewHintWord(c)</em> konstruieren.&nbsp; Diese Methode sollte den richtig geratenen Buchstaben an der korrekten Stelle im <em>hintWord</em> einfügen, und das neue <em>hintWord</em> sollte dann dem Spieler angezeigt werden.</p>
+<p>
+	Das Abbruchkriterium ist relativ einfach, wenn es keine Striche &quot;-&quot; mehr im <em>hintWord</em> gibt, dann hat der Spieler das Wort erraten.&nbsp; Alternativ könnte man natürlich auch <em>guessWord</em> und <em>hintWord</em> vergleichen.</p>
+<p>
+	.</p>
+<h2>
+	<img alt="" src="../images/mindReader.png" style="margin-left: 10px; margin-right: 10px; width: 200px; height: 200px; float: right;" />MindReader</h2>
+<p>
+	In diesem Spiel geht es um das Gedankenlesen.&nbsp; Es ist inspiriert vom Münzwurf, d.h. es gibt Kopf (heads) und Zahl (tails).&nbsp; Aber anstelle eine Münze zu werfen, wählt der Spieler einfach Kopf oder Zahl.&nbsp; Der Computer versucht nun vorherzusagen was der Spieler raten wird.&nbsp; War die Vorhersage des Computers richtig, erhält der Computer einen Punkt, ansonsten der Spieler.&nbsp; Wer als erstes 25 Punkte hat, hat gewonnen.&nbsp; Die Idee des Spiels basiert auf einem Handout von Professor Raja Sooriamurthi, der wiederum von Professor Gregory Rawlins inspiriert wurde [13].</p>
+<p>
+	Wenn wir den Top-Down Ansatz verwenden, dann ergibt sich folgende Grobstruktur:</p>
+<ul>
+	<li>
+		der Computer macht eine Vorhersage, entweder Kopf oder Zahl (computerMakePrediction())</li>
+	<li>
+		der Spieler trfft seine Auswahl, entweder Kopf oder Zahl (humanMakePick())</li>
+	<li>
+		die Vorhersage des Computers wird angezeigt (revealPrediction())</li>
+	<li>
+		die Computer-Vorhersage wird mit der Auswahl des Spielers verglichen und je nachdem ob der Computer richtig geraten hat oder nicht, erhält entweder der Computer einen Punkt oder der Spieler.</li>
+</ul>
+<p>
+	Das Ganze wird dann so lange wiederholt bis einer 25 Punkte erreicht hat.</p>
+<p>
+	Für das Spiel benötigen wir vier Instanzvariablen:</p>
+<pre>
+    private char computerGuess;
+    private char humanGuess;
+    private int computerScore = 0;
+    private int humanScore = 0;</pre>
+<p>
+	und zwar jeweils den Buchstaben den der Spieler eingegeben hat und den den der Computer vorhergesagt hat, sowie den Spielstand, also die Punkte des Spielers und die des Computers.</p>
+<p>
+	Die Vorhersage des Computers könnte man einfach zufällig machen, aber dann ist das Spiel eher langweilig.&nbsp; Viel interessanter wird es mit der bereits existierenden Klasse <em>MindReaderPredictor</em>:</p>
+<pre>
+    predictor = new MindReaderPredictor();</pre>
+<p>
+	Diese Klasse hat zwei Methoden, <em>makePrediction()</em> und <em>addNewGuess(char c)</em>.&nbsp; Die erste Methode versucht eine Vorhersage zu machen, gibt also &#39;h&#39; oder &#39;t&#39; als Rückgabewert.&nbsp; Die zweite fügt eine neue Spielerauswahl zur Datenbank des Predictors hinzu, und erlaubt es dem Predictor bessere Vorhersagen zu machen.&nbsp; Der Predictor versucht also vom Spieler zu lernen.&nbsp; Der <em>predictor</em> sollte natürlich auch eine Instanzvariable sein.</p>
+<p>
+	Erweiterungen:</p>
+<p>
+	Man kann sich für das Spiel ganz viele Erweiterungen einfallen lassen.&nbsp; z.B.:</p>
+<ul>
+	<li>
+		könnte man mehrere Spiele gleich hintereinander spielen, dabei sollte aber der MindReaderPredictor nicht jedes mal neu initialisiert werden</li>
+	<li>
+		man könnte eine eigene MindReaderPredictor Klasse schreiben, eine ganz einfache Version würde einfach nur zufällig zwischen &#39;h&#39; und &#39;t&#39; wählen</li>
+</ul>
+<p>
+	.</p>
+<hr />
+<h1>
+	Fragen</h1>
+<ol>
+	<li>
+		Geben Sie ein Beispiel für eine Klasse und ein Beispiel für ein Objekt.<br />
+		&nbsp;</li>
+	<li>
+		&quot;arnold&quot; ist eine &quot;Schauspieler&quot;. Ist &quot;arnold&quot; ein Objekt oder eine Klasse?<br />
+		&nbsp;</li>
+	<li>
+		Was ist normalerweise die Aufgabe eines Konstruktors?<br />
+		&nbsp;</li>
+	<li>
+		Betrachten Sie die folgenden Klassen: SteepleChaserKarel, GRect, Karel, GOval, GObject.&nbsp; Welche ist die Superklasse von welcher?<br />
+		&nbsp;</li>
+	<li>
+		Es ist guter Stil jeder Klasse eine toString() Methode zu geben.&nbsp; Was sollte die toString() Methode machen?<br />
+		&nbsp;</li>
+	<li>
+		Wie konvertieren Sie einen String der eine Zahl enthält, z.B. &quot;42&quot;, in einen int?<br />
+		&nbsp;</li>
+	<li>
+		Strings sind IMMUTABLE, also unveränderlich, was bedeutet das?<br />
+		&nbsp;</li>
+	<li>
+		Wenn man zwei Strings vergleichen möchte muss man etwas vorsichtig sein.&nbsp; Welcher Fehler tritt sehr häufig beim Vergleichen von Strings auf?<br />
+		&nbsp;</li>
+	<li>
+		Die Klasse String hat viele Methoden.&nbsp; Die folgenden haben wir benutzt.&nbsp; Beschreiben Sie kurz, was jede dieser Methoden macht.<br />
+		substring()<br />
+		length()<br />
+		charAt()<br />
+		toLowerCase()<br />
+		indexOf()<br />
+		&nbsp;</li>
+	<li>
+		Schreiben Sie Beispielcode der einen String umkehrt, also z.B. das Wort &rdquo;STRESSED&rdquo; in das Wort &ldquo;DESSERT&rdquo; verwandelt. (Der reine Java Code genügt, eine Klassen oder Methoden Deklaration ist nicht notwendig)<br />
+		&nbsp;</li>
+	<li>
+		Wofür verwendet man die StringTokenizer Klasse?<br />
+		&nbsp;</li>
+	<li>
+		Die Klasse StringTokenizer nimmt einen String als Parameter und hat zwei Methoden namens hasMoreTokens() und nextToken().&nbsp; Schreiben Sie Code der den Nutzer nach einem Satz fragt, und dann die einzelnen Worte des Satzes ausgibt, Zeile für Zeile.<br />
+		&nbsp;</li>
+	<li>
+		Der nachfolgende Code hat Probleme. Mindestens fünf Code Konventionen wurden dabei<br />
+		verletzt. Listen Sie diese bitte auf. (1 Punkt)<br />
+		<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; public class factorialExample extends ConsoleProgram {<br />
+		<br />
+		<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; <span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; </span></span>int j = 3;<br />
+		<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; <span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; </span></span>private static final int maxnum = 10;<br />
+		<br />
+		<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; <span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; </span></span>public void run() {<br />
+		<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; <span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; <span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; </span></span></span>for (int i = 0; i &lt; maxnum; i++) {<br />
+		<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; <span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; <span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; <span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; </span></span></span></span>println(i + &quot;! = &quot; + factorial(i));<br />
+		<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; <span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; <span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; </span></span></span>}<br />
+		<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; <span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; </span></span>}<br />
+		<br />
+		<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; <span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; </span></span>private int Factorial(int n) {<br />
+		<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; <span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; <span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; </span></span></span>int RESULT = 1;<br />
+		<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; <span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; <span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; </span></span></span>for (int i = 1; i &lt;= n; i++)<br />
+		<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; <span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; <span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; </span></span></span>result *= i;<br />
+		<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; <span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; <span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; </span></span></span>return result;<br />
+		<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; <span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; </span></span>}<br />
+		<span style="font-family:courier new,courier,monospace;">&nbsp;&nbsp;&nbsp; </span>}</span></li>
+</ol>
+<p>
+	.</p>
+<hr />
+<h1>
+	Referenzen</h1>
+<p>
+	Die Referenzen aus Kapitel 2 sind auch hier weiter wichtig. Außerdem enthält die Wikipedia zahlreiche Informationen.</p>
+<p>
+	[1] Caesar cipher, <a href="https://en.wikipedia.org/w/index.php?title=Caesar_cipher&amp;oldid=702242426">https://en.wikipedia.org/w/index.php?title=Caesar_cipher&amp;oldid=702242426</a> (last visited Feb. 17, 2016).</p>
+<p>
+	[2] Abjad, <a href="https://en.wikipedia.org/w/index.php?title=Abjad&amp;oldid=704692935">https://en.wikipedia.org/w/index.php?title=Abjad&amp;oldid=704692935</a> (last visited Feb. 17, 2016).</p>
+<p>
+	[3] Pidgin-Sprachen, <a href="https://de.wikipedia.org/w/index.php?title=Pidgin-Sprachen&amp;oldid=147087583">https://de.wikipedia.org/w/index.php?title=Pidgin-Sprachen&amp;oldid=147087583</a> (last visited Feb. 17, 2016).</p>
+<p>
+	[4] String (Java Platform SE 7 ) - Oracle Documentation, <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/String.html">https://docs.oracle.com/javase/7/docs/api/java/lang/String.html</a></p>
+<p>
+	[5] Pig Latin, <a href="https://de.wikipedia.org/w/index.php?title=Pig_Latin&amp;oldid=149209295">https://de.wikipedia.org/w/index.php?title=Pig_Latin&amp;oldid=149209295</a> (Abgerufen: 17. Februar 2016, 20:54 UTC).</p>
+<p>
+	[6] Sprachtypologie, <a href="https://de.wikipedia.org/w/index.php?title=Sprachtypologie&amp;oldid=149705787">https://de.wikipedia.org/w/index.php?title=Sprachtypologie&amp;oldid=149705787</a> (Abgerufen: 17. Februar 2016, 21:10 UTC).</p>
+<p>
+	[7] ELIZA, <a href="https://en.wikipedia.org/w/index.php?title=ELIZA&amp;oldid=704986757">https://en.wikipedia.org/w/index.php?title=ELIZA&amp;oldid=704986757</a> (last visited Feb. 17, 2016).</p>
+<p>
+	[8] Telemarketing-Software Samantha, <a href="http://de.engadget.com/2013/12/11/audio-telemarketing-software-samatha-streitet-kategorisch-ab-e/">http://de.engadget.com/2013/12/11/audio-telemarketing-software-samatha-streitet-kategorisch-ab-e/</a></p>
+<p>
+	[9] Blackjack, <a href="https://en.wikipedia.org/wiki/Blackjack">https://en.wikipedia.org/wiki/Blackjack</a></p>
+<p>
+	[10] Craps, <a href="https://de.wikipedia.org/wiki/Craps">https://de.wikipedia.org/wiki/Craps</a></p>
+<p>
+	[11] Fibonacci-Folge, <a href="https://de.wikipedia.org/wiki/Fibonacci-Folge">https://de.wikipedia.org/wiki/Fibonacci-Folge</a></p>
+<p>
+	[12] Galgenmännchen, <a href="https://de.wikipedia.org/wiki/Galgenmännchen">https://de.wikipedia.org/wiki/Galgenmännchen</a></p>
+<p>
+	[13] Mind Reader: a program that predicts choices, <a href="http://nifty.stanford.edu/2007/raja-mindreader/">http://nifty.stanford.edu/2007/raja-mindreader/</a></p>
+<p>
+	.</p>
+<p class="footer">
+Copyright &copy; 2016-2021 <a href="http://www.lano.de">Ralph P. Lano</a>.  All rights reserved.
+</p>
+</div>
+</center>
+</div>
+</body>
+</html>
